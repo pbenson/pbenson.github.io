@@ -85,6 +85,16 @@ a:focus  {
 	padding-bottom: 20pt;
 }
 
+.education p:before {
+	content: "\2022";
+  margin-right: 6px;
+}
+
+.experience b {
+	font-size: 0.8em;
+}
+
+
 /*header,
 .summary p:first-child {
 	display: none;
