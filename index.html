@@ -17,31 +17,48 @@
 </head>
 
 
-<!-- Boilerplate rom https://www.w3.org/wiki/HTML_structural_elements#Enter_HTML5_structural_elements -->
+<!-- Boilerplate for doc structure is from https://www.w3.org/wiki/HTML_structural_elements#Enter_HTML5_structural_elements -->
+
 <body>
 
-  <header>
-    <h1>Pete Benson's GitHub
-  </header>
+	<header>
+		<h1>Pete Benson's GitHub Page</h1>
+	</header>
 
-  <!-- <nav>
+	<!-- <nav>
   </nav> -->
 
-	  <article >
-			<h2>QFRM student websites</h2>
-			<p>Students in the<a href="https://lsa.umich.edu/math/graduates/quantitative-finance.html" target="_blank">QFRM</a> program at the U of M create GitHub-hosted websites like this one to describe their work. They can start with a template of their choosing, or use one of these:</p>
+	<article class="qfrm-websites">
+		<h2>QFRM student websites</h2>
+		<p>Students in the <a href="https://lsa.umich.edu/math/graduates/quantitative-finance.html" target="_blank">QFRM</a> program at the U of M create websites to describe their graduate work. A quick way to create a site could be to use something like Google
+			Sites or Wordpress.org, but these solutions are blocked in China. You can test a website using a site like <a href="http://www.blockedinchina.net/?siteurl=sites.google.com">blockedinchina.net</a>.
+		</p>
+
+		<p><a href="https://pages.github.com" target="_blank">GitHub Pages</a> sites are free, and are not blocked as far as I know. Students can roll their own websites, or search online for a template, or they can start with a template from below. These were
+			orginally inspired by <a href="http://www.csszengarden.com" target="_blank">CSS Zen Garden</a>. All of the templates have exactly the same HTML, which is customized by the student using a text editor like <a href="https://atom.io">Atom</a>. As long
+			as the student does not change class names in the HTML document, they can easily change the look of their site by swapping a new <em>styles</em> folder.</p>
+
+		<p>
 			<ol>
-				<li>A</li>
-				<li>B</li>
+				<li><a href="qfrm-templates/styles-zen-205/index.html">Zen-adapted 205</a></li>
+				<li><a href="qfrm-templates/styles-zen-214/index.html">Zen-adapted 214</a></li>
+				<li><a href="qfrm-templates/styles-zen-220/index.html">Zen-adapted 220</a></li>
 			</ol>
-	  </article>
+		</p>
+	</article>
 
-		  <article >
-				<h2>Python</h2>
-				<p>
-		  </article>
+	<article class="python">
+		<h2>Python</h2>
+		<p>Through the development of powerful libraries such as <a href="http://www.numpy.org">numpy</a>, <a href="http://pandas.pydata.org">pandas</a>, <a href="https://www.scipy.org">scipy</a> and others, Python has become a popular tool on Wall Street. In
+			the QFRM bootcamp, we practice using these tools to solve financial problems. </p>
+	</article>
 
-  <!-- <aside>
+	<article class="p5">
+		<h2>p5</h2>
+		<p>Coming soon.</p>
+	</article>
+
+	<!-- <aside>
   </aside>
 
   <footer>

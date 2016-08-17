@@ -1,0 +1,42 @@
+body {
+    height: 98%%;
+    width: 98%%;
+    margin: 1% auto;
+    font-family: Times, serif;
+}
+header {
+    height: 100%;
+    margin: 0;
+    padding: 1%;
+    background-color: #AAAAAA;
+    text-align: center;
+}
+h1 {
+    margin: 0;
+    padding: 0.5em;
+}
+h1, h2 {
+    font-family: Arial, sans-serif;
+}
+p {
+    line-height: 150%;
+}
+article {
+	margin: 0.5em;
+    padding-top: 0.5em;
+    padding-right: 2em;
+    padding-bottom: 1em;
+    padding-left: 2em;
+}
+article.qfrm-websites {
+    background-image: url("brownian.png");
+    background-size: 1024px 512px;
+    background-repeat: no-repeat;
+    background-color: #DDDDDD;
+}
+article.python {
+    background-color: #EEEEEE;
+}
+article.p5 {
+    background-color: #E2E2E2;
+}

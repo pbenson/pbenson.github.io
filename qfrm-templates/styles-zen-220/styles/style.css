@@ -1,0 +1,307 @@
+/*Adapted from Zen Garden submission 220 - http://www.csszengarden.com/220/   */
+
+/*-------------------------------------------
+    Base
+-------------------------------------------*/
+* { margin: 0; padding: 0; }
+html { font-size: 62.5%; } /* for rems */
+body { font-family: Helvetica, Arial, sans-serif; color: #333; background: #e8ecf0 url(backgroung.png) no-repeat 50% 350px; }
+
+
+/* block level */
+
+h1 { font: bold 4.2rem Helvetica, Arial, sans-serif; margin: 0 0 0.5em; }
+h2 { font: bold 1.8rem Helvetica, Arial, sans-serif; margin: 0 0 1em; }
+h3 { font: bold 1.5rem Helvetica, Arial, sans-serif; margin: 0 0 1em; }
+h4, h5, h6 { font: bold 1.2rem Helvetica, Arial, sans-serif; margin: 0 0 1em; }
+
+.wf-active body,
+.wf-active h1,
+.wf-active h2,
+.wf-active h3,
+.wf-active h4,
+.wf-active h5,
+.wf-active h6 { font-family: "effra"; }
+
+p, ul, dl, ol, table { font-size: 16px; margin: 0 0 1.5em; }
+.wf-active p { font-weight: 300; }
+
+form { margin: 0 0 1.5em; }
+
+/* inline */
+
+label { font-size: 1.6rem; }
+input, select, textarea {  }
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { }
+input.empty::-webkit-input-placeholder, textarea.empty::-webkit-input-placeholder { color: red; }
+input.empty:-moz-placeholder, textarea.empty:-moz-placeholder { color: red; }
+.error { color: red; }
+
+table { }
+    td { padding: 0.25em 1em; border-top: 1px solid #aaa; }
+
+em { font-style: italic; }
+strong { font-weight: bold; }
+
+mark { background: none; font-style: normal; }
+
+video { width: 100%; height: auto; }
+
+a {
+	text-decoration: none; color: #a28351; position: relative;
+	    transition: all 0.25s linear;
+   -moz-transition: all 0.25s linear;
+-webkit-transition: all 0.25s linear;
+	 -o-transition: all 0.25s linear;
+}
+
+a:after {
+	content: ""; display: block; background: #a28351; height: 2px; width: 100%; position: absolute; bottom: -0.2em; left: 0; opacity: 0;
+	    transition: all 0.25s linear;
+   -moz-transition: all 0.25s linear;
+-webkit-transition: all 0.25s linear;
+	 -o-transition: all 0.25s linear;
+}
+
+a:hover, a:focus { color: #000; }
+a:hover:after, a:focus:after { opacity: 1; bottom: 0; }
+
+img { display: block; margin: 0 10px 10px 0; max-width: 100%; }
+
+a img { border: none; }
+
+i { font-style: normal; }
+b { font-weight: normal; }
+
+abbr, abbr[title], acronym { font-size: 75%; letter-spacing: 0.2em; text-transform: uppercase; border: none; }
+
+code { font: 1.4rem/1 Consolas, 'Courier New', Courier, monospace; color: #999; }
+
+sub, sup { line-height: 0; }
+
+::selection { background: #d5d9dc; color: #333; }
+::-moz-selection { background: #d5d9dc; color: #333; }
+
+
+/*-------------------------------------------
+    Global
+-------------------------------------------*/
+
+/* Phark Image Replacement - http://phark.typepad.com/phark/2003/08/accessible_imag.html */
+.phark { display: block; text-indent: -9999px; background-position: 0 0; background-repeat: no-repeat; background-color: transparent; }
+
+/* Trimming Outline in Firefox - http://snook.ca/archives/html_and_css/trimming_long_o  */
+/*\*/ .phark-link { overflow: hidden; } /**/
+
+/* Easy Clearing - http://www.positioniseverything.net/easyclearing.html */
+.clearfix:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+
+.offscreen { position: absolute; left: -9999px; display: block; }
+.onscreen { left: 0; }
+
+.hide { display: none; }
+
+.no-bullets { list-style: none; }
+
+.bulleted { list-style: disc; }
+
+.uppercase { text-transform: uppercase; }
+
+.rwd-break { display: block; }
+
+.kellum { display: block; text-indent: 100%; white-space: nowrap; overflow: hidden; }
+
+/*-------------------------------------------
+	Modules
+-------------------------------------------*/
+.page-wrapper { width: 90%; margin: 0 auto; }
+
+.main h3, .about-me h3, .select { visibility: hidden; font-size: 2rem; text-transform: uppercase; letter-spacing: 0.1em; color: #263358; }
+.wf-active .main h3, .wf-active .about-me h3 { font-weight: 900; }
+
+.main h3:after, .about-me h3:after, .select:after { visibility: visible; display: block; }
+
+.main p, .about-me p { font-size: 1.5rem; }
+.wf-active .main p, .wf-active .about-me p { line-height: 1.4; }
+
+.next a,
+.previous a,
+.viewall a,
+.summary p:nth-child(2) a
+{
+        transition-property: none;
+   -moz-transition-property: none;
+-webkit-transition-property: none;
+     -o-transition-property: none;
+}
+
+.next a:after,
+.previous a:after,
+.viewall a:after,
+.summary p:nth-child(2) a:after
+{ opacity: 0; }
+
+
+
+/*-------------------------------------------
+	Banner
+-------------------------------------------*/
+[role="banner"] h1 { padding: 1em 0 0; text-transform: uppercase; letter-spacing: 0.1em; font-size: 3.5rem; font-weight: 900; color: #182e4f; }
+
+[role="banner"] h2 { visibility: hidden; display: none; text-transform: uppercase; font-weight: 400; color: rgba(41, 78, 134, 0.5); }
+
+
+
+/*-------------------------------------------
+    About me
+-------------------------------------------*/
+.summary p { text-transform: uppercase; letter-spacing: 0.1em; font-size: 1.8rem; line-height: 1.6; }
+
+
+/*-------------------------------------------
+    About me
+-------------------------------------------*/
+.about-me { background: transparent url(background.png) no-repeat 50% 0; }
+	.about-me h3:after { visibility: visible; content: "About me";  }
+
+.about-me img {
+	float: left;
+ 	margin: 10px 10px 10px 10px;
+}
+
+
+.contact-details h3:after { content: "Contact information";  }
+.education h3:after { content: "Education";  }
+.experience h3:after { content: "Experience";  }
+.skills h3:after { content: "Some of my skills"; text-indent: -0.5em; }
+
+/*-------------------------------------------
+	More items
+-------------------------------------------*/
+.more { margin: 3em 0 0; }
+	.more ul { list-style: none; width: 94%; margin: 0 auto; }
+	.more ul:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+		.more li { float: left; width: 50%; font-size: 1.2rem; margin: 0 0 1em; color: #aaa; }
+		.more li:nth-child(odd) { width: 47%; padding-right: 3%; clear: left; }
+
+			.more-item{ display: block; font-size: 1.4rem; font-weight: bold; margin: 0 0 0.24em; text-transform: uppercase; letter-spacing: 0.1em; position: relative; }
+			.design-name:after { background: none; opacity: 0; }
+			.design-name:hover { font-style: italic; }
+
+			.designer-name { color: #7989a3; }
+			.designer-name:after, footer a:after { height: 1px; }
+
+
+@media screen and (min-width: 700px) {
+
+	body { background-attachment: fixed; background-position: 90% 80%; }
+
+	/*.intro:before { content: ""; display: block; width: 105px; height: 30px; position: fixed; top: 154px; left: 3%; background: transparent url(s/czg.svg) no-repeat -184px -99px; }*/
+
+	[role="article"], [role="banner"], footer { padding: 0 30% 3em 10%; text-align: right; position: relative; }
+		[role="article"] h3, [role="banner"] h2 { position: absolute; top: -0.75em; left: 75%; width: 10em; text-align: left; font-size: 1.5rem; letter-spacing: 0; }
+		[role="article"] h3:after { position: absolute; top: 0; }
+
+	[role="banner"] { padding-top: 30px; padding-bottom: 2em; }
+
+		[role="banner"] h1 { font-size: 4.8rem; letter-spacing: 0; line-height: 0.8; }
+		/*[role="banner"] h1:after { position: absolute; top: 10.7em; right: 30%; }*/
+
+
+		.summary p:nth-child(2) { background: yellow; position: relative; visibility: hidden; top: 2em; font-size: 1.4rem; }
+
+			.summary p:nth-child(2):before { content: ""; display: block; visibility: visible; position: absolute; right: 21em; top: -0.25em; background: transparent url(s/czg.svg) no-repeat -159px -1px; width: 6em; height: 30px; }
+
+			.summary p:nth-child(2):after { content: ""; display: block; visibility: visible; position: absolute; right: 14em; top: -0.25em; background: transparent url(s/czg.svg) no-repeat -277px 0; width: 6em; height: 30px; }
+
+			.summary p:nth-child(2) a { visibility: visible; background: transparent url(s/czg.svg) no-repeat -376px -93px; width: 6em; height: 25px; text-indent: 100%; white-space: nowrap; overflow: hidden; display: block; position: absolute; top: 0; right: 7em; }
+			.summary p:nth-child(2) a:hover, .summary p:nth-child(2) a:focus { background-position: -396px -3px; text-indent: 0; background: none; }
+
+			.summary p:nth-child(2) a[href*="css"] { background-position: -472px -94px; right: 0; }
+			.summary p:nth-child(2) a[href*="css"]:hover, .summary p:nth-child(2) a[href*="css"]:focus { background-position: -512px -4px; }
+
+	.about-me { padding-top: 10em; }
+		.about-me h3 { top: 5.9em; }
+
+	.more li { width: 23%; margin-bottom: 3em; padding-right: 2%; }
+	.more li:nth-child(odd) { width: 23%; clear: none; padding-right: 2%; }
+
+	.next { margin-right: 2em; margin-left: -0.4em; }
+	.viewall { margin-left: 0; }
+
+	footer { padding-bottom: 3em; margin-top: -5em; }
+}
+
+
+@media screen and (min-width: 1130px) {
+
+	[role="article"], [role="banner"] { padding-left: 25%; }
+
+	.more { position: absolute; left: 5%; top: 30em; }
+		.more ul { margin: 0; width: 100%; }
+			.more li { float: none; width: 100% !important; padding: 0 !important; margin-bottom: 2em;}
+		.select:after { text-align: left; background-position: 0 bottom; padding: 0 0 2em; margin: 0 0 2em; }
+
+	.design-archives { position: absolute; left: 5%; top: 95em; }
+
+}
+
+
+@media screen and (min-width: 1130px) and (min-height: 1037px)  {
+	.more, .design-archives { position: fixed; }
+
+}
+
+
+
+/*-------------------------------------------
+	Animations
+-------------------------------------------*/
+@-webkit-keyframes FADEY {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.intro {
+	-webkit-animation-name: FADEY;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-iteration-count: 1;
+}
+
+
+[role="article"] {
+	-webkit-opacity: 0;
+	-webkit-animation-name: FADEY;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-delay: 0.5s;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: 1;
+}
+
+
+.more, .design-archives {
+	-webkit-opacity: 0;
+	-webkit-animation-name: FADEY;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-timing-function: ease-in-out;
+	-webkit-animation-delay: 1s;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: 1;
+}
+
+
+/*-------------------------------------------
+	IE, i.e. Internet Explorer (heh)
+-------------------------------------------*/
+
+@media screen and (min-width:0\0) { /* IE9 and IE10 rule sets go here */
+
+   .main h3, .about-me h3, .select { visibility: visible; }
+   [role="banner"] h1 { visibility: visible; width: auto; display: block; }
+
+   .main h3:after, .about-me h3:after, .select:after { display: none; }
+   [role="banner"] h1:before { display: none; }
+
+}
