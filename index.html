@@ -17,26 +17,58 @@
 </head>
 
 
-<!-- Boilerplate for doc structure is from https://www.w3.org/wiki/HTML_structural_elements#Enter_HTML5_structural_elements -->
-
 <body>
 
 	<header>
-		<h1>Pete Benson's GitHub Page</h1>
+		<h1>Pete's GitHub Page</h1>
 	</header>
 
-	<!-- <nav>
-  </nav> -->
+	<nav>
+		<ul>
+			<li><a href="#bootcamp">Bootcamp</a></li>
+			<li><a href="#websites">Websites</a></li>
+			<li><a href="#python">Python</a></li>
+			<li><a href="#github">GitHub</a></li>
+			<li><a href="#p5">p5</a></li>
+		</ul>
+	</nav>
 
-	<article class="qfrm-websites">
-		<h2>QFRM student websites</h2>
-		<p>Students in the <a href="https://lsa.umich.edu/math/graduates/quantitative-finance.html" target="_blank">QFRM</a> program at the U of M create websites to describe their graduate work. You can create a quick, hosted site using Google
-			Sites or Wordpress.org, but these solutions are blocked in China, which is a problem if you intend to apply for jobs there. You can test the accessibilitiy of a website via <a href="http://www.blockedinchina.net/?siteurl=sites.google.com">blockedinchina.net</a>.
+	<article class="intro">
+		<p>This began as a collection of my sketches in Processing and p5. That stuff is still here. But the focus now is on my work with students in the Quantitative Finance and Risk Management program at the University of Michigan.
+		</p>
+	</article>
+
+	<article class="bootcamp">
+		<h2><a class="anchor" name="bootcamp">QFRM Bootcamp agenda</a></h2>
+		<p>The week before QFRM students begin their fall semester, we run a "bootcamp" to prepare resumes, build a University web page and personal website, and review/learn some financial concepts while learning some Python. Below is the agenda.
 		</p>
 
-		<p><a href="https://pages.github.com" target="_blank">GitHub Pages</a> sites are free, and are not blocked. You can roll your own websites, or search online for a template, or you can start with a template from below. These were
-			orginally inspired by <a href="http://www.csszengarden.com" target="_blank">CSS Zen Garden</a>. All of the templates have exactly the same HTML, which is customized by the student using a text editor like <a href="https://atom.io">Atom</a>. As long
-			as the student does not change class names in the HTML document, they can easily change the look of their site by swapping a new <code>styles</code> folder.</p>
+		<p>
+			<ol>
+				<li>Installing Workshop tools, Anaconda, Atom, GitHub client. We assume you have a word processor for creating a resume, such as Google doc or MS Word.
+				</li>
+				<li>Overview of your online employment portfolio
+					<ol>
+						<li>Your U of M home page.</li>
+						<li>resume</li>
+						<li>LinkedIn page</li>
+						<li>personal webpage</li>
+					</ol>
+				</li>
+			</ol>
+		</p>
+
+	</article>
+
+	<article class="qfrm-websites">
+		<h2><a class="anchor" name="websites">QFRM student websites</a></h2>
+		<p>Students in the <a href="https://lsa.umich.edu/math/graduates/quantitative-finance.html" target="_blank">QFRM</a> program at the U of M create personal websites to describe and provide evidence of the quality of their work. You can create a hosted site
+			easily using Google Sites or Wordpress.org, but these solutions are blocked in China, which is undesirable if you intend to apply for jobs there. You can test the accessibilitiy of a website via <a href="http://www.blockedinchina.net/?siteurl=sites.google.com">blockedinchina.net</a>.
+		</p>
+
+		<p><a href="https://pages.github.com" target="_blank">GitHub Pages</a> sites are free, and are not blocked. You can roll your own websites, or search online for a template, or you can start with a template from below. These were orginally inspired by
+			<a href="http://www.csszengarden.com" target="_blank">CSS Zen Garden</a>. All of the templates have exactly the same HTML, which is customized by the student using a text editor like <a href="https://atom.io">Atom</a>. As long as the student does not
+			change class names in the HTML document, they can easily change the look of their site by swapping a new <code>styles</code> folder.</p>
 
 		<p>
 			<ol>
@@ -49,7 +81,7 @@
 	</article>
 
 	<article class="python">
-		<h2>QFRM Python</h2>
+		<h2><a class="anchor" name="python">QFRM Python</a></h2>
 		<p>Through the development of powerful libraries such as <a href="http://www.numpy.org">numpy</a>, <a href="http://pandas.pydata.org">pandas</a>, <a href="https://www.scipy.org">scipy</a> and others, Python has become a popular tool on Wall Street. In
 			the QFRM bootcamp, we practice using these Python to solve math problems, and use the libraries to solve financial problems. </p>
 
@@ -60,14 +92,33 @@
 				<li>Follow step <a href="http://conda.pydata.org/docs/test-drive.html#managing-conda">one</a> of the <a href="http://conda.pydata.org/docs/test-drive.html">Conda 30 minute test drive</a>
 				</li>
 				<li>Follow step <a href="http://conda.pydata.org/docs/test-drive.html#managing-pkgs">four</a> of the Conda 30 minute test drive. </li>
-				<li>Launch <a href="http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html">Jupyter Notebook</a>. You may want to create a special directory for you Jupyter notebook files which you can maintain with GitHub.</li>
+				<li>Launch <a href="http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html">Jupyter Notebook</a>. You may want to create a special directory for your Jupyter notebook files which you can maintain with GitHub.</li>
 			</ol>
 		</section>
+
+		<section>
+			<h3>Getting started</h3>
+			<ol>
+				<li>Install <a href="https://www.continuum.io/downloads">Anaconda</a> if you don't already have it. We prefer the 2.7 edition of Python, and recommend the graphical installer.</li>
+				<li>Follow step <a href="http://conda.pydata.org/docs/test-drive.html#managing-conda">one</a> of the <a href="http://conda.pydata.org/docs/test-drive.html">Conda 30 minute test drive</a>
+				</li>
+				<li>Follow step <a href="http://conda.pydata.org/docs/test-drive.html#managing-pkgs">four</a> of the Conda 30 minute test drive. </li>
+				<li>Launch <a href="http://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/execute.html">Jupyter Notebook</a>. You may want to create a special directory for your Jupyter notebook files which you can maintain with GitHub.</li>
+			</ol>
+		</section>
+
+	</article>
+
+	<article class="github">
+		<h2><a class="anchor" name="github">GitHub</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</article>
 
 	<article class="p5">
-		<h2>p5</h2>
-		<p>Coming soon.</p>
+		<h2><a class="anchor" name="p5">p5</a></h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 	</article>
 
 	<!-- <aside>

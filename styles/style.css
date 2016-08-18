@@ -1,32 +1,89 @@
+/*************
+  document stylings
+**************/
+
 body {
-    height: 98%%;
-    width: 98%%;
-    margin: 1% auto;
+    /*height: 98%;*/
+    width: 100%;
+    margin: 0 auto;
     font-family: Times, serif;
 }
 header {
-    height: 100%;
-    margin: 0;
-    padding: 1%;
+    position: fixed;
+    /*margin: 0.5em;*/
+    left: 0.5em;
+    top: 0.5em;
+    right: 0.5em;
+    /*padding: 0.5em;*/
     background-color: #AAAAAA;
     text-align: center;
 }
-h1 {
+/*h1 {
     margin: 0;
     padding: 0.5em;
-}
+}*/
 h1, h2, h3 {
     font-family: Arial, sans-serif;
 }
 p {
     line-height: 125%;
 }
+
+/*************
+  nav stylings
+**************/
+
+nav {
+    position: fixed;
+    left: 0.5em;
+    top: 5em;
+    right: 0.5em;
+}
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0.05em;
+    overflow: hidden;
+    background-color: #888;
+    font-size: 1.2em;
+}
+nav ul li {
+    float: left;
+}
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+
+nav li a:hover {
+    background-color: #111;
+}
+
+/* deal with anchor links putting the named anchor under the fixed header */
+.anchor { padding-top: 6.5em; }
+
+/*************
+  article stylings
+**************/
+
+.intro {
+  padding-top: 8em;
+  background-color: #555555;
+  color: #F2F2F2;
+}
+
 article {
-	margin: 0.5em;
+    margin: 0.5em;
     padding-top: 0.5em;
     padding-right: 2em;
     padding-bottom: 1em;
     padding-left: 2em;
+    background-color: #EEEEEE;
 }
 article.qfrm-websites {
     background-image: url("brownian.png");
@@ -35,7 +92,7 @@ article.qfrm-websites {
     background-color: #DDDDDD;
 }
 article.python {
-    background-color: #EEEEEE;
+    background-color: #DADADA;
 }
 article.p5 {
     background-color: #E2E2E2;
