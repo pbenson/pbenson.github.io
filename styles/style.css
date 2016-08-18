@@ -15,11 +15,11 @@ h1 {
     margin: 0;
     padding: 0.5em;
 }
-h1, h2 {
+h1, h2, h3 {
     font-family: Arial, sans-serif;
 }
 p {
-    line-height: 150%;
+    line-height: 125%;
 }
 article {
 	margin: 0.5em;
