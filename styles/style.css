@@ -88,6 +88,11 @@ ol li li { list-style-type: lower-alpha; }
   height:6em; /* fixed header height*/
   margin:-6em 0 0; /* negative fixed header height */
 }
+
+.list-image {
+    float: right;
+    margin: 0 0 10px 10px;
+}
 /*************
   article stylings
 **************/
