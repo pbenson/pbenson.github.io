@@ -224,9 +224,9 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:600px;
   float:right;
-  padding-bottom:50px;
+  padding-bottom:10px;
 }
 
 small {
@@ -311,7 +311,7 @@ footer {
   }
 
   header li, header ul li + li + li {
-    width:33%;
+    width:25%;
   }
 }
 
