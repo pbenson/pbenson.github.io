@@ -1,0 +1,276 @@
+\documentclass{report}
+
+\usepackage{amsmath} % provides numberwithin (and lots more)
+\usepackage{graphicx}
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{qfrmTechnicalQuestionsDev}
+
+
+\newtheorem{problem}{}
+\numberwithin{problem}{chapter} % important bit
+\let\oldroblem\problem
+\renewcommand{\problem}{\oldroblem\normalfont}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ {\huge\bfseries QFRM\\Technical Interview Questions\\}
+ % ----------------------------------------------------------------
+ \vspace{1.5cm}
+ {\bfseries Pete Benson}\\[5pt]
+ pbenson@umich.edu\\[14pt]
+  % ----------------------------------------------------------------
+ \vspace{10cm}
+ % ----------------------------------------------------------------
+\includegraphics{QFRM_rgb}\\[5pt]
+{Department of Mathematics}\\[5pt]
+{530 Church Street, 2082C East Hall}\\[5pt]
+{Ann Arbor, MI 48109-1043,
+ USA}\\
+ \vfill
+
+\end{center}
+\end{titlepage}
+
+%----------------------
+% review
+%----------------------
+\chapter{Pure math}
+
+\begin{problem}
+\cite{CRACK}
+What is the value of $\sqrt{2}^{\sqrt{2}^{{\sqrt{2}^{...}}}}$?
+\end{problem}
+
+\begin{problem}
+For what positive values of $a$ is $\sqrt{a +\sqrt{a +\sqrt{a +...}}}$  an integer?
+\end{problem}
+
+\begin{problem}
+What is $\ds \int \frac{dx}{1+x^2}$?
+\end{problem}
+
+\begin{problem}
+Find $\ds \int_0^\infty e^{-x^2}dx$.
+\end{problem}
+
+\begin{problem}
+Does $\ds \sum_{n=1}^\infty \pi^{-\sqrt{n}}$ exist?
+\end{problem}
+
+\begin{problem}
+\cite{CRACK}
+If $p$ is a prime greater than 3, explain why $p^2-1$ is divisible by 24. 
+\end{problem}
+
+\begin{problem}
+Solve $z^8=256$.
+\end{problem}
+
+\begin{problem}
+\cite{STRAWA}
+Which is larger, $\pi^e$ or $e^\pi$?
+\end{problem}
+
+\begin{problem}
+Solve $f'(x)=f(x)^2+4$.
+\end{problem}
+%
+%\begin{problem}
+%How many solutions are there to $||x-3|-2|=1$?
+%\end{problem}
+
+%----------------------
+%Linear Algebra
+%----------------------
+\chapter{Linear Algebra}
+
+\begin{problem}
+What is meant by the {\it rank} of a matrix? 
+\end{problem}
+
+\begin{problem}
+What is a  {\it singular} matrix? 
+\end{problem}
+
+\begin{problem}
+What does the rank of a square matrix tell you about its eigenvalues?
+\end{problem}
+
+\begin{problem}
+What does it mean for a matrix to be PSD? PD?
+\end{problem}
+
+\begin{problem}
+If a matrix is PD, what do you know about its eigenvalues?
+\end{problem}
+
+\begin{problem}
+For $M =\begin{bmatrix}
+    2  & 3 \\
+    3  & 5
+\end{bmatrix}$, find $A$ such that $M=AA^{T}$.
+\end{problem}
+
+%----------------------
+%Probability
+%----------------------
+\chapter{Probability}
+
+\begin{problem}
+You have a bag with two coins. One will come up heads 40\% of the time, and the other will come up heads 60\%. You pick a coin randomly, flip it and get a head. What is the probability it will be heads on the next flip?
+\end{problem}
+
+\begin{problem}
+What is the Central Limit Theorem?
+\end{problem}
+
+\begin{problem}
+In front of you is a jar of 1000 coins. One of the coins has two heads, and the rest are fair coins. You choose a coin at random, and flip it ten times, getting all heads. What is the probability it is one of the fair coins?
+\end{problem}
+
+\begin{problem}
+Suppose you have a fair coin, and you flip it a million times. Estimate the probability that you get fewer than 499,000 heads.
+\end{problem}
+
+\begin{problem}
+\cite{STRAWA}
+Starting at one vertex of a cube, and moving randomly from vertex to adjacent vertices, what is the expected number of moves until you reach the  vertex opposite from your starting point?
+\end{problem}
+
+\begin{problem}
+What are some important features of the exponential distribution?
+\end{problem}
+
+\begin{problem}
+Give an example of random variables that are normal, uncorrelated, and dependent.
+\end{problem}
+
+\begin{problem}
+You have a spinner that generates random numbers that are uniform between 0 and 1. You sum the spins until the sum is greater than one. What is the expected number of spins?
+\end{problem}
+
+\begin{problem}
+$X \sim \mbox{N}(\mu_X, \sigma^2_X)$ and $Y \sim \mbox{N}(\mu_Y, \sigma^2_Y)$ are independent, and you know $X+Y=s$. What is the expected value of $X$? 
+\end{problem}
+
+\begin{problem}
+A stick is broken randomly into 3 pieces. What is the probability of the pieces being able to form a triangle?
+\end{problem}
+
+\begin{problem}
+A stick is broken randomly into two pieces. The larger piece is then broken randomly into two pieces. What is the probability of the pieces being able to form a triangle?
+\end{problem}
+
+
+%----------------------
+%Quantitative Finance and Risk Management
+%----------------------
+\chapter{Quantitative Finance and Risk Management}
+
+\begin{problem}
+The stock of a company is trading at 100 USD. It is widely known that a merger decision will be made today, and depending on the news, the stock will trade at either \$96 or \$106 after the decision. Your research department believes there is a 50\% chance
+        the company decides to merge. What is the price of a call option struck at the money, expiring immediately after the merger decision? What assumptions did you make?
+\end{problem}
+
+\begin{problem}
+You collect 2 years of daily returns for the stocks in the Russell 3000. From the data you collect, you compute a covariance matrix $\Sigma$. How would you determine whether $\Sigma$ is singular?
+\end{problem}
+
+\begin{problem}
+Without using a calculator, what is the approximate price of an at-the-money call on a \$30 stock with an implied vol of 33 maturing in 3 months? If you don't know a shortcut for this, derive a shortcut.
+\end{problem}
+
+\begin{problem}
+You have a basket of $n$ assets. The asset returns are multivariate normal with zero mean. Correlation between any pair of assets is 1/2. What is the probability that $k$ of the assets will have positive return?
+\end{problem}
+
+\begin{problem}
+Explain put-call parity.
+\end{problem}
+
+\begin{problem}
+Define duration and convexity. Explain their properties and applications.
+\end{problem}
+
+\begin{problem}
+A two-year Treasury strip yields 2\%, and a three-year strip yields 2.5\%. What is the one year yield, two years forward? 
+\end{problem}
+
+\begin{problem}
+\cite{CRACK} You are a portfolio manager, and intend to invest 100 USD in two stocks that are expected to have the same return. They have annual volatilies of 40\% and 60\%, and correlation of 80\%.  How much do you invest in each stock?
+\end{problem}
+
+\begin{problem}
+\cite{CRACK} For a standard European put option, draw the graph of the delta as a function of the current stock price.
+\end{problem}
+
+\begin{problem}
+Explain what is meant by the volatility smile, and why does it exist?
+\end{problem}
+
+\begin{problem}
+\cite{CRACK} What can you say about $\int_0^{T} W(t)dt$, where $W(t)$ is standard Brownian motion?
+\end{problem}
+
+\begin{problem}
+\cite{CRACK} What can you say about $\int_0^{T} W(t)dW(t)$, where $W(t)$ is standard Brownian motion?
+\end{problem}
+
+%----------------------
+%Brain Teasers
+%----------------------
+\chapter{Brain Teasers}
+
+\begin{problem}
+You have 100 quarters, 10 heads, 90 tails up in a dark room where you can't see the quarters. How do you divide them into 2 piles where you have an the same number of heads in each pile?
+\end{problem}
+
+\begin{problem}
+A band of six perfectly logical, bloodthirsty pirates must divide a chest of 300 gold coins. The pirates are ranked by authority. The top pirate is the captain, and he proposes how the gold should be distributed. All of the pirates then vote yea or nay. If there are more nays than yeas, the captain is thrown overboard, and the next takes his place. This is repeated until there are at least as many yeas as nays, at which point the gold is distributed. Every pirate wants to survive, and if he survives, he wants as much gold as he can get. If it doesn't matter financially whether to accept or reject the proposal, he'd rather reject it and watch the captain get tossed overboard. Pirates cannot make deals with other pirates. What deal will the captain propose?
+\end{problem}
+
+\begin{problem}
+Anna, Buzz, Charlene, and Dilbert must cross a bridge at night, and a torch is needed to cross. There is only one torch. The bridge can't handle more than two people at a time. Anna can cross in a minute, Buzz in 2 minutes, Charlene in 5, and Dilbert in 10. What is the quickest way to get all 4 across?
+\end{problem}
+
+\begin{problem}
+You are in a canoe in a swimming pool, and you have a penny in your pocket. You toss the penny into the water. What happens to the water level in the swimming pool?
+\end{problem}
+
+\begin{problem}
+There are 7 boxes in a row, one of which contains treasure. To get the treasure, you need only open the correct box. You must close the box before checking another box. Whenever you close a box, the treasure is moved to an adjacent box. What is the fewest number of boxes you need to open to be guaranteed you will find the treasure?
+\end{problem}
+
+\begin{problem}
+It is 6pm, and the hour and minute hands are pointing in opposite directions. When will this happen next?
+\end{problem}
+
+\begin{problem}
+There are one hundred coins on the table. You and an opponent take turns removing 1, 2, 3, or 4 coins at a time. You win if there are no coins left at the end of your turn. You may choose whether to go first or second. What do you do and why?
+\end{problem}
+
+\begin{problem}
+You have 20 coins which look identical, but one is lighter than the others. You have a balance scale that tells you which side has more weight. What would you do to minimize the number of weighings?
+\end{problem}
+
+\begin{problem}
+You have two glasses in front of you. The first is partly filled with wine, and the second is partly filled with of water. You pour some of the wine into the glass of water, and then you pour an equal amount of the mixture back into the glass of wine. Is there more water in the glass that was originally wine, or more wine in the glass that was originally water? Explain your answer.
+\end{problem}
+
+\begin{problem}
+Suppose there are 42 students in the QFRM program, each assigned a unique integer from 1 to 42. Forty-two quarters are laid out on a table in a row, heads up. Each student goes to the table, and if they are assigned the number $n$, they turn over the $n$th coin, the $2n$th coin, and so on. So, for example, the student who is assigned 20 will turn over the 20th and 40th coins. When everyone is done, how many tails are showing?
+\end{problem}
+
+
+
+%----------------------
+%Bibliography
+%----------------------
+\printbibliography
+
+
+
+\end{document}

@@ -1,0 +1,3 @@
+John Smith is a first-year graduate student in <a href="https://lsa.umich.edu/math/people/quantitative-finance-risk-management-students.html">Quantitative Finance and Risk Management</a>. He has a bachelor's in Statistics from Tsinghua University in Beijing, with a minor in Economics.
+
+He interned at State Street Bank, researching factors that affect the default rates of subinvestment grade corporate debt.
