@@ -1,0 +1,53 @@
+\documentclass{report}
+
+\usepackage{amsmath} % provides numberwithin (and lots more)
+\usepackage{graphicx}
+\usepackage[backend=bibtex]{biblatex}
+\bibliography{qfrmTechnicalQuestionsDev}
+
+
+\newtheorem{problem}{}
+\numberwithin{problem}{chapter} % important bit
+\let\oldroblem\problem
+\renewcommand{\problem}{\oldroblem\normalfont}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ {\huge\bfseries Math 573\\ Lecture Notes\\}
+ % ----------------------------------------------------------------
+ \vspace{1.5cm}
+% {\bfseries Instructor: Sergey Nadtochiy}\\[5pt]
+% pbenson@umich.edu\\[14pt]
+  % ----------------------------------------------------------------
+ \vspace{10cm}
+ % ----------------------------------------------------------------
+\includegraphics{QFRM_rgb}\\[5pt]
+{Department of Mathematics}\\[5pt]
+{530 Church Street}\\[5pt]
+{Ann Arbor, MI 48109-1043,
+ USA}\\
+ \vfill
+
+\end{center}
+\end{titlepage}
+
+%----------------------
+% review
+%----------------------
+\chapter{Introduction}
+
+The course is divided broadly into three sections:
+\begin{enumerate}  
+\item Arbitrage pricing and hedging 
+\item Optimal investment
+\item Risk measurement
+\end{enumerate}
+Examples of each follow.
+
+\section{Arbitrage Pricing and Hedging}
+Let $C(K) \equiv$ the price of a European call option struck at $K$. Suppose that there are call options with strike prices of 1, 2, and 3 as depicted. 
+
+\end{document}
