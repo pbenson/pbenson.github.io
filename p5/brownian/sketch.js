@@ -6,23 +6,31 @@ var cnv;
 function setup() {
   centerCanvas();
   noFill();
-  frameRate(10);
+  frameRate(5);
 }
 
 function draw() {
+  push();
+  noFill();
+  stroke(1);
   translate(0, height * 0.5);
   translate(1, -1);
   var xStep = 2;
   var vol = height * 0.01;
   var y = 0;
-  var grayLevel = 192 + random() * 64;
-  stroke(grayLevel, grayLevel, grayLevel, 100);
+  var grayLevel = 128;
+  var beGray = random() < 0.05 ? 0 : 1;
+  stroke(grayLevel * beGray, grayLevel * beGray, grayLevel, 100);
   beginShape();
   for (var x = 0; x < width; x += xStep) {
     vertex(x, y);
     y += randomGaussian() * vol;
   }
   endShape();
+  pop();
+  noStroke();
+  fill(255, 255, 255, 25);
+  rect(0,0, width, height);
 }
 
 function centerCanvas() {
