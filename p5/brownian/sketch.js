@@ -6,11 +6,16 @@ var cnv;
 function setup() {
   centerCanvas();
   noFill();
-  frameRate(5);
+  frameRate(1);
 }
 
 function draw() {
   push();
+  // fill(255);
+  // noStroke();
+  // rect(0,0, 200, 30);
+  // fill(240);
+  // text("Simulations: "+frameCount, 20, 20);
   noFill();
   stroke(1);
   translate(0, height * 0.5);
