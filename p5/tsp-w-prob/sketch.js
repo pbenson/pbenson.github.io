@@ -6,16 +6,33 @@ var nodeZero;
 var edges;
 var edgeMatrix;
 var textHeight = 16;
-var numberNodes = 4;
+var numberNodes = 6;
 var needsRedraw = true;
+var params;
+var numberNodesDropdown;
 
 function setup() {
   createCanvas(1280, 640);
   nodeDiameter = min(width, height) * 0.1;
+  params = getURLParams();
+  // console.log(params);
+  if (params.n) {
+    numberNodes = max(3, min(int(params.n), 8));
+  }
+  numberNodesDropdown = makeDropdownMenu([3, 4, 5, 6, 7, 8], numberNodesChanged, 120, 10);
+  numberNodesDropdown.value(numberNodes);
   createNodes(numberNodes);
+}
 
-  var array = [1, 2, 3];
-  var allNodeSequences = allSequences(array);
+function numberNodesChanged() {
+  numberNodes = int(numberNodesDropdown.value());
+  // createNodes(numberNodes);
+  // needsRedraw = true;
+  window.location.href = '.?n='+numberNodes
+}
+
+function ease(x0, x1, easing) {
+  return x0 * easing + x1 * (1.0 - easing);
 }
 
 function formatFloat(f) {
@@ -44,7 +61,7 @@ function createEdges() {
   for (var nodeCtr0 = 0; nodeCtr0 < nodes.length; ++nodeCtr0) {
     var node0 = nodes[nodeCtr0];
     for (var nodeCtr1 = nodeCtr0 + 1; nodeCtr1 < nodes.length; ++nodeCtr1) {
-      var newEdge = new Edge(node0, nodes[nodeCtr1], 1 + int(random()*2*nodes.length))
+      var newEdge = new Edge(node0, nodes[nodeCtr1], 1 + int(random() * 2 * nodes.length))
       edges.push(newEdge);
       edgeMatrix[nodeCtr0][nodeCtr1] = newEdge;
       edgeMatrix[nodeCtr1][nodeCtr0] = newEdge;
@@ -60,7 +77,9 @@ function draw() {
 
   //draw network
   background(255);
-  // text(getURL(), 10, 10);
+  fill(0);
+  textAlign(LEFT);
+  text("Number of nodes ", 10, 6 + textHeight)
   push();
   translate(width * 0.25, height * 0.5);
   for (var i = 0; i < edges.length; i++) {
@@ -79,15 +98,21 @@ function draw() {
     routes.push(new Route(nodeSequence));
   }
   routes.sort(function(a, b) {
+    return a.expectedCost() - b.expectedCost();
+  });
+  var minExpectedCost = routes[0].expectedCost();
+  routes.sort(function(a, b) {
     return a.cost() - b.cost();
   });
-  // ...and display
+  var minCost = routes[0].cost();
   translate(width * 0.55, textHeight * 3);
   routes[0].drawHeader();
   for (var idx = 0; idx < routes.length; ++idx) {
-    translate(0, textHeight * 1.5);
     var route = routes[idx];
-    route.draw(idx + 1);
+    if (route.cost() <= minCost || route.expectedCost() <= minExpectedCost) {
+      translate(0, textHeight * 1.2);
+      route.draw(idx + 1, minCost, minExpectedCost);
+    }
   }
 }
 

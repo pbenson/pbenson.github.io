@@ -10,9 +10,10 @@ class Node {
   }
 
   draw() {
+    textAlign(CENTER);
     stroke(0);
     strokeWeight(3);
-    this.label == 0 ? fill(225, 255, 255) : fill(255, 255, 225); 
+    this.label == 0 ? fill(225, 255, 255) : fill(255, 255, 225);
     ellipse(this.x, this.y, nodeDiameter, nodeDiameter);
     fill(0);
     strokeWeight(1);
@@ -22,9 +23,9 @@ class Node {
     textStyle(NORMAL);
     noStroke();
     var probText = 'p=' + formatFloat(this.p);
-    text(probText, this.x - textWidth(probText) * 0.5, this.y + textHeight);
+    text(probText, this.x, this.y + textHeight);
   }
-  
+
   toString() {
     return this.label;
   }

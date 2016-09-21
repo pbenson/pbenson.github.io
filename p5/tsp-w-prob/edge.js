@@ -13,9 +13,9 @@ class Edge {
     line(this.node0.x, this.node0.y, this.node1.x, this.node1.y);
 
     var costText = str(this.cost);
-    var easing = 0.4;
-    var midX = this.node0.x * easing + this.node1.x * (1-easing);
-    var midY = this.node0.y  * easing+ this.node1.y * (1-easing);
+    var easing = 0.3;
+    var midX = ease(this.node0.x, this.node1.x,  easing);
+    var midY = ease(this.node0.y, this.node1.y,  easing);
     noStroke();
     fill(255);
     ellipse(midX, midY, textHeight * 2, textHeight * 2);
