@@ -10,13 +10,13 @@ function makeSlider(name, min, max, initialValue, x, y, step) {
   return slider;
 }
 
-function makeCheckbox(name, initialValue, x, y) {
+function makeCheckbox(name, initialValue, x, y, changeFunction) {
   var label = createP(name);
-  label.position(10, y - 17);
+  label.position(40, y - 15);
   var checkbox = createCheckbox('', initialValue);
   checkbox.position(x, y);
   checkbox.style('width', '80px');
-  checkbox.changed(forceRedraw);
+  checkbox.changed(changeFunction);
   return checkbox;
 }
 

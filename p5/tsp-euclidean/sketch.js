@@ -10,22 +10,37 @@ var numberNodes = 6;
 var needsRedraw = true;
 var params;
 var numberNodesDropdown;
+var showOptimaOnlyCheckbox;
 
 function setup() {
   createCanvas(1280, 640);
   nodeDiameter = min(width, height) * 0.1;
   params = getURLParams();
+  var showOptima = true;
   if (params.n) {
-    numberNodes = max(3, min(int(params.n), 8));
+    numberNodes = max(3, min(int(params.n), 7));
   }
-  numberNodesDropdown = makeDropdownMenu([3, 4, 5, 6, 7, 8], numberNodesChanged, 120, 10);
+  if (params.optima) {
+    showOptima = (params.optima == 'true');
+  }
+  numberNodesDropdown = makeDropdownMenu([3, 4, 5, 6, 7], numberNodesChanged, 120, 10);
   numberNodesDropdown.value(numberNodes);
+  showOptimaOnlyCheckbox = makeCheckbox('Show optimal routes only', showOptima, 20, 40, showOptimaChanged);
   createNodes(numberNodes);
 }
 
 function numberNodesChanged() {
   numberNodes = int(numberNodesDropdown.value());
-  window.location.href = '.?n=' + numberNodes
+  updateURL();
+}
+
+function showOptimaChanged() {
+  updateURL();
+  forceRedraw();
+}
+
+function updateURL() {
+  window.location.href = '.?n=' + numberNodes + '&optima='+showOptimaOnlyCheckbox.checked()
 }
 
 function ease(x0, x1, easing) {
@@ -101,13 +116,13 @@ function draw() {
     return a.cost() - b.cost();
   });
   var minCost = routes[0].cost();
-  // translate(width * 0.55, textHeight * 3);
   var xRouteText = width * 0.55;
   var yRouteText = 20;
+  var showAll = ! showOptimaOnlyCheckbox.checked();
   routes[0].drawHeader(xRouteText, yRouteText);
   for (var idx = 0; idx < routes.length; ++idx) {
     var route = routes[idx];
-    if (route.cost() <= minCost || route.expectedCost() <= minExpectedCost) {
+    if (showAll || route.cost() <= minCost || route.expectedCost() <= minExpectedCost) {
       yRouteText += textHeight * 1.2;
       route.draw(idx + 1, minCost, minExpectedCost, xRouteText, yRouteText);
     }
