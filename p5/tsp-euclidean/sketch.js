@@ -91,7 +91,6 @@ function draw() {
   fill(0);
   textAlign(LEFT);
   text("Number of nodes ", 10, 6 + textHeight)
-  push();
   // translate(width * 0.25, height * 0.5);
   for (var i = 0; i < edges.length; i++) {
     edges[i].draw();
@@ -99,7 +98,6 @@ function draw() {
   for (var i = 0; i < nodes.length; i++) {
     nodes[i].draw();
   }
-  pop();
 
   //build list of all routes...
   var nodeSequences = allSequences(nodes.slice(1));
@@ -113,6 +111,10 @@ function draw() {
   });
   var minExpectedCost = routes[0].expectedCost();
   routes.sort(function(a, b) {
+    return a.expectedCostNoReturn() - b.expectedCostNoReturn();
+  });
+  var minExpectedCostNoReturn = routes[0].expectedCostNoReturn();
+  routes.sort(function(a, b) {
     return a.cost() - b.cost();
   });
   var minCost = routes[0].cost();
@@ -124,7 +126,7 @@ function draw() {
     var route = routes[idx];
     if (showAll || route.cost() <= minCost || route.expectedCost() <= minExpectedCost) {
       yRouteText += textHeight * 1.2;
-      route.draw(idx + 1, minCost, minExpectedCost, xRouteText, yRouteText);
+      route.draw(idx + 1, minCost, minExpectedCost, minExpectedCostNoReturn,xRouteText, yRouteText);
     }
   }
 }
@@ -146,7 +148,6 @@ function mouseReleased() {
 
 
 function allSequences(array) {
-  // console.log("in allSequences: " );
   if (array.length == 1) {
     return [array];
   }
