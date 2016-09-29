@@ -1,0 +1,177 @@
+\documentclass{report}
+
+\usepackage{amsmath} % provides numberwithin (and lots more)
+\usepackage{graphicx}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=MATLAB,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ {\huge\bfseries MATLAB\\ Patterns and Practices\\}
+ % ----------------------------------------------------------------
+ \vspace{1.5cm}
+ {\bfseries Pete Benson}\\[5pt]
+% pbenson@umich.edu\\[14pt]
+  % ----------------------------------------------------------------
+ \vspace{10cm}
+ % ----------------------------------------------------------------
+\includegraphics{QFRM_rgb}\\[5pt]
+{Department of Mathematics}\\[5pt]
+{530 Church Street}\\[5pt]
+{Ann Arbor, MI 48109-1043,
+ USA}\\
+ \vfill
+
+\end{center}
+\end{titlepage}
+
+%----------------------
+% review
+%----------------------
+\chapter{Patterns}
+
+Each pattern is in a subsection, and the name of the pattern is the name of the subsection.
+
+\section{Repeating task $n$ times}
+If you know you need to repeat something a specific number of times, use the for loop:
+
+\subsection{\code{for} loop}
+\begin{lstlisting}
+% for loop to sum numbers 1 to 5
+sum_ = 0;
+n = 5;
+for iter = [1:n]
+    sum_ = sum_ + iter;
+end
+fprintf('sum_ of 1 to %d is %d\n',n,sum_);
+\end{lstlisting}
+\pagebreak
+
+\section{Repeating a task when you don't know in advance when you will be done}
+In short, if you need a loop and a  \code{for} loop won't work, use \code{while}.
+\subsection{\code{while true} with \code{break}}
+A commonly used approach is to use an infinite loop structure (\code{while true}) with a \code{break} statement to get out of the infinite loop.
+\begin{lstlisting}
+% add integers until the sum is greater than 100
+sum_ = 0;
+n = 0;
+while true
+    n = n + 1;
+    sum_ = sum_ + n;
+    if sum_ > 100
+        break
+    end
+end
+fprintf('sum of 1 to %d is %d\n',n,sum_);
+\end{lstlisting}
+
+\subsection{\code{while <boolean expression>}}
+Alternatively, the \code{while} can execute conditionally, as long as the provided boolean expression evaluates to \code{true}.
+\begin{lstlisting}
+% add integers until the sum is greater than 100
+sum_ = 0;
+n = 0;
+while sum_ < 100
+    n = n + 1;
+    sum_ = sum_ + n;
+end
+fprintf('sum of 1 to %d is %d\n',n,sum_);
+\end{lstlisting}
+
+\pagebreak
+\subsection{Validating user input}
+Getting correct input from the user is a perfect application of the  \code{while true} with \code{break} pattern.
+\begin{lstlisting}
+% get user input between 1 and 100
+n = -1;
+while true
+    n = input('Enter a number from 1 to 100: ');
+    if n >=1 && n <=100
+        break
+    end
+end
+fprintf('n = %d\n',n);
+\end{lstlisting}
+
+\section{\code{if}, \code{elseif}, \code{else}, }
+
+\subsection{\code{if}}
+If you want to do something only if some condition is met, and there is nothing special that needs to be done if the condition is not met, then you want the \code{if} statement. 
+\begin{lstlisting}
+% get age, and warn user if they need adult approval
+age = input('Enter your age: ');
+if age < 18
+    fprintf('You will need adult approval.\n',n);
+end
+\end{lstlisting}
+
+\subsection{\code{if}-\code{else}}
+If you want to do a task if some condition is met, and you must do a different task if the condition is not met, use the \code{if}-\code{else} pattern.  Note that \code{else} {\em does not} have a boolean expression attached to it. 
+\begin{lstlisting}
+% get age, and assign one of two categories
+age = input('Enter your age: ');
+age_category = '';
+if age < 18
+    age_category = 'minor';
+else
+    age_category = 'adult';
+end
+fprintf('For age = %d, category = %s\n',age, age_category);
+\end{lstlisting}
+
+\subsection{\code{if}-\code{elseif}}
+If you must do one task from several possible tasks, use the \code{if}-\code{elseif}. Note that \code{elseif} {\em does } have a boolean expression attached to it. 
+\begin{lstlisting}
+% get age, and assign one of more than two categories
+age = input('Enter your age: ');
+age_category = '';
+if age < 12
+    age_category = 'child';
+elseif age < 18
+    age_category = 'youth';
+else 
+    age_category = 'adult';
+end
+fprintf('For age = %d, category = %s\n',age, age_category);
+\end{lstlisting}
+Also, note that the last case (the default case) used \code{else} rather than \code{elseif}. Usually, this is what your last case will do.
+
+\chapter{Practices}
+
+A list of good habits:
+\begin{enumerate}
+	\item{Practice running your program in your head as you write. It may seem slow, but it is the fastest way to write working code. }
+	\item{When assigning value to a variable (e.g. \code{x = ...}), end the line with a semi-colon, unless you are debugging the value of \code{x}. }
+	\item{Typically, when using \code{fprintf}, insert \textbackslash n. E.g. \code{fprintf('Hi  \textbackslash n')}}. 
+\end{enumerate}
+
+
+\end{document}
