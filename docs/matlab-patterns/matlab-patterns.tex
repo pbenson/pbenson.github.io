@@ -1,4 +1,4 @@
-\documentclass{report}
+\documentclass{report}[11pt]
 
 \usepackage{amsmath} % provides numberwithin (and lots more)
 \usepackage{graphicx}
@@ -60,7 +60,7 @@
 
 Each pattern is in a subsection, and the name of the pattern is the name of the subsection.
 
-\section{Repeating task $n$ times}
+\section{Repeating a task $n$ times}
 If you know you need to repeat something a specific number of times, use the for loop:
 
 \subsection{\code{for} loop}
@@ -166,10 +166,13 @@ Also, note that the last case (the default case) used \code{else} rather than \c
 
 \chapter{Practices}
 
+\section{Habits}
 A list of good habits:
 \begin{enumerate}
+	\item{When you start writing a program, begin with comments describing (in sufficient detail) how your program will work. }
 	\item{Practice running your program in your head as you write. It may seem slow, but it is the fastest way to write working code. }
-	\item{When assigning value to a variable (e.g. \code{x = ...}), end the line with a semi-colon, unless you are debugging the value of \code{x}. }
+	\item{Reformat your code frequently. This will help you detect missing end statements, and makes your code easier to understand.}
+	\item{When assigning value to a variable (e.g. \code{x = ...}), end the line with a semi-colon, unless you are debugging the value of \code{x}. This makes your output easier to read. }
 	\item{Typically, when using \code{fprintf}, insert \textbackslash n. E.g. \code{fprintf('Hi  \textbackslash n')}}. 
 \end{enumerate}
 
