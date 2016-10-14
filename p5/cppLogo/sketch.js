@@ -5,7 +5,7 @@ var xPrevious, yPrevious;
 function setup() {
   centerCanvas();
   noStroke();
-  logoImage = loadImage("images/RLogo.png"); // Load the image
+  logoImage = loadImage("images/c_0.png"); // Load the image
   xPrevious = xLogoCenter();
   yPrevious = yLogoCenter();
 }
