@@ -34,7 +34,7 @@ class Node {
 
   dragIfSelected() {
     this.drag = dist(this.x, this.y, mouseX, mouseY) < nodeDiameter;
-    console.log("dragIfSelected  "+mouseX);
+    // console.log("dragIfSelected  "+mouseX);
     return this.drag;
   }
 
