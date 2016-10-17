@@ -6,7 +6,7 @@ var imgScale = 0.3;
 function setup() {
   centerCanvas();
   noStroke();
-  logoImage = loadImage("images/c_0.png"); // Load the image
+  logoImage = loadImage("images/python-logo-master-v3-TM.png"); // Load the image
   xPrevious = xLogoCenter();
   yPrevious = yLogoCenter();
 }
@@ -16,7 +16,7 @@ function xLogoCenter() {
 }
 
 function yLogoCenter() {
-  return mouseY - logoImage.height * imgScale/ 2;
+  return mouseY - logoImage.height * imgScale / 2;
 }
 
 function draw() {

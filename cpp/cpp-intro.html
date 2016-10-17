@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>pbenson.github.io by pbenson</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- <script src="p5/libraries/p5.js" type="text/javascript"></script>
+    <script src="p5/libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="p5/cppLogo/sketch.js" type="text/javascript"></script> -->
+    <style>
+        canvas {
+            z-index: -1;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2><a href="index.html">pbenson.github.io</a></h2>
+
+
+            <p class="view"><a href="https://github.com/pbenson">View My GitHub Profile</a></p>
+
+        </header>
+        <section>
+
+            <h2>
+<a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C++ Basics</h2>
+
+            <h3>Comparing C++ to Python et al</h3>
+
+            <p>You've all learned at least some Python, and it is beneficial to understand some of the key differences.
+                <ol>
+                    <li>C++ is statically typed. This means you must declare the type of all variables. Python infers the type of a variable at runtime when the variable is assigned a value.</li>
+                    <li>C++ programs are typically a collection of C++ source files (which might have <code>.cpp</code> or <code>.cc</code> extensions), some header files (e.g. <code>.h</code> files), and possible others. Python files are <code>.py</code>, or in the case of Jupyter notebooks, <code>.ipynb</code> files. </li>
+                    <li></li>
+                </ol>
+            </p>
+
+            <h3>Physical program structure in C++</h3>
+
+            <p>C++ programs consist typically of a file named main.cpp, and a collection of other files with a .cpp extension, with each file optionally having a corresponding .h file. Our programs will be initially small, and will consist of a single file,
+                main.cpp.
+            </p>
+
+            <h3>Hello, World</h3>
+
+            <p>Let's create a very simple C++ program:
+
+                <code>#include <iostream>
+
+int main(int argc, const char * argv[]) {
+    std::cout << "Hello, World!\n";
+    return 0;
+}
+</code>
+        </section>
+        <footer>
+            <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+</body>
+
+</html>

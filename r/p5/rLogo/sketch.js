@@ -1,6 +1,7 @@
 var easing = 0.01;
 var logoImage; // Declare variable 'img'.
 var xPrevious, yPrevious;
+var imgScale = 0.3;
 
 function setup() {
   centerCanvas();
@@ -24,7 +25,9 @@ function draw() {
   if(dist(x, y, xLogoCenter(), yLogoCenter()) < 1) {
     return;
   }
-  image(logoImage, x, y);
+  var imgWidth= logoImage.width * imgScale;
+  var imgHeight= logoImage.height * imgScale;
+  image(logoImage, 0, 0, logoImage.width , logoImage.height, x, y , imgWidth, imgHeight);
   xPrevious = x;
   yPrevious = y;
   fill(255, 200);
