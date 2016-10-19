@@ -50,24 +50,22 @@
             <p>Please note that the install can take a long time on either platform. Get the install completed before class, and ask for help if needed, as there won't be time in class to correct significant installation issues.
                 <ol>
                     <li>Download and install the community edition of <a href="https://www.visualstudio.com/post-download-vs/?sku=community&clcid=0x409&downloadrename=true">Visual Studio</a> (Windows) or install Xcode from the Mac App Store.</li>
-                    <!-- <li>Create an account on <a href="http://codepad.org">codepad.org</a>.</li>
-              <li>Create your first project. In Xcode, select File->New->Project, and select Command Line Tool.</li>
-            </ol> -->
+  
+                    <li>Read the EECS 183 notes on getting started with <a href="https://eecs183.org/docs/getting_started_with_visual_studio/">Visual Studio</a> or <a href="https://eecs183.org/docs/getting_started_with_xcode/">Xcode</a>. For additional information,
+                        see <a href="https://jtdaugh.github.io/xcode-umich/">Jesse Daugherty and Chris Wendel's site</a>, and the <a href="http://umich.edu/~eecs381/progenvs/XcodeNotes.pdf">Xcode Notes for EECS 381</a>.
+                    </li>
 
-                    <li>For additional help getting started with C++ in Xcode, see <a href="https://jtdaugh.github.io/xcode-umich/">Jesse Daugherty and Chris Wendel's site</a>, and the <a href="http://umich.edu/~eecs381/progenvs/XcodeNotes.pdf">Xcode Notes for EECS 381</a>.
-                        For Visual Studio, see EECS 183 notes <a href="https://eecs183.org/docs/getting_started_with_visual_studio/">Getting Started with Visual Studio</a>.
-
-                        <li>Let's create our first program. The purpose here is to get introduced to creating a project in your IDE (Xcode or VS), compiling and running it successfully, and then committing it to GitHub. Launch your IDE, and select File->New
-                            Project, and create a Command Line application named <code>HelloWorld</code>. This creates a file called <code>main.cpp</code>. Replace the contents of <code>main.cpp</code> with the source code below.
-                            <dl>
-                                <dt>Xcode</dt>
-                                <dd><pre>#include &lt;iostream&gt;
+                    <li>Let's create our first program. The purpose here is to get introduced to creating a project in your IDE (Xcode or VS), compiling and running it successfully, and then committing it to GitHub. Launch your IDE, and select File->New Project,
+                        and create a Command Line application named <code>HelloWorld</code>. This creates a file called <code>main.cpp</code>. Replace the contents of <code>main.cpp</code> with the source code below.
+                        <dl>
+                            <dt>Xcode</dt>
+                            <dd><pre>#include &lt;iostream&gt;
 int main(int argc, const char * argv[]) {
     std::cout << "Hello, World!\n";
     return 0;
 }</pre></dd>
-                                <dt>Visual Studio</dt>
-                                <dd><pre>#include "stdafx.h"
+                            <dt>Visual Studio</dt>
+                            <dd><pre>#include "stdafx.h"
 #include &lt;iostream&gt;
 
 int main(int argc, const char * argv[]) {
@@ -75,12 +73,12 @@ int main(int argc, const char * argv[]) {
 	system("pause");
 	return 0;
 }</pre> Note that VS has an additional include file called <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio"><code>stdafx.h</code></a>. This should be included in the <code>main.cpp</code> file of every C++
-                                    program you write (it's for <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio">faster compiling of Windows apps</a>). You will also want to include the <code>system("pause");</code> snippet (unless you have an event loop). Otherwise, your application will close before you can see the results of running your program.
-                                </dd>
-                            </dl>
-                        </li>
+                                program you write (it's for <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio">faster compiling of Windows apps</a>). You will also want to include the <code>system("pause");</code>                                snippet (unless you have an event loop). Otherwise, your application will close before you can see the results of running your program.
+                            </dd>
+                        </dl>
+                    </li>
 
-                        <li>To do serious math, you will want the <a href="http://www.boost.org">boost</a> libraries as well. See the installation instructions for <a href="boost-visual-studio.html">VisualStudio</a> or <a href="boost-xcode.html">Xcode</a>.</li>
+                    <li>To do serious math, you will want the <a href="http://www.boost.org">boost</a> libraries as well. See the installation instructions for <a href="boost-visual-studio.html">VisualStudio</a> or <a href="boost-xcode.html">Xcode</a>.</li>
             </p>
 
 
