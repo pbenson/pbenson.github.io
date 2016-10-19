@@ -42,18 +42,49 @@
             <h2>
 <a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C++</h2>
 
-<h3>Getting Started</h3>
+            <h3>Getting Started</h3>
 
-<p>There are many C++ <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>s to choose from. Visual Studio is preferred on Windows, and Xcode on Mac OS X. Both are free. There is less consensus about preferences on Linux. We assume, however, that you are using Windows or Mac.</p>
+            <p>There are many C++ <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>s to choose from. Visual Studio is preferred on Windows, and Xcode on Mac OS X. Both are free. There is less consensus about preferences on
+                Linux. We assume, however, that you are using Windows or Mac.</p>
 
-<p>Please note that the install can take a long time on either platform. Get the install completed before class, and ask  for help if needed, as there won't be time in class to correct significant installation issues.
-            <ol>
-              <li>Download and install the community edition of <a href="https://www.visualstudio.com/post-download-vs/?sku=community&clcid=0x409&downloadrename=true">Visual Studio</a> (Windows) or install Xcode from the Mac App Store.</li>
-              <!-- <li>Create an account on <a href="http://codepad.org">codepad.org</a>.</li>
+            <p>Please note that the install can take a long time on either platform. Get the install completed before class, and ask for help if needed, as there won't be time in class to correct significant installation issues.
+                <ol>
+                    <li>Download and install the community edition of <a href="https://www.visualstudio.com/post-download-vs/?sku=community&clcid=0x409&downloadrename=true">Visual Studio</a> (Windows) or install Xcode from the Mac App Store.</li>
+                    <!-- <li>Create an account on <a href="http://codepad.org">codepad.org</a>.</li>
               <li>Create your first project. In Xcode, select File->New->Project, and select Command Line Tool.</li>
             </ol> -->
 
-            <li>For additional help getting started with C++ in Xcode, see <a href="https://jtdaugh.github.io/xcode-umich/">Jesse Daugherty and Chris Wendel's site</a>, and the <a href="http://umich.edu/~eecs381/progenvs/XcodeNotes.pdf">Xcode Notes for EECS 381</a>. For Visual Studio, see EECS 183 notes <a href="https://eecs183.org/docs/getting_started_with_visual_studio/">Getting Started with Visual Studio<a>.</p>
+                    <li>For additional help getting started with C++ in Xcode, see <a href="https://jtdaugh.github.io/xcode-umich/">Jesse Daugherty and Chris Wendel's site</a>, and the <a href="http://umich.edu/~eecs381/progenvs/XcodeNotes.pdf">Xcode Notes for EECS 381</a>.
+                        For Visual Studio, see EECS 183 notes <a href="https://eecs183.org/docs/getting_started_with_visual_studio/">Getting Started with Visual Studio</a>.
+
+                        <li>Let's create our first program. The purpose here is to get introduced to creating a project in your IDE (Xcode or VS), compiling and running it successfully, and then committing it to GitHub. Launch your IDE, and select File->New
+                            Project, and create a Command Line application named <code>HelloWorld</code>. This creates a file called <code>main.cpp</code>. Replace the contents of <code>main.cpp</code> with the source code below.
+                            <dl>
+                                <dt>Xcode</dt>
+                                <dd><pre>#include &lt;iostream&gt;
+int main(int argc, const char * argv[]) {
+    std::cout << "Hello, World!\n";
+    return 0;
+}</pre></dd>
+                                <dt>Visual Studio</dt>
+                                <dd><pre>#include "stdafx.h"
+#include &lt;iostream&gt;
+
+int main(int argc, const char * argv[]) {
+	std::cout << "Hello, World!\n";
+	system("pause");
+	return 0;
+}</pre> Note that VS has an additional include file called <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio"><code>stdafx.h</code></a>. This should be included in the <code>main.cpp</code> file of every C++
+                                    program you write (it's for <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio">faster compiling of Windows apps</a>). You will also want to include the <code>system("pause");</code> snippet (unless you have an event loop). Otherwise, your application will close before you can see the results of running your program.
+                                </dd>
+                            </dl>
+                        </li>
+
+                        <li>To do serious math, you will want the <a href="http://www.boost.org">boost</a> libraries as well. For Windows, see <a href="boost-visual-studio.html">boost installation and configuration in VisualStudio</a>.
+                            On the Mac, follow the directions of the most popular answer <a href="http://stackoverflow.com/questions/10141983/include-boost-in-xcode">here on stackexchange</a>, which involves first installing <a href="http://brew.sh">homebrew</a>.
+            </p>
+
+
         </section>
         <footer>
             <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
