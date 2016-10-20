@@ -42,43 +42,35 @@
             <h2>
 <a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C++</h2>
 
-            <h3>Getting Started</h3>
+            <h3>Why C++?</h3>
 
-            <p>There are many C++ <a href="https://en.wikipedia.org/wiki/Integrated_development_environment">IDE</a>s to choose from. Visual Studio is preferred on Windows, and Xcode on Mac OS X. Both are free. There is <a href="http://stackoverflow.com/questions/24109/c-ide-for-linux">less consensus about preferences on
-                Linux</a>, though many seem to prefer command line tools. I will be assuming that you are using Windows or a Mac.</p>
+            <p>C++ is widely-used in finance. While it was once used for writing desktop applications, many user interfaces have been adapted to client-side intensive, browser-based applications. C++ does not play well in this space.</p>
+            <p>Today, C++ is often used for server-side applications with high performance requirements. And it is often listed as a desired skill in Wall street job openings. For this reason, it is good to have some knowlege of the language, and how to
+                build an application.</p>
 
-            <p>Please note that the install can take a long time on either platform. Get the install completed before class, and ask for help if needed, as there won't be time in class to correct significant installation issues.
+            <h3>Comparing C++ to Python (and other languages)</h3>
+
+            <p>
                 <ol>
-                    <li>Download and install the community edition of <a href="https://www.visualstudio.com/post-download-vs/?sku=community&clcid=0x409&downloadrename=true">Visual Studio</a> (Windows) or install Xcode from the Mac App Store.</li>
+                    <li>The syntax of C++ derives from C, as do Java and Javascript. So snippets of code in these languages can look remarkably similar. Python, MATLAB, and R, on the other hand, have their own syntax.</li>
 
-                    <li>Read the EECS 183 notes on getting started with <a href="https://eecs183.org/docs/getting_started_with_visual_studio/">Visual Studio</a> or <a href="https://eecs183.org/docs/getting_started_with_xcode/">Xcode</a>. For additional information,
-                        see <a href="https://jtdaugh.github.io/xcode-umich/">Jesse Daugherty and Chris Wendel's site</a>, and the <a href="http://umich.edu/~eecs381/progenvs/XcodeNotes.pdf">Xcode Notes for EECS 381</a>.
-                    </li>
+                    <li>Python and MATLAB come with an environment that allows you to type, for example, '2+2' on the command line, and it returns 4. C++ must be compiled and linked to become an application or library, which you then run. </li>
 
-                    <li>Let's create our first program. The purpose here is to get introduced to creating a project in your IDE (Xcode or VS), compiling and running it successfully, and then committing it to GitHub. Launch your IDE, and select File->New Project,
-                        and create a Command Line application named <code>HelloWorld</code>. This creates a file called <code>main.cpp</code>. Replace the contents of <code>main.cpp</code> with the source code below.
-                        <dl>
-                            <dt>Xcode</dt>
-                            <dd><pre>#include &lt;iostream&gt;
-int main(int argc, const char * argv[]) {
-    std::cout << "Hello, World!\n";
-    return 0;
-}</pre></dd>
-                            <dt>Visual Studio</dt>
-                            <dd><pre>#include "stdafx.h"
-#include &lt;iostream&gt;
+                    <li>C++ (like C and Java) is <a href="https://www.sitepoint.com/typing-versus-dynamic-typing/">statically typed</a>. This means you must declare the type of all variables, such as <code>int</code>, <code>double</code>, <code>bool</code>,
+                        <code>std::string</code>, or &lt;insert class name&gt;. You don't declare types in Python, Javascript, MATLAB, or R. Rather, the type of a variable is inferred at runtime when the variable is assigned a value.</li>
 
-int main(int argc, const char * argv[]) {
-	std::cout << "Hello, World!\n";
-	system("pause");
-	return 0;
-}</pre> Note that VS has an additional include file called <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio"><code>stdafx.h</code></a>. This should be included in the <code>main.cpp</code> file of every C++
-                                program you write (it's for <a href="http://stackoverflow.com/questions/4726155/whats-the-use-for-stdafx-h-in-visual-studio">faster compiling of Windows apps</a>). You will also want to include the <code>system("pause");</code>                                snippet (unless you have an event loop). Otherwise, your application will close before you can see the results of running your program.
-                            </dd>
-                        </dl>
-                    </li>
+                    <li>C++ programs are typically a collection of C++ source files (which might have <code>.cpp</code> or <code>.cc</code> extensions), some header files (e.g. <code>.h</code> files), and possible others. Python files are <code>.py</code>,
+                        or in the case of Jupyter notebooks, <code>.ipynb</code> files. </li>
+                  </ol>
+            </p>
 
-                    <li>To do serious math, you will want the <a href="http://www.boost.org">boost</a> libraries as well. See the installation instructions for <a href="boost-visual-studio.html">VisualStudio</a> or <a href="boost-xcode.html">Xcode</a>.</li>
+            <h3>C++ links</h3>
+            <p>
+                <ul>
+                    <li><a href="getting-started.html">Getting started</a></li>
+                    <li>Warming up with <a href="project-euler.html">Project Euler</a></li>
+                    <li>Showing your stuff with <a href="codepad.org">codepad.org</a></li>
+                </ul>
             </p>
 
 
