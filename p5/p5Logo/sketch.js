@@ -12,11 +12,11 @@ function setup() {
 }
 
 function xLogoCenter() {
-  return mouseX - logoImage.width * imgScale / 2;
+  return mouseX - logoImage.width / 2;
 }
 
 function yLogoCenter() {
-  return mouseY - logoImage.height * imgScale / 2;
+  return mouseY - logoImage.height / 2;
 }
 
 function draw() {
