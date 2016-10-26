@@ -34,12 +34,26 @@
         </header>
         <section>
 
-            <p>Students in the quant program have the opportunity to develop projects inspired by real-world applications. This involves reading research, designing solutions, and implementing them in a relevant development environment, such as <a href="../cpp/index.html">C++</a> or <a href="../python/index.html">Python</a>. </p>
+            <p>Students in the quant program have the opportunity to develop projects inspired by real-world applications. This involves reading research, designing solutions, and implementing them in a relevant development environment, such as <a href="../cpp/index.html">C++</a>                or <a href="../python/index.html">Python</a>. </p>
 
             <h3>Portfolio simulation for Risk Management</h3>
 
-            <p>Students build a Monte Carlo simulation of financial markets relevant to a client portfolio. They use this simulation to analyze the forecasted distribution of PnL. The simulation is based on a method used by MSCI/RiskMetrics, originally described in <a href="http://pbenson.github.io/docs/rmm2q97.pdf">A general approach to calculating VaR without volatilities and correlations</a> (1997), and again in  <a href="../docs/benson_zangari.pdf">Monte Carlo Simulation using the Benson-Zangari Approach</a> (2013).</p>
+            <p>A key tool in portfolio risk management is making forecasts of the portfolio's PnL distribution at some horizon. A typical horizon is one day, but it could be longer. Forecasting the PnL distribution typically is done by first creating a market
+                model of the factors that drive changes in portfolio value. Generating a large number of market scenarios gives a distribution of PnL.</p>
 
+            <p>In this project, students build a Monte Carlo simulation of financial markets relevant to a client portfolio. They use this simulation to analyze the forecasted distribution of PnL. The simulation is based on a method used by MSCI/RiskMetrics,
+                originally described in <a href="http://pbenson.github.io/docs/rmm2q97.pdf">A general approach to calculating VaR without volatilities and correlations</a> (1997), and again in <a href="../docs/benson_zangari.pdf">Monte Carlo Simulation using the Benson-Zangari Approach</a>                (2013).</p>
+
+            <p>The steps necessary can be summarized as:
+                <ol>
+                    <li>Determine which market factors (e.g. prices, exchange rates, interest rates, implied volatilities, etc) drive portfolio value.</li>
+                    <li>Find market factor level data (typically daily close). To start, can use <a href="https://finance.yahoo.com/quote/AMZN/history?period1=1412136000&period2=1475208000&interval=1d&filter=history&frequency=1d">Yahoo Finance</a>. Define a file format, which might look something like <a href="data/IBM_T_NKE_AAPL_20141001-20160930.csv">this</a>. </li>
+                    <li>Create a C++ data model for market factor data. For example, you might have a Market class, consisting of a map of named MarketFactor objects. </li>
+                    <li>Read your CSV market data <a href="http://www.umich.edu/~eecs381/handouts/filestreams.pdf">from a stream</a> and populate MarketFactor objects that are added to Market. Since log returns never change, these could be computed and stored as well while you load prices into your MarketFactor.</li>
+                    <li>You should be able to retrieve a MarketFactor from the Market object by name.</li>
+                    <li>Create a scenario generating object (e.g. MarketSimulation). You shoud be able to ask a MarketFactor object for its return given the MarketSimulation.</li>
+                </ol>
+            </p>
         </section>
         <footer>
             <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
