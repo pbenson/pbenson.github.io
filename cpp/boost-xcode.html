@@ -49,7 +49,9 @@
                     <pre>brew install boost</pre></li>
                   <li>In XCode, select the project file in the left sidebar (top most), and select it again in the project pane.</li>
                   <li>Select the Build Settings tab, and select All.</li>
-                  <li>Under Search Paths, add the header search path <code>/usr/local/Cellar/boost/1.62.0/include/</code> and check the box. The path should now show in the Build Settings.
+                  <li>Under Search Paths, add the header search path <code>/usr/local/include</code> for Debug and Release.
+                  </li>
+                  <li>You can verify the installation is working by inserting <code>#include &lt;boost/date_time.cpp&gt;</code> at the top of, e.g., <code>main.cpp</code> and compiling.
                   </li>
 
                 </ol>
