@@ -48,7 +48,7 @@
                 <ol>
                     <li>Determine which market factors (e.g. prices, exchange rates, interest rates, implied volatilities, etc) drive portfolio value.</li>
                     <li>Find market factor level data (typically daily close). To start, can use <a href="https://finance.yahoo.com/quote/AMZN/history?period1=1412136000&period2=1475208000&interval=1d&filter=history&frequency=1d">Yahoo Finance</a>. Define a file format, which might look something like <a href="data/IBM_T_NKE_AAPL_20141001-20160930.csv">this</a>. </li>
-                    <li>Create a C++ data model for market factor data. For example, you might have a Market class, consisting of a map of named MarketFactor objects. </li>
+                    <li>Create a C++ data model for market factor data. For example, you might have a <code>Market</code> class, consisting of a map of named <code>MarketFactor</code> objects. </li>
                     <li>Read your CSV market data <a href="http://www.umich.edu/~eecs381/handouts/filestreams.pdf">from a stream</a> and populate MarketFactor objects that are added to <code>Market</code>. Since log returns never change, these could be computed and stored as well while you load prices into your <code>MarketFactor</code>.</li>
                     <li>You should be able to retrieve a <code>MarketFactor</code> from the <code>Market</code> object by name.</li>
                     <li>Create a scenario generating object (e.g. <code>MarketSimulation</code>). You shoud be able to ask a <code>MarketFactor</code> object for its return given the <code>MarketSimulation</code>. Now you have a working simulation of the market!</li>
