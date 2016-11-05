@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>pbenson.github.io by pbenson</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+
+    <script type="text/javascript" src="../javascripts/shCore.js"></script>
+    <script type="text/javascript" src="../javascripts/shBrushCpp.js"></script>
+    <link href="../stylesheets/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        SyntaxHighlighter.all()
+    </script>
+    <style>
+        canvas {
+            z-index: -1;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>How to contribute to umich-quant</h2>
+            <p class="view"><a href="index.html">back to quant-projects</a></p>
+
+        </header>
+        <section>
+
+            <p>First, you'll need to get the project up and running on your machine. And for that, you need to be properly installed, so check out <a href="http://pbenson.github.io/cpp/getting-started.html">Getting Started</a>. Now, since you've followed
+                the instructions carefully, you've installed an IDE and the <a href="boost.org">boost library</a>, and configured your IDE to find the boost libraries. So you can create a command line project, replace the source of the <code>main.cpp</code> file with the code below,   and compile and run it successfully, with a return code of 0.</p>
+
+                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+#ifdef _WIN32 //For VisualStudio
+#include "stdafx.h"
+#endif
+
+#include <iostream>
+#include <boost/date_time.hpp>
+
+int main(int argc, const char * argv[]) {
+    std::cout   << boost::gregorian::date_from_iso_string("20160930")
+                << std::endl;
+    return 0;
+}]]></script>
+
+            <h3>Hosting on GitHub</h3>
+            <p>A version of the project can be downloaded or forked from <a href="https://github.com/pbenson/umich-quant">GitHub</a>. For more information on using GitHub in a team setting, read <a href="https://www.sitepoint.com/getting-started-git-team-environment/">this</a>.</p>
+
+            <p>The GitHub version includes a unit testing target, based on <a href="https://github.com/philsquared/Catch">Catch</a>.</p>
+
+        </section>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+</body>
+
+</html>
