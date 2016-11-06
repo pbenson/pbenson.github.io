@@ -38,10 +38,6 @@
                 the instructions carefully, you've installed an IDE and the <a href="boost.org">boost library</a>, and configured your IDE to find the boost libraries. So you can create a command line project, replace the source of the <code>main.cpp</code> file with the code below,   and compile and run it successfully, with a return code of 0.</p>
 
                 <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
-#ifdef _WIN32 //For VisualStudio
-#include "stdafx.h"
-#endif
-
 #include <iostream>
 #include <boost/date_time.hpp>
 
