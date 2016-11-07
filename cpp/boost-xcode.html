@@ -41,14 +41,17 @@
                 <ol>
                   <li>In XCode, select the project file in the left sidebar (top most), and select it again in the project pane.</li>
                   <li>Select the Build Settings tab, and select All.</li>
-                  <li>Under Search Paths, add the header search path <code>/usr/local/include</code> for Debug and Release.
+                  <li>Under Search Paths, add the header search path <code>/usr/local/include</code> for Debug and Release.<br/>
+                    <img src="images/xcode-boost.png"/ >
                   </li>
                   <li>You can verify the installation is working by inserting <code>#include &lt;boost/date_time.cpp&gt;</code> at the top of, e.g., <code>main.cpp</code> and compiling.
                   </li>
+                  <li>You may get a number of warnings from including boost. Here is a tip <a href="http://stackoverflow.com/questions/7535291/make-xcode-ignore-llvm-build-warnings-in-3rd-party-project">from stackexchange</a>:
+                  <blockquote>Go to Build Phases > Compile Sources. Optionally filter the list. Select the ones you want to exclude and then double click in the blank area under the Compiler Flags column. Add -w and hit return.</blockquote></li>
 
                 </ol>
 
-                <img src="images/xcode-boost.png"/ >
+
               </p>
 
         </section>
