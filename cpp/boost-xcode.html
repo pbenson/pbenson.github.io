@@ -22,17 +22,23 @@
             <h2>
 <a class="anchor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>boost libraries in Xcode on Mac OS X</h2>
 
-  <h3>Installing boost and configuring it in your Xcode project</h3>
+  <h3>Installing boost</h3>
 
               <p>Boost is regularly updated, and you can see the current release number on the <a href="http://www.boost.org">boost home page</a>. As of this writing, it is on version 1.62.0. The best installation instructions I've found for the Mac are <a href="http://stackoverflow.com/questions/10141983/include-boost-in-xcode">here on stackexchange</a> (use the most highly rated solution).</p>
 
-              <p>In a nutshell:
+              <p>
                 <ol>
                   <li>Launch Terminal, e.g., by clicking on Spotlight and typing "Terminal."   <img src="images/terminal.png"/ ></li>
                   <li>Install <a href="http://brew.sh">homebrew</a>.
                   </li>
                   <li>With homebrew installed, you can install the current release of boost by running this on the command line:
                     <pre>brew install boost</pre></li>
+              </p>
+
+              <h3>configuring boost</h3>
+
+              <p>
+                <ol>
                   <li>In XCode, select the project file in the left sidebar (top most), and select it again in the project pane.</li>
                   <li>Select the Build Settings tab, and select All.</li>
                   <li>Under Search Paths, add the header search path <code>/usr/local/include</code> for Debug and Release.
