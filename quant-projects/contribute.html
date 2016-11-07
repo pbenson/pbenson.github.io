@@ -35,9 +35,10 @@
         <section>
 
             <p>First, you'll need to get the project up and running on your machine. And for that, you need to be properly installed, so check out <a href="http://pbenson.github.io/cpp/getting-started.html">Getting Started</a>. Now, since you've followed
-                the instructions carefully, you've installed an IDE and the <a href="boost.org">boost library</a>, and configured your IDE to find the boost libraries. So you can create a command line project, replace the source of the <code>main.cpp</code> file with the code below,   and compile and run it successfully, with a return code of 0.</p>
+                the instructions carefully, you've installed an IDE and the <a href="boost.org">boost library</a>, and configured your IDE to find the boost libraries. So you can create a command line project, replace the source of the <code>main.cpp</code>                file with the code below, and compile and run it successfully, with a return code of 0.</p>
 
-                <script type="syntaxhighlighter" class="brush: cpp"><![CDATA[
+            <!-- <script type="syntaxhighlighter" class="brush: cpp">
+                <![CDATA[
 #include <iostream>
 #include <boost/date_time.hpp>
 
@@ -45,11 +46,21 @@ int main(int argc, const char * argv[]) {
     std::cout   << boost::gregorian::date_from_iso_string("20160930")
                 << std::endl;
     return 0;
-}]]></script>
+}]]>
+            </script> -->
 
             <h3>Hosting on GitHub</h3>
-            <p>A version of the project can be downloaded or forked from <a href="https://github.com/pbenson/umich-quant">GitHub</a>. For more information on using GitHub in a team setting, read <a href="https://www.sitepoint.com/getting-started-git-team-environment/">this</a>.</p>
+            <p>A version of the project can be cloned from <a href="https://github.com/pbenson/umich-quant">GitHub</a>. For more information on using GitHub in a team setting, read <a href="https://www.sitepoint.com/getting-started-git-team-environment/">this</a>.</p>
 
+            <p>Here are the steps:
+                <ol>
+                    <li>If you haven't already, create a GitHub account, and verify the account by responding to the verification email you were sent when you created the account. Install GitHub Desktop.</li>
+                    <li>Clone the <a href="https://github.com/pbenson/umich-quant">umich-quant</a> project, using "Open in Desktop" option. Accept the default directory, which is <code>Documents</code> on Mac OS X. </li>
+                    <li>Navigate to your project, and if you are using Xcode, find the <code>MultiFactorMonteCarlo.xcodeproj</code> file, and launch it.</li>
+                    <li>Configure your project to <a href="finding-datafile.html">find your data file</a>. </li>
+                    <li>In your <code>main.cpp</code>, put a breakpoint on the last line of code (<code>return 0;</code>), and hit the run button. Your program should stop at the breakpoint.</li>
+                </ol>
+            </p>
             <p>The GitHub version includes a unit testing target, based on <a href="https://github.com/philsquared/Catch">Catch</a>.</p>
 
         </section>
