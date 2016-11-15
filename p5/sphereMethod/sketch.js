@@ -64,13 +64,18 @@ function draw() {
       var pt = points[ptIndex];
       ellipse(pt.x, pt.y, markerDiameter, markerDiameter);
       var seg = new LineSegment(pt.x, pt.y, objTouchPoint.x, objTouchPoint.y);
-      seg.drawToFirstConstraint().draw();
+      var intersectPt = seg.drawToFirstConstraint();
+      if(null != intersectPt) {
+        intersectPt.draw();
+      }
     }
 
     //not in algorithm, but why not use line from center of Ball?
     stroke(255, 128, 0);
-    new LineSegment(largestBall.x, largestBall.y, objTouchPoint.x, objTouchPoint.y).drawToFirstConstraint().draw();
-
+    var intersectionPt = new LineSegment(largestBall.x, largestBall.y, objTouchPoint.x, objTouchPoint.y).drawToFirstConstraint();
+    if (null != intersectionPt) {
+      intersectionPt.draw();
+    }
   }
 }
 

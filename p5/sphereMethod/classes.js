@@ -207,8 +207,10 @@ class LineSegment {
         }
       }
     }
-    strokeWeight(1.0 / pixPerUnit);
-    line(this.x0, this.y0, firstIntersectPoint.x, firstIntersectPoint.y);
+    if (null != firstIntersectPoint) {
+      strokeWeight(1.0 / pixPerUnit);
+      line(this.x0, this.y0, firstIntersectPoint.x, firstIntersectPoint.y);
+    }
     return firstIntersectPoint;
   }
 
