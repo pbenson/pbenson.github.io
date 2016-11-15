@@ -65,7 +65,7 @@ class FacetalHyperplane {
   }
 
   distanceFrom(x, y) {
-    //return distnace from x, y to projection onto constraint facet
+    //return distance from x, y to projection onto constraint facet
     return abs((this.a0 * x + this.a1 * y - this.b) / dist(0, 0, this.a0, this.a1));
   }
 
@@ -137,6 +137,15 @@ class Sphere {
     arc(this.x, this.y, diameter, diameter, 0, TWO_PI);
   }
 
+  drawObjectiveHyperplane() {
+    var objTouchPoint = this.objectiveTouchPoint();
+    objectiveFunction.fitTo(objTouchPoint.x, objTouchPoint.y);
+    stroke(0, 192, 0);
+    strokeWeight(1.0 / pixPerUnit);
+    objectiveFunction.drawPlane();
+    return objTouchPoint;
+  }
+
   radius() {
     return constraintSet.delta(this.x, this.y);
   }
@@ -182,9 +191,29 @@ class Point {
     return ellipse(this.x, this.y, markerDiameter, markerDiameter)
   }
 
+  drawProjectionLineToObjectiveFunction() {
+    var pointToOFuncProjection = this.projectionToObjectiveFunction();
+    var segTouchPointToOFuncProjection = new LineSegment(this.x, this.y, pointToOFuncProjection.x, pointToOFuncProjection.y);
+    segTouchPointToOFuncProjection.draw();
+  }
+
   display() {
     return '(' + this.x + ',' + this.y + ')';
   }
+
+  projectionToObjectiveFunction() {
+    //hmmm. Having a problem with whether to add or subjtract to get x, y. Hacking...
+    var d = objectiveFunction.distanceFrom(this.x, this.y);
+    var x = this.x - d * objectiveFunction.a0 / objectiveFunction.norm();
+    var y = this.y - d * objectiveFunction.a1 / objectiveFunction.norm();
+    if (objectiveFunction.distanceFrom(x, y) > 0.001) {
+      d = -d;
+      var x = this.x - d * objectiveFunction.a0 / objectiveFunction.norm();
+      var y = this.y - d * objectiveFunction.a1 / objectiveFunction.norm();
+    }
+    return new Point(x, y);
+  }
+
 }
 
 class LineSegment {
@@ -193,6 +222,11 @@ class LineSegment {
     this.y0 = y0_;
     this.x1 = x1_;
     this.y1 = y1_;
+  }
+
+  draw() {
+    strokeWeight(1.0 / pixPerUnit);
+    line(this.x0, this.y0, this.x1, this.y1);
   }
 
   drawToFirstConstraint() {
@@ -225,8 +259,8 @@ class LineSegment {
     var y = dy * (x - this.x0) / dx + this.y0;
     return new Point(x, y);
   }
-  
+
   interpolated(frac) {
-    return new Point( this.x0 + frac * (this.x1 - this.x0), this.y0 + frac * (this.y1 - this.y0));
+    return new Point(this.x0 + frac * (this.x1 - this.x0), this.y0 + frac * (this.y1 - this.y0));
   }
 }

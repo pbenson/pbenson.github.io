@@ -51,13 +51,7 @@ function draw() {
     stroke(1);
 
     largestBall.draw();
-
-    //draw objective hyperplane
-    var objTouchPoint = largestBall.objectiveTouchPoint();
-    objectiveFunction.fitTo(objTouchPoint.x, objTouchPoint.y);
-    stroke(0, 192, 0);
-    strokeWeight(2.0 / pixPerUnit);
-    objectiveFunction.drawPlane();
+    var objTouchPoint = largestBall.drawObjectiveHyperplane();
 
     //draw objective Touch point
     stroke(255, 0, 0);
@@ -75,21 +69,18 @@ function draw() {
         intersectPt.draw();
         //find and draw pt on line from constraint touch point through sphere min point
         var segFromOFToBoundary = new LineSegment(objTouchPoint.x, objTouchPoint.y, intersectPt.x, intersectPt.y);
-        var newBallCenter = segFromOFToBoundary.interpolated(1-epsilonSlider.value());
+        var newBallCenter = segFromOFToBoundary.interpolated(1 - epsilonSlider.value());
         newBallCenter.draw();
         var newBall = new Sphere();
         newBall.moveCenterToPoint(newBallCenter);
         newBall.draw();
+        var objTouchPoint = newBall.drawObjectiveHyperplane();
+
+        //draw projection lines from touch point to objective function
+        stroke(255, 0, 0, 100);
+        pt.drawProjectionLineToObjectiveFunction();
+        intersectPt.drawProjectionLineToObjectiveFunction();
       }
-    }
-
-
-
-    //not in algorithm AFAIK, but why not use line from center of Ball?
-    stroke(255, 128, 0);
-    var intersectionPt = new LineSegment(largestBall.x, largestBall.y, objTouchPoint.x, objTouchPoint.y).drawToFirstConstraint();
-    if (null != intersectionPt) {
-      intersectionPt.draw();
     }
   }
   pop();
