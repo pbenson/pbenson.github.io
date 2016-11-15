@@ -6,6 +6,7 @@ var xMax, yMax;
 var largestBallCenterSelected = false;
 var constraintSet = new ConstraintSet();
 var objectiveFunction, largestBall;
+var needsRedraw = true;
 
 function setup() {
   centerCanvas();
@@ -21,12 +22,12 @@ function setup() {
 }
 
 function draw() {
-  if (frameCount > 1) {
-    if (mouseX == pmouseX && mouseY == pmouseY) {
-      //nothing going on
-      return;
-    }
+  if (!needsRedraw && mouseX == pmouseX && mouseY == pmouseY) {
+    //nothing going on
+    return;
   }
+  needsRedraw = false;
+  push();
   background(255);
   translate(width * 0.5, height * 0.5);
   scale(pixPerUnit, -pixPerUnit);
@@ -65,21 +66,30 @@ function draw() {
       ellipse(pt.x, pt.y, markerDiameter, markerDiameter);
       var seg = new LineSegment(pt.x, pt.y, objTouchPoint.x, objTouchPoint.y);
       var intersectPt = seg.drawToFirstConstraint();
-      if(null != intersectPt) {
+      if (null != intersectPt) {
         intersectPt.draw();
       }
     }
 
-    //not in algorithm, but why not use line from center of Ball?
+    //not in algorithm AFAIK, but why not use line from center of Ball?
     stroke(255, 128, 0);
     var intersectionPt = new LineSegment(largestBall.x, largestBall.y, objTouchPoint.x, objTouchPoint.y).drawToFirstConstraint();
     if (null != intersectionPt) {
       intersectionPt.draw();
     }
   }
+  pop();
+  
+  //help text
+  noStroke();
+  fill(128);
+  var tip = 'Move mouse in feasible (white) region. Click mouse to fix/unfix the center of ball.';
+  text(tip, (width - textWidth(tip)) / 2, 15);
+  
 }
 
 function mousePressed() {
+  needsRedraw = true;
   if (largestBallCenterSelected) {
     largestBallCenterSelected = false;
     return;
