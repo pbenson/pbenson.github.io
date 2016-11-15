@@ -118,8 +118,12 @@ class Sphere {
   }
 
   moveCenterToMouse() {
-    this.x = mouseToX();
-    this.y = mouseToY();
+    this.moveCenterToPoint(new Point(mouseToX(), mouseToY()));
+  }
+
+  moveCenterToPoint(pt) {
+    this.x = pt.x;
+    this.y = pt.y;
   }
 
   draw() {
@@ -220,5 +224,9 @@ class LineSegment {
     var x = ((h.b - h.a1 * this.y0) * dx + h.a1 * this.x0 * dy) / (h.a0 * dx + h.a1 * dy);
     var y = dy * (x - this.x0) / dx + this.y0;
     return new Point(x, y);
+  }
+  
+  interpolated(frac) {
+    return new Point( this.x0 + frac * (this.x1 - this.x0), this.y0 + frac * (this.y1 - this.y0));
   }
 }

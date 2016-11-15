@@ -6,6 +6,7 @@ var xMax, yMax;
 var largestBallCenterSelected = false;
 var constraintSet = new ConstraintSet();
 var objectiveFunction, largestBall;
+var epsilonSlider;
 var needsRedraw = true;
 
 function setup() {
@@ -19,6 +20,10 @@ function setup() {
   objectiveFunction = new FacetalHyperplane(-1, 5, 0);
 
   largestBall = new Sphere();
+
+  //UI
+  var sliderInset = 80;
+  epsilonSlider = makeSlider("epsilon", 0, 1, 0.2, sliderInset, 20, 100, 0.01);
 }
 
 function draw() {
@@ -68,8 +73,17 @@ function draw() {
       var intersectPt = seg.drawToFirstConstraint();
       if (null != intersectPt) {
         intersectPt.draw();
+        //find and draw pt on line from constraint touch point through sphere min point
+        var segFromOFToBoundary = new LineSegment(objTouchPoint.x, objTouchPoint.y, intersectPt.x, intersectPt.y);
+        var newBallCenter = segFromOFToBoundary.interpolated(1-epsilonSlider.value());
+        newBallCenter.draw();
+        var newBall = new Sphere();
+        newBall.moveCenterToPoint(newBallCenter);
+        newBall.draw();
       }
     }
+
+
 
     //not in algorithm AFAIK, but why not use line from center of Ball?
     stroke(255, 128, 0);
@@ -79,16 +93,23 @@ function draw() {
     }
   }
   pop();
-  
-  //help text
+
+  //UI values and help text
   noStroke();
   fill(128);
+  var textInset = 200;
+  var yOffset = 3;
+  var yRowHeight = 30
+  text(epsilonSlider.value(), textInset, 1 * yRowHeight + yOffset);
   var tip = 'Move mouse in feasible (white) region. Click mouse to fix/unfix the center of ball.';
   text(tip, (width - textWidth(tip)) / 2, 15);
-  
+
 }
 
 function mousePressed() {
+  if (!constraintSet.isFeasible(mouseToX(), mouseToY())) {
+    return;
+  }
   needsRedraw = true;
   if (largestBallCenterSelected) {
     largestBallCenterSelected = false;
