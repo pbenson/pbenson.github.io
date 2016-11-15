@@ -6,10 +6,9 @@ var xMax, yMax;
 var largestBallCenterSelected = false;
 var constraintSet = new ConstraintSet();
 var objectiveFunction, largestBall;
-var needsRedraw = false;
 
 function setup() {
-  createCanvas(800, 800);
+  centerCanvas();
 
   constraintSet.addConstraint(-1, -1, -3);
   constraintSet.addConstraint(2, -1, -5);
@@ -23,12 +22,11 @@ function setup() {
 
 function draw() {
   if (frameCount > 1) {
-    if (!needsRedraw && mouseX == pmouseX && mouseY == pmouseY) {
+    if (mouseX == pmouseX && mouseY == pmouseY) {
       //nothing going on
       return;
     }
   }
-  needsRedraw = false;
   background(255);
   translate(width * 0.5, height * 0.5);
   scale(pixPerUnit, -pixPerUnit);
@@ -67,7 +65,7 @@ function draw() {
       ellipse(pt.x, pt.y, markerDiameter, markerDiameter);
       var seg = new LineSegment(pt.x, pt.y, objTouchPoint.x, objTouchPoint.y);
       var intersectPt = seg.drawToFirstConstraint();
-      if (null != intersectPt) {
+      if(null != intersectPt) {
         intersectPt.draw();
       }
     }
@@ -82,7 +80,6 @@ function draw() {
 }
 
 function mousePressed() {
-  needsRedraw = true;
   if (largestBallCenterSelected) {
     largestBallCenterSelected = false;
     return;
@@ -97,4 +94,17 @@ function mouseToX() {
 
 function mouseToY() {
   return (height * 0.5 - mouseY) / pixPerUnit;
+}
+
+
+function centerCanvas() {
+  var cnv = createCanvas(windowWidth, windowHeight);
+  var x = (windowWidth - width) / 2;
+  var y = (windowHeight - height) / 2;
+  cnv.position(x, y);
+  background(255);
+}
+
+function windowResized() {
+  centerCanvas();
 }
