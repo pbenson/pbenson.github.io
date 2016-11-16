@@ -3,7 +3,7 @@
 var pixPerUnit = 100.0;
 var markerDiameter = 5.0 / pixPerUnit;
 var xMax, yMax;
-var largestBallCenterSelected = false;
+var largestBallIsFixed = false;
 var constraintSet = new ConstraintSet();
 var objectiveFunction, largestBall;
 var epsilonSlider;
@@ -42,14 +42,15 @@ function draw() {
 
   constraintSet.draw();
 
-  if (!largestBallCenterSelected) {
+  if (!largestBallIsFixed) {
     largestBall.moveCenterToMouse();
   }
 
   if (largestBall.centerIsFeasible()) {
     noFill();
-    stroke(1);
-
+    
+    stroke(0,128);
+    largestBallIsFixed ? strokeWeight(3.0/pixPerUnit ) : strokeWeight(0.5/pixPerUnit );
     largestBall.draw();
     var objTouchPoint = largestBall.drawObjectiveHyperplane();
 
@@ -102,12 +103,12 @@ function mousePressed() {
     return;
   }
   needsRedraw = true;
-  if (largestBallCenterSelected) {
-    largestBallCenterSelected = false;
+  if (largestBallIsFixed) {
+    largestBallIsFixed = false;
     return;
   }
   largestBall.moveCenterToMouse();
-  largestBallCenterSelected = largestBall.centerIsFeasible();
+  largestBallIsFixed = largestBall.centerIsFeasible();
 }
 
 function mouseToX() {
