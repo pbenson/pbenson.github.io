@@ -23,15 +23,14 @@
 
             <p>Students in the quant program have the opportunity to develop projects inspired by real-world applications. This involves reading research, designing solutions, and implementing them in a relevant development environment, such as <a href="../cpp/index.html">C++</a>                or <a href="../python/index.html">Python</a>. </p>
 
-            <h3>Portfolio simulation for Risk Management</h3>
+            <h3>Projects</h3>
 
-            <p>A key tool in portfolio risk management is making forecasts of the portfolio's PnL distribution at some horizon. A typical horizon is one day, but it could be longer. Forecasting the PnL distribution typically is done by first creating a market
-                model of the factors that drive changes in portfolio value. Generating a large number of market scenarios gives a distribution of PnL.</p>
+            <p>
+                <ul>
+                    <li><a href="portfolio_modeling.html">Modeling Portfolio P&amp;L</a></li></ul>
+            </p>
 
-            <p>In this project, students build a Monte Carlo simulation of financial markets relevant to a client portfolio. They use this simulation to analyze the forecasted distribution of PnL. The simulation is based on a method used by MSCI/RiskMetrics,
-                originally described in <a href="http://pbenson.github.io/docs/rmm2q97.pdf">A general approach to calculating VaR without volatilities and correlations</a> (1997), and again in <a href="../docs/benson_zangari.pdf">Monte Carlo Simulation using the Benson-Zangari Approach</a>                (2013).</p>
-
-            <p>The steps involved can be summarized as:
+            <!-- <p>The steps involved can be summarized as:
                 <ol>
                     <li>Determine which market factors (e.g. prices, exchange rates, interest rates, implied volatilities, etc) drive portfolio value.</li>
                     <li>Find market factor level data (typically daily close). To start, can use <a href="https://finance.yahoo.com/quote/AMZN/history?period1=1412136000&period2=1475208000&interval=1d&filter=history&frequency=1d">Yahoo Finance</a>. Define a file format, which might look something like <a href="data/IBM_T_NKE_AAPL_20141001-20160930.csv">this</a>. Note that the example file uses YYYYMMDD format, which you can generate in Excel via a custom date format. You may need to  <a href="../cpp/finding-datafile.html">configure your directory path</a> so that your code can find  your data file.</li>
@@ -41,10 +40,10 @@
                     <li>Create a scenario generating object (e.g. <code>MarketSimulation</code>). You shoud be able to ask a <code>MarketFactor</code> object for its return given the <code>MarketSimulation</code>. Now you have a working simulation of the market!</li>
                     <li>Now we need to see the PnL impact of the scenario on our portfolio. That means we can create a <code>Portfolio</code>, which contains <code>Position</code>s. Each <code>Position</code> is based on a some amount of a <code>Security</code>. Initially, we can assume our <code>Security</code> is a stock.</li>
                 </ol>
-            </p>
+            </p> -->
 
-            <h3>Contributing to the project</h3>
-            <p>See <a href="contribute.html">how to contribute</a>.</p>
+            <!-- <h3>Contributing to the project</h3>
+            <p>See <a href="contribute.html">how to contribute</a>.</p> -->
 
         </section>
         <footer>

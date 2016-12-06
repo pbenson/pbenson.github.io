@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>pbenson.github.io by pbenson</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>UMich Quants: Portfolio Modeling Project</h2>
+            <!-- <p class="view"><a href="index.html">UM Quant projects</a></p> -->
+
+        </header>
+        <section>
+
+            <h3>Contributors to the project</h3>
+            <p>
+                <ul>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/guochen.html">Chen Guo</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/luoyiya.html">Yiya Luo</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/dpshang.html">Dapeng Sheng</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/lmtian.html">Lemin Tian</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/xiangyuw.html">Xiangyu (Webb) Wang</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/wuzihua.html">Zihua Wu</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/yiranxie.html">Yiran Xie</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/shuaiyux.html">Shuaiyu Xu</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/hanxiye.html">Hanxi Ye</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/fionazy.html">Yan (Fiona) Zhuang</a></li>
+                </ul>
+            </p>
+
+            <p>A key tool in portfolio risk management is modeling the portfolio's P&amp;L distribution at some horizon. A typical horizon is one day, but it could be longer. Forecasting the P&amp;L distribution typically is done by first creating a market
+                model of the factors that drive changes in portfolio value. Generating a large number of market scenarios gives a distribution of P&amp;L.</p>
+
+            <p>In this project, writing in C++, student researchers have built a Monte Carlo simulation of financial markets relevant to a client portfolio. They use this simulation to analyze the forecasted distribution of P&amp;L. The simulation is based on
+                a method used by MSCI/RiskMetrics, originally described in <a href="http://pbenson.github.io/docs/rmm2q97.pdf">A general approach to calculating VaR without volatilities and correlations</a> (1997), and again in <a href="../docs/benson_zangari.pdf">Monte Carlo Simulation using the Benson-Zangari Approach</a>                (2013).</p>
+
+            <p>The project currently has these characteristics/features:
+                <ul>
+                    <li>MarketFactor class representing random variables used to value securities</li>
+                    <li>MarketData class containing MarketFactors. Can be populated from a <a href="data/IBM_T_NKE_AAPL_20141001-20160930.csv">file of historical prices</a>.</li>
+                    <li>MarketScenario class that represents a change in price levels of all MarketFactors</li>
+                    <li>Security types: Stocks, ETFs, FX (any simple security with an available source of observed prices)</li>
+                    <li>Position class that associates a quantity to a Security</li>
+                    <li>Portfolio class that contains positions</li>
+                    <li>Securities can be prices, and Positions and Portfolio valued given a base set of MarketFactor prices and a MarketScenario. This produces P&amp;L for each Position and the Portfolio.</li>
+                    <li>A set of classes for statistically analyzing the simulated P&amp;L. Statistics include <a href="https://en.wikipedia.org/wiki/Value_at_risk">VaR</a> and <a href="https://en.wikipedia.org/wiki/Expected_shortfall">Expected Shortfall</a>                        (aka Average VaR).</li>
+                </ul>
+            </p>
+
+            <p>Additional resources used:
+                <ul>
+                    <li>Obtained market data from <a href="https://finance.yahoo.com/quote/AMZN/history?period1=1412136000&period2=1475208000&interval=1d&filter=history&frequency=1d">Yahoo Finance</a>.</li>
+                    <li>Read CSV market data from a stream following <a href="http://www.umich.edu/~eecs381/handouts/filestreams.pdf">EECS 381 guidelines</a></li>
+                    <li>For date arithmetic, used the <a href="http://www.boost.org/doc/libs/1_62_0/doc/html/date_time/examples.html#date_time.examples.dates_as_strings">boost date_time library</a>.</li>
+                </ul>
+            </p>
+
+            <h3>Want to contribute?</h3>
+            <p>The code for the project is on <a href="https://github.com/pbenson/umich-quant">GitHub</a>. See <a href="contribute.html">how to contribute</a>.</p>
+
+
+        </section>
+        <footer>
+            <!-- <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p> -->
+        </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+</body>
+
+</html>
