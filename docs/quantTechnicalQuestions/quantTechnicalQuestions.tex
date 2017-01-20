@@ -2,6 +2,7 @@
 
 \usepackage{amsmath} % provides numberwithin (and lots more)
 \usepackage{graphicx}
+\usepackage{listings}
 \usepackage[backend=bibtex]{biblatex}
 \bibliography{qfrmTechnicalQuestionsDev}
 
@@ -114,6 +115,10 @@ For $M =\begin{bmatrix}
 \end{bmatrix}$, find $A$ such that $M=AA^{T}$.
 \end{problem}
 
+\begin{problem}
+Suppose $M$ is an $n\times n$ correlation matrix, with correlation $\rho$ between any pair of random variables. What is the smallest possible value of $\rho$?
+\end{problem}
+
 %----------------------
 %Probability
 %----------------------
@@ -166,9 +171,12 @@ A stick is broken randomly into two pieces. The larger piece is then broken rand
 
 \begin{problem}
 This is based on a Goldman Sachs interview question. You play a game where you toss two fair coins in the air. You always win \$1. However, if you have tossed 2 heads at least once, and 2 tails at least once, you surrender all winnings, and cannot play again. You may stop playing at anytime. What's your strategy? 
-
-
 \end{problem}
+
+\begin{problem}
+(St. Petersburg Paradox) Consider the following game played by flipping a fair coin. The pot begins at a \$1, and the pot doubles until a tail is flipped, at which point you receive the pot. Assume you can play as many times as you want. What would you pay to play this game? 
+\end{problem}
+
 
 
 %----------------------
@@ -271,7 +279,70 @@ Suppose there are 42 quant students in a room, each assigned a unique integer fr
 \end{problem}
 
 \begin{problem}
-This is based on a Goldman Sachs interview question. There are 36 horses. You can race them together 6 at a time, and observe their relative performance. You do not have a timer. How many races do you need to determine the three fastest horses?
+There are 36 racehorses. You can race them together 6 at a time, and observe their relative performance. You do not have a timer. How many races do you need to determine the three fastest horses?
+\end{problem}
+
+
+%----------------------
+%C++
+%----------------------
+\chapter{OOP and C++}
+
+\begin{problem}
+What is a class?
+\end{problem}
+
+\begin{problem}
+What is polymorphism?
+\end{problem}
+
+\begin{problem}
+What is inheritance? 
+\end{problem}
+
+\begin{problem}
+What is composition?
+\end{problem}
+
+\begin{problem}
+What data structure would you use for an indexed collection of real numbers? How would you declare it?
+\end{problem}
+
+\begin{problem}
+How do you get the address of a variable in C++98? In C++11/14?
+\end{problem}
+
+\begin{problem}
+How do you pass by reference?
+\end{problem}
+
+\begin{problem}
+What operators do you use to access member data for an object? For a pointer or iterator to an object?
+\end{problem}
+
+\begin{problem}
+When should you use the \verb|const| keyword?
+\end{problem}
+
+\begin{problem}
+What is a constructor? A default constructor? 
+\end{problem}
+
+\begin{problem}
+Explain how a hashmap works.
+\end{problem}
+
+\begin{problem}
+Show how you would implement a \verb|BinaryTree| class for storing integers. Here is a start:
+\begin{lstlisting}[language=C++]
+class BinaryTree {
+  public:
+    void addValue(int n);
+    bool containsValue(int n) const;
+    ...
+}
+\end{lstlisting}
+
 \end{problem}
 
 %----------------------
