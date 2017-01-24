@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="../stylesheets/github-light.css">
     <meta name="viewport" content="width=device-width">
 
+    <script type="text/javascript" src="../javascripts/shCore.js"></script>
+    <script type="text/javascript" src="../javascripts/shBrushCpp.js"></script>
+    <link href="../stylesheets/shCore.css" rel="stylesheet" type="text/css" />
+    <link href="../stylesheets/shThemeDefault.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        SyntaxHighlighter.all()
+    </script>
+
 </head>
 
 <body>
@@ -20,10 +28,48 @@
 
         </header>
         <section>
+            <h3>Michigan Quant Lab</h3>
 
-            <p>Students in the quant program have the opportunity to develop projects inspired by real-world applications. This involves reading research, designing solutions, and implementing them in a relevant development environment, such as <a href="../cpp/index.html">C++</a>                or <a href="../python/index.html">Python</a>. </p>
+            <p>We meet on Fridays, 9-11am, in the East Hall Math Lab, room B745.</p>
+
+            <h3>Week Meeting agenda</h3>
+            <ul>
+                <li>
+                    <details>
+                        <summary>Friday, January 27, 2017</summary>
+
+                        <p>To prepare:
+                            <ol>
+                                <li>Install <a href="https://www.jetbrains.com/pycharm/download/">PyCharm Community Edition</a>. We’ll be doing some Python in an IDE that has better debugging support than Jupyter.</li>
+                                <li>Solve the BinaryTree problem from the <a href="https://pbenson.github.io/docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf">technical interview book</a>. You may use C++ or Python or both.</li>
+                                <li>Do LeetCode problems 2 and 20 (some of you have already done #20).</li>
+                                <li>Be able to explain why the sum of IES is equal to ES.</li>
+                                <li>We discovered that our C++ code for Monte Carlo does not react gracefully to an invalid name for a MarketFactor ("APL" is unknown). A better way to deal with this is through exceptions.
+                                    <script type="syntaxhighlighter" class="brush: cpp">
+                                        <![CDATA[
+void PortfolioSimResult::validateQuantile(double quantile) const {
+   if(quantile < 1.0 / (m_profits.size() + 1) ) {
+     throw "in PortfolioSimResult::validateQuantile(), quantile too small. Must be at least 1.0 / (# sims + 1).";
+   }
+   ... }
+ ]]>
+                                    </script>
+
+                                    Note that we threw a string. Which of these standard exceptions would have been better to throw? Can you add exception handling to these PortfolioSimResult methods? double var(double quantile) const; double expectedShortfall(double quantile) const; If
+                                    you do this problem, do a pull request from GitHub Desktop. If I like your code, I will add it to the codebase, and list you as a contributor!.</li>
+                                <li>Recall the Jane Street min max correlation problem? An equivalent statement is problem 2.7 in the technical interview book. Try to solve it.</li>
+
+                                <li>I’d like to refer to us as the Michigan Quant Lab. Our mission is to prepare ourselves for employment through practice, and by demonstrating we are involved in something beyond the classroom. Think about the role(s) that
+                                    need to be handled in the Michigan Quant Lab. Do you want to be developing the website? Implementing pricing algorithms? Developing the backtesting framework? Writing a paper that explains and documents parts of our
+                                    codebase? Building test cases to verify our algorithms are working correctly? Organizing a Friday afternoon pizza-fueled meeting? Or something else?</li>
+
+
+                    </details>
+                </li>
+            </ul>
 
             <h3>Projects</h3>
+            <p>Students in the quant program have the opportunity to develop projects inspired by real-world applications. This involves reading research, designing solutions, and implementing them in a relevant development environment, such as <a href="../cpp/index.html">C++</a>                or <a href="../python/index.html">Python</a>. </p>
 
             <p>
                 <ul>
