@@ -35,6 +35,9 @@
 \end{center}
 \end{titlepage}
 
+\tableofcontents
+\newpage
+
 %----------------------
 % review
 %----------------------
@@ -78,10 +81,10 @@ Which is larger, $\pi^e$ or $e^\pi$?
 \begin{problem}
 Solve $f'(x)=f(x)^2+4$.
 \end{problem}
-%
-%\begin{problem}
-%How many solutions are there to $||x-3|-2|=1$?
-%\end{problem}
+
+\begin{problem}
+Quickly and accurately, in your head, estimate $\sqrt{10,302}$.
+\end{problem}
 
 %----------------------
 %Linear Algebra
@@ -129,7 +132,7 @@ You have a bag with two coins. One will come up heads 40\% of the time, and the 
 \end{problem}
 
 \begin{problem}
-What is the Central Limit Theorem?
+What is the Law of Large Numbers? The Central Limit Theorem? What is an example of a distribution 
 \end{problem}
 
 \begin{problem}
@@ -177,12 +180,14 @@ This is based on a Goldman Sachs interview question. You play a game where you t
 (St. Petersburg Paradox) Consider the following game played by flipping a fair coin. The pot begins at a \$1, and the pot doubles until a tail is flipped, at which point you receive the pot. Assume you can play as many times as you want. What would you pay to play this game? 
 \end{problem}
 
-
+\begin{problem}
+(Monte Hall Problem) You are on a game show, and there are 3 doors. Two of the doors conceal something worthless, and one door conceals a valuable prize. The game show host, Monte Hall, knows where the prize is. He lets you pick a door, then he opens one of the remaining two doors to reveal something worthless. He then offers you the chance to switch doors. Should you? How would you convince someone else of your answer?
+\end{problem}
 
 %----------------------
-%Quantitative Finance and Risk Management
+%Options
 %----------------------
-\chapter{Quantitative Finance and Risk Management}
+\chapter{Options}
 
 \begin{problem}
 The stock of a company is trading at 100 USD. It is widely known that a merger decision will be made today, and depending on the news, the stock will trade at either \$96 or \$106 after the decision. Your research department believes there is a 50\% chance
@@ -190,15 +195,7 @@ The stock of a company is trading at 100 USD. It is widely known that a merger d
 \end{problem}
 
 \begin{problem}
-You collect 2 years of daily returns for the stocks in the Russell 3000. From the data you collect, you compute a covariance matrix $\Sigma$. How would you determine whether $\Sigma$ is singular?
-\end{problem}
-
-\begin{problem}
 Without using a calculator, what is the approximate price of an at-the-money call on a \$30 stock with an implied vol of 33 maturing in 3 months? If you don't know a shortcut for this, derive a shortcut.
-\end{problem}
-
-\begin{problem}
-You have a basket of $n$ assets. The asset returns are multivariate normal with zero mean. Correlation between any pair of assets is 1/2. What is the probability that $k$ of the assets will have positive return?
 \end{problem}
 
 \begin{problem}
@@ -206,23 +203,15 @@ Explain put-call parity.
 \end{problem}
 
 \begin{problem}
-Define duration and convexity. Explain their properties and applications.
-\end{problem}
-
-\begin{problem}
-A two-year Treasury strip yields 2\%, and a three-year strip yields 2.5\%. What is the one year yield, two years forward? 
-\end{problem}
-
-\begin{problem}
-\cite{CRACK} You are a portfolio manager, and intend to invest 100 USD in two stocks that are expected to have the same return. They have annual volatilies of 40\% and 60\%, and correlation of 80\%.  How much do you invest in each stock?
-\end{problem}
-
-\begin{problem}
 \cite{CRACK} For a standard European put option, draw the graph of the delta as a function of the current stock price.
 \end{problem}
 
 \begin{problem}
-Explain what is meant by the volatility smile, and why does it exist?
+What is the volatility smile, and why might it exist?
+\end{problem}
+
+\begin{problem}
+What is the volatility smirk, and why might it exist?
 \end{problem}
 
 \begin{problem}
@@ -232,6 +221,143 @@ Explain what is meant by the volatility smile, and why does it exist?
 \begin{problem}
 \cite{CRACK} What can you say about $\int_0^{T} W(t)dW(t)$, where $W(t)$ is standard Brownian motion?
 \end{problem}
+
+\begin{problem}
+Why are vanilla options quoted in terms of implied volatility?
+\end{problem}
+
+%----------------------
+%Risk Management
+%----------------------
+\chapter{Risk Management}
+
+\begin{problem}
+You collect 2 years of daily returns for the stocks in the Russell 3000. From the data you collect, you compute a covariance matrix $\Sigma$. How would you determine whether $\Sigma$ is singular?
+\end{problem}
+
+\begin{problem}
+You have a basket of $n$ assets. The asset returns are multivariate normal with zero mean. Correlation between any pair of assets is 1/2. What is the probability that $k$ of the assets will have positive return?
+\end{problem}
+
+\begin{problem}
+\cite{CRACK} You are a portfolio manager, and intend to invest 100 USD in two stocks that are expected to have the same return. They have annual volatilies of 40\% and 60\%, and correlation of 80\%.  How much do you invest in each stock?
+\end{problem}
+
+\begin{problem}
+Give an example of a portfolio with VaR that is not subadditive.
+\end{problem}
+
+\begin{problem}
+Why is Expected Shortfall subadditive?
+\end{problem}
+
+\begin{problem}
+Can you describe the steps involved in historical simulation of a portfolio?
+\end{problem}
+
+\begin{problem}
+Describe the steps involved in Monte Carlo simulation of a portfolio?
+\end{problem}
+
+%----------------------
+%OOP, C++, Python
+%----------------------
+\chapter{OOP, C++, Python}
+
+\begin{problem}
+What is a class?
+\end{problem}
+
+\begin{problem}
+What is polymorphism?
+\end{problem}
+
+\begin{problem}
+What is inheritance? 
+\end{problem}
+
+\begin{problem}
+What is composition?
+\end{problem}
+
+\begin{problem}
+What data structure would you use for an indexed collection of real numbers? How would you declare it?
+\end{problem}
+
+\begin{problem}
+How do you get the address of a variable in C++98? In C++11/14?
+\end{problem}
+
+\begin{problem}
+How do you pass by reference?
+\end{problem}
+
+\begin{problem}
+What operators do you use to access member data for an object? For a pointer or iterator to an object?
+\end{problem}
+
+\begin{problem}
+When should you use the \verb|const| keyword?
+\end{problem}
+
+\begin{problem}
+What is a constructor? A default constructor? 
+\end{problem}
+
+\begin{problem}
+Explain how a hashtable works.
+\end{problem}
+
+\begin{problem}
+What algorithm would you use to find the $k$th order statistic of a list of numbers? 
+\end{problem}
+
+\begin{problem}
+Show how you would implement a \verb|BinaryTree| class for storing integers. Here is a start in C++,
+\begin{lstlisting}[language=C++]
+class BinaryTree {
+  public:
+    void addValue(int n);
+    bool hasValue(int n) const;
+    ...
+}
+\end{lstlisting}
+and in Python:
+\begin{lstlisting}[language=python]
+class BinaryTree:
+	def addValue(self, n):
+   		...
+		
+	def hasValue(self, n):
+   		...
+}
+\end{lstlisting}
+
+\end{problem}
+
+
+
+%----------------------
+%Fixed Income
+%----------------------
+\chapter{Fixed Income}
+
+\begin{problem}
+How would you build a zero coupon curve from a US Treasury yield curve?
+\end{problem}
+
+\begin{problem}
+How would you compute the price of a 10 year US Treasury with a 4\% coupon?
+\end{problem}
+
+\begin{problem}
+The yield on a 5 year zero coupon drops 20bp. What happens to the price?
+\end{problem}
+
+\begin{problem}
+A two-year Treasury strip yields 2\%, and a three-year strip yields 2.5\%. What is the one year yield, two years forward? 
+\end{problem}
+
 
 %----------------------
 %Brain Teasers
@@ -275,74 +401,11 @@ You have two glasses in front of you. The first is partly filled with wine, and 
 \end{problem}
 
 \begin{problem}
-Suppose there are 42 quant students in a room, each assigned a unique integer from 1 to 42. Forty-two quarters are laid out on a table in a row, heads up. Each student goes to the table, and if they are assigned the number $n$, they turn over the $n$th coin, the $2n$th coin, and so on. So, for example, the student who is assigned 20 will turn over the 20th and 40th coins. When everyone is done, how many tails are showing?
+Suppose there are 42 quant students, each assigned a unique integer from 1 to 42. Forty-two quarters are laid out on a table in a row, heads up. Each student goes to the table, and if they are assigned the number $n$, they turn over the $n$th coin, and every $n$th coin thereafter, as long as there are more coins. So, for example, the student who is assigned 20 will turn over the 20th and 40th coins, but then stop because there is no 60th coin. When everyone is done, how many tails are showing?
 \end{problem}
 
 \begin{problem}
 There are 36 racehorses. You can race them together 6 at a time, and observe their relative performance. You do not have a timer. How many races do you need to determine the three fastest horses?
-\end{problem}
-
-
-%----------------------
-%C++
-%----------------------
-\chapter{OOP and C++}
-
-\begin{problem}
-What is a class?
-\end{problem}
-
-\begin{problem}
-What is polymorphism?
-\end{problem}
-
-\begin{problem}
-What is inheritance? 
-\end{problem}
-
-\begin{problem}
-What is composition?
-\end{problem}
-
-\begin{problem}
-What data structure would you use for an indexed collection of real numbers? How would you declare it?
-\end{problem}
-
-\begin{problem}
-How do you get the address of a variable in C++98? In C++11/14?
-\end{problem}
-
-\begin{problem}
-How do you pass by reference?
-\end{problem}
-
-\begin{problem}
-What operators do you use to access member data for an object? For a pointer or iterator to an object?
-\end{problem}
-
-\begin{problem}
-When should you use the \verb|const| keyword?
-\end{problem}
-
-\begin{problem}
-What is a constructor? A default constructor? 
-\end{problem}
-
-\begin{problem}
-Explain how a hashmap works.
-\end{problem}
-
-\begin{problem}
-Show how you would implement a \verb|BinaryTree| class for storing integers. Here is a start:
-\begin{lstlisting}[language=C++]
-class BinaryTree {
-  public:
-    void addValue(int n);
-    bool containsValue(int n) const;
-    ...
-}
-\end{lstlisting}
-
 \end{problem}
 
 %----------------------
