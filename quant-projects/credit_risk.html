@@ -16,7 +16,7 @@
 <body>
     <div class="wrapper">
         <header>
-            <h2>UMich Quants: Backtesting Expected Shortfall Project</h2>
+            <h2>UMich Quants: Credit Risk Project</h2>
             <!-- <p class="view"><a href="index.html">UM Quant projects</a></p> -->
 
         </header>
@@ -25,12 +25,12 @@
             <h3>Contributors</h3>
             <p>
                 <ul style="-webkit-column-count: 1; list-style-type: none;">
-                    <li><a href="http://lsa.umich.edu/math/people/quant/koos.html">Tom Koosalapeerom</a>: <a href="https://tomkoos.github.io/cpp/boost-vs.html">boost on VisualStudio</a></li>
+                    <!-- <li><a href="http://lsa.umich.edu/math/people/quant/koos.html">Tom Koosalapeerom</a>: <a href="https://tomkoos.github.io/cpp/boost-vs.html">boost on VisualStudio</a></li> -->
                 </ul>
             </p>
             <hr/>
 
-            <p>This project launched January 20th, 2017, with a webcast by MSCI researcher Carlo Acerbi.</p>
+            <!-- <p>This project launched January 20th, 2017, with a webcast by MSCI researcher Carlo Acerbi.</p> -->
                 <!-- <p>
                 <ul style="-webkit-column-count: 4; list-style-type: none;">
                     <li><a href="http://lsa.umich.edu/math/people/quant/dyushen.html">Yushen Dong</a></li>
@@ -49,21 +49,16 @@
             </p> -->
 
             <hr/>
-            <p><a href="https://en.wikipedia.org/wiki/Expected_shortfall">Expected shortfall</a> is a measure of portfolio risk. In short, it is the mean loss, given that the loss exceeds the loss at some quantile level \(q\). It is of interest because it
-                addresses several of the shortcomings of VaR. It has been slower to adopt, though, partly because of assertions that it cannot be backtested.
+            <p>Guaranteed cash flows that don't happen because the payer fails to pay are <em>credit events</em>. We refer to this uncertainty in the reliabiity of payment as credit risk. Stocks, which are subject to market risk, have no guaranteed payments, so they are not subject to credit risk. Loans are classic examples of securities that carry credit risk.
             </p>
 
-            <p>However, recent research has addressed the issue of backtesting:
-
-
-                <ul>
-                    <li><a href="../docs/AcerbiTorontoRotman2016.pdf">Backtesting Risk Measures</a> presentation by Carlo Acerbi and Balazs Szekely</li>
-                    <li><a href="../docs/Research_Insight_Backtesting_Expected_Shortfall_December_2014.pdf">Backtesting Expected Shortfall</a> article by Acerbi and Szekely</li>
-                    <li><a href="../docs/GeneralPropertiesOfBacktestableStatistics.pdf">General Properties of Backtestable Statistics</a> article by Acerbi and Szekely</li>
-                </ul>
+            <p>If we limit our scope to loans, there are still many varieties of loans, depending on the issuer. If it is the federal government, we might consider the likelihood of a credit event to be negligible. A publicly traded company with AAA ratings might have a low but not insignificant chance of default. A consumer car loan might have a significant risk of default. In all cases, the existence and valuation of collateral will affect the impact of a credit event.
             </p>
 
-            <p>In this project, student researchers will implement expected shortfall backtesting. Anticipate that we will prototype in Python+pandas+numpy, then translate to C++. Details to follow....</p>
+            <p>So, how can we model credit risk? ...
+            </p>
+
+            <p>In this project, student researchers will model portfolio credit risk. Anticipate that we will prototype in Python+pandas+numpy, then translate to C++. Details to follow....</p>
             <!--   <p>The project currently has these characteristics/features:
                 <ul>
                     <li>MarketFactor class representing random variables used to value securities</li>
