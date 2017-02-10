@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>pbenson.github.io by pbenson</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+
+    <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h2>UMich Quants: Backtesting Expected Shortfall Project</h2>
+            <!-- <p class="view"><a href="index.html">UM Quant projects</a></p> -->
+
+        </header>
+        <section>
+
+            <h3>Contributors</h3>
+            <p>
+                <ul style="-webkit-column-count: 1; list-style-type: none;">
+                    <li><a href="http://lsa.umich.edu/math/people/quant/koos.html">Tom Koosalapeerom</a>: <a href="https://tomkoos.github.io/cpp/boost-vs.html">boost on VisualStudio</a></li>
+                </ul>
+            </p>
+            <hr/>
+
+            <p>This project launched January 20th, 2017, with a webcast by MSCI researcher Carlo Acerbi.</p>
+                <!-- <p>
+                <ul style="-webkit-column-count: 4; list-style-type: none;">
+                    <li><a href="http://lsa.umich.edu/math/people/quant/dyushen.html">Yushen Dong</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/guochen.html">Chen Guo</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/luoyiya.html">Yiya Luo</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/dpshang.html">Dapeng Sheng</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/lmtian.html">Lemin Tian</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/xiangyuw.html">Webb Wang</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/wuzihua.html">Zihua Wu</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/yiranxie.html">Yiran Xie</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/shuaiyux.html">Shuaiyu Xu</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/hanxiye.html">Hanxi Ye</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/quant/fionazy.html">Fiona Zhuang</a></li>
+                    <li><a href="http://lsa.umich.edu/math/people/staff/pbenson.html">Pete Benson</a></li>
+                </ul>
+            </p> -->
+
+            <hr/>
+            <p><a href="https://en.wikipedia.org/wiki/Expected_shortfall">Expected shortfall</a> is a measure of portfolio risk. In short, it is the mean loss, given that the loss exceeds the loss at some quantile level \(q\). It is of interest because it
+                addresses several of the shortcomings of VaR. It has been slower to adopt, though, partly because of assertions that it cannot be backtested.
+            </p>
+
+            <p>However, recent research has addressed the issue of backtesting:
+
+
+                <ul>
+                    <li><a href="../docs/AcerbiTorontoRotman2016.pdf">Backtesting Risk Measures</a> presentation by Carlo Acerbi and Balazs Szekely</li>
+                    <li><a href="../docs/Research_Insight_Backtesting_Expected_Shortfall_December_2014.pdf">Backtesting Expected Shortfall</a> article by Acerbi and Szekely</li>
+                    <li><a href="../docs/GeneralPropertiesOfBacktestableStatistics.pdf">General Properties of Backtestable Statistics</a> article by Acerbi and Szekely</li>
+                </ul>
+            </p>
+
+            <p>In this project, student researchers will implement expected shortfall backtesting. Anticipate that we will prototype in Python+pandas+numpy, then translate to C++. Details to follow....</p>
+            <!--   <p>The project currently has these characteristics/features:
+                <ul>
+                    <li>MarketFactor class representing random variables used to value securities</li>
+                    <li>MarketData class containing MarketFactors. Can be populated from a <a href="data/IBM_T_NKE_AAPL_20141001-20160930.csv">file of historical prices</a>.</li>
+                    <li>MarketScenario class that represents a change in price levels of all MarketFactors</li>
+                    <li>Security types: Stocks, ETFs, FX (any simple security with an available source of observed prices)</li>
+                    <li>Position class that associates a quantity to a Security</li>
+                    <li>Portfolio class that contains positions</li>
+                    <li>Securities can be prices, and Positions and Portfolio valued given a base set of MarketFactor prices and a MarketScenario. This produces P&amp;L for each Position and the Portfolio.</li>
+                    <li>A set of classes for statistically analyzing the simulated P&amp;L. Statistics include <a href="https://en.wikipedia.org/wiki/Value_at_risk">VaR</a> and <a href="https://en.wikipedia.org/wiki/Expected_shortfall">Expected Shortfall</a>                        (aka Average VaR).</li>
+                </ul>
+            </p>
+
+            <p>Additional resources used:
+                <ul>
+                    <li>Obtained market data from <a href="https://finance.yahoo.com/quote/AMZN/history?period1=1412136000&period2=1475208000&interval=1d&filter=history&frequency=1d">Yahoo Finance</a>.</li>
+                    <li>Read CSV market data from a stream following <a href="http://www.umich.edu/~eecs381/handouts/filestreams.pdf">EECS 381 guidelines</a></li>
+                    <li>For date arithmetic, used the <a href="http://www.boost.org/doc/libs/1_62_0/doc/html/date_time/examples.html#date_time.examples.dates_as_strings">boost date_time library</a>.</li>
+                </ul>
+            </p> -->
+
+
+            <!-- <h3>Want to contribute?</h3>
+            <p>The code for the project is on <a href="https://github.com/pbenson/umich-quant">GitHub</a>. See <a href="contribute.html">how to contribute</a>.</p> -->
+
+        </section>
+        <footer>
+            <!-- <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p> -->
+        </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+</body>
+
+</html>
