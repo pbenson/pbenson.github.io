@@ -205,6 +205,10 @@ This is based on a Goldman Sachs interview question. You play a game where you t
 What is the expected number of rolls of a fair die needed to get all six numbers?
 \end{problem}
 
+\begin{problem}
+You have a bucket of unfair coins. Each coin has a probability of getting heads, $p$, which is uniformly distributed between zero and one. You pick a coin, and flip it 64 times, getting 48 heads. What is the expected value of $p$ for your coin? 
+\end{problem}
+
 %----------------------
 %Options
 %----------------------
@@ -334,20 +338,11 @@ Explain how a hash table works.
 \end{problem}
 
 \begin{problem}
-What algorithm would you use to find the $k$th order statistic of a list of numbers? 
+What algorithm would you use to find the $k$th order statistic of a list of numbers? What is the computational complexity of your solution?
 \end{problem}
 
 \begin{problem}
-Show how you would implement a \verb|BinaryTree| class for storing integers. Here is a start in C++,
-\begin{lstlisting}[language=C++]
-class BinaryTree {
-  public:
-    void addValue(int n);
-    bool hasValue(int n) const;
-    ...
-}
-\end{lstlisting}
-and in Python:
+Show how you would implement a \verb|BinaryTree| class for storing integers. Here is a start in Python:
 \begin{lstlisting}[language=python]
 class BinaryTree:
 	def addValue(self, n):
@@ -357,10 +352,19 @@ class BinaryTree:
    		...
 }
 \end{lstlisting}
-
 \end{problem}
 
+\begin{problem}
+Given an array of a million integers, and a target value $n$, determine how many pairs of numbers sum to $n$. What is the computational complexity of your solution?
+\end{problem}
 
+\begin{problem}
+You are given an unsorted list of 999,000 unique integers, each from 1 and 1,000,000. Find the missing 1000 numbers. What is the computational complexity of your solution?
+\end{problem}
+
+\begin{problem}
+You are given time series of one million prices at which you could buy and sell one unit of a product. How would you find the maximum profit you could make if you can only buy and sell once? What is the computational complexity of your solution?
+\end{problem}
 
 %----------------------
 %Fixed Income
@@ -457,7 +461,7 @@ You  have two identical boxes, and each box will break if dropped from the $n$th
 You have two strings, and a lighter. If you light a string at one end, it burns for one hour. You have no way of measuring or cutting the strings. How would you measure 45 minutes? \end{problem}
 
 \begin{problem}
-You are standing in a vast flat desert, one mile from the nearest road, which runs in a straight line.  You can't see the road until you are right on top of it. What is your strategy for finding the road with minimum hiking in the worst case?
+You are standing in a vast, flat desert on a moonless night. It is foggy, overcast, and raining hard. You are one mile from the nearest road, which is perfectly straight.  You can't see the road until you are right on top of it. What is your strategy for finding the road with minimum hiking in the worst case?
 \end{problem}
 
 \begin{problem}
