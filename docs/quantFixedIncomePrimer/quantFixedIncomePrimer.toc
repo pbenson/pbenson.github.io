@@ -2,4 +2,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}}{2}
+\contentsline {section}{\numberline {1.1}What are fixed income instruments?}{2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.1}Payers}{2}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.2}Zero coupon bond with riskless payer}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.3}Fixed coupon bond with riskless payer}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.4}Bootstrapping zero coupon curves}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {1.1.5}Bootstrapping a zero coupon curve}{3}
