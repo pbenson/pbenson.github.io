@@ -36,9 +36,11 @@
         The Industrial &amp; Operations Engineering department created the U of M's Masters of Science in Financial Engineering (MSFE) program, which admitted its first class in 1997. The program later moved to the Ross School of Business, and continued until 2014, when the last formal class graduated. The program had a similar mission to today's quant program, and it is worth studying what became of the earlier program's graduates.
       </p>
 
-      <p>To study this, we gathered data via web search, especially LinkedIn, in June 2017. This captured employment information on 486 of the 700+ graduates of the MSFE program. The intention is to extend this data to include the new Masters in Quantitative Finance and Risk Management. It will be periodically updated. </p>
+      <p>To study this, we gathered data via web search, especially LinkedIn, in June 2017. This captured employment information on almost 500 of the 700+ graduates of the MSFE program. The intention is to extend this data to include the new Masters in Quantitative Finance and Risk Management. It will be periodically updated. </p>
 
-      <p>We are primarily interested in what we can learn about employed graduates. The data on non-employed graduates tends to be extremely thin, so it is difficult to draw meaningful conclusions about them. Below is the breakdown of what we've found. The rest of our analysis is restricted to the employed graduates. </p>
+      <h2>Employed versus Unknown Job Status</h2>
+
+      <p>We are primarily interested in what we can learn about employed graduates. Most of the graduates we find on LinkedIn indicate they are employed. We don't typically know much about graduates we could not find on LinkedIn, though in rare cases we have found alternative sources such as FaceBook, or an academic site indicating they are back in school or teacheing.  If we found nothing, the graduate's job status is <em>unknown</em>. Below is the breakdown of what we found.</p>
 
 
       <style type="text/css">
@@ -60,23 +62,115 @@
 	}
 </style>
 <table class="tableizer-table">
-<thead><tr class="tableizer-firstrow"><th></th><th>1997</th><th>1998</th><th>1999</th><th>2000</th><th>2001</th><th>2002</th><th>2003</th><th>2004</th><th>2005</th><th>2006</th><th>2007</th><th>2008</th><th>2009</th><th>2010</th><th>2011</th><th>2012</th><th>2013</th><th>Grand Total</th></tr></thead><tbody>
- <tr><td>deceased</td><td>&nbsp;</td><td>1</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td></tr>
- <tr><td>employed</td><td>9</td><td>10</td><td>14</td><td>9</td><td>12</td><td>39</td><td>28</td><td>26</td><td>26</td><td>40</td><td>31</td><td>44</td><td>40</td><td>42</td><td>40</td><td>34</td><td>42</td><td>486</td></tr>
+<thead><tr class="tableizer-firstrow"><th><em>Job status</em></th><th>1997</th><th>1998</th><th>1999</th><th>2000</th><th>2001</th><th>2002</th><th>2003</th><th>2004</th><th>2005</th><th>2006</th><th>2007</th><th>2008</th><th>2009</th><th>2010</th><th>2011</th><th>2012</th><th>2013</th><th>Grand Total</th></tr></thead><tbody>
+ <tr><td>employed</td><td>9</td><td>10</td><td>14</td><td>9</td><td>12</td><td>39</td><td>28</td><td>26</td><td>26</td><td>40</td><td>31</td><td>44</td><td>40</td><td>42</td><td>41</td><td>34</td><td>42</td><td>487</td></tr>
  <tr><td>looking</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>4</td></tr>
  <tr><td>retired</td><td>1</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>3</td></tr>
  <tr><td>self-employed</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td></tr>
  <tr><td>student</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>&nbsp;</td><td>2</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>2</td><td>2</td><td>&nbsp;</td><td>9</td></tr>
  <tr><td>unemployed</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td></tr>
- <tr><td>unknown</td><td>5</td><td>3</td><td>2</td><td>12</td><td>31</td><td>33</td><td>35</td><td>16</td><td>14</td><td>30</td><td>16</td><td>11</td><td>15</td><td>9</td><td>16</td><td>12</td><td>13</td><td>273</td></tr>
- <tr><td>Grand Total</td><td>15</td><td>14</td><td>18</td><td>21</td><td>44</td><td>74</td><td>66</td><td>43</td><td>42</td><td>73</td><td>47</td><td>55</td><td>55</td><td>52</td><td>58</td><td>48</td><td>55</td><td>780</td></tr>
+ <tr><td>unknown</td><td>5</td><td>3</td><td>2</td><td>12</td><td>31</td><td>33</td><td>35</td><td>16</td><td>14</td><td>30</td><td>16</td><td>11</td><td>15</td><td>9</td><td>15</td><td>12</td><td>13</td><td>272</td></tr>
+ <tr><td>Grand Total</td><td>15</td><td>13</td><td>17</td><td>21</td><td>44</td><td>74</td><td>66</td><td>43</td><td>42</td><td>73</td><td>47</td><td>55</td><td>55</td><td>52</td><td>58</td><td>48</td><td>55</td><td>778</td></tr>
 </tbody></table>
+
+<p>Of course, we do know something about the demographics of the unknown versus the employed. We know each student's citizenship at the time of admission, and the year they were admitted. For the sake of clarity and statistical significance, we have grouped each student's citizenship into USA, India, China, or other. </p>
+
+<style type="text/css">
+	table.tableizer-table {
+    margin-left: -250px;
+		font-size: 12px;
+		border: 1px solid #CCC;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+	}
+	.tableizer-table th {
+		background-color: #104E8B;
+		color: #FFF;
+		font-weight: bold;
+	}
+</style>
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow"><th><em>Employed</em></th><th>1997</th><th>1998</th><th>1999</th><th>2000</th><th>2001</th><th>2002</th><th>2003</th><th>2004</th><th>2005</th><th>2006</th><th>2007</th><th>2008</th><th>2009</th><th>2010</th><th>2011</th><th>2012</th><th>2013</th><th>Grand Total</th></tr></thead><tbody>
+ <tr><td>CHN</td><td>&nbsp;</td><td>1</td><td>1</td><td>1</td><td>&nbsp;</td><td>6</td><td>9</td><td>5</td><td>7</td><td>14</td><td>6</td><td>16</td><td>23</td><td>23</td><td>18</td><td>20</td><td>28</td><td>178</td></tr>
+ <tr><td>IND</td><td>&nbsp;</td><td>1</td><td>1</td><td>&nbsp;</td><td>4</td><td>6</td><td>4</td><td>1</td><td>3</td><td>11</td><td>12</td><td>12</td><td>3</td><td>3</td><td>13</td><td>5</td><td>8</td><td>87</td></tr>
+ <tr><td>other</td><td>4</td><td>4</td><td>9</td><td>6</td><td>7</td><td>17</td><td>11</td><td>13</td><td>8</td><td>9</td><td>9</td><td>10</td><td>9</td><td>7</td><td>6</td><td>7</td><td>5</td><td>141</td></tr>
+ <tr><td>USA</td><td>5</td><td>4</td><td>3</td><td>2</td><td>1</td><td>10</td><td>4</td><td>7</td><td>8</td><td>6</td><td>4</td><td>6</td><td>5</td><td>9</td><td>4</td><td>2</td><td>1</td><td>81</td></tr>
+ <tr><td>Grand Total</td><td>9</td><td>10</td><td>14</td><td>9</td><td>12</td><td>39</td><td>28</td><td>26</td><td>26</td><td>40</td><td>31</td><td>44</td><td>40</td><td>42</td><td>41</td><td>34</td><td>42</td><td>487</td></tr>
+</tbody></table>
+
+<p>Here is the distribution for those whose status is <em>unknown</em>.</p>
+<style type="text/css">
+	table.tableizer-table {
+    margin-left: -250px;
+		font-size: 12px;
+		border: 1px solid #CCC;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+	}
+	.tableizer-table th {
+		background-color: #104E8B;
+		color: #FFF;
+		font-weight: bold;
+	}
+</style>
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow"><th><em>Job status unknown<em></th><th>1997</th><th>1998</th><th>1999</th><th>2000</th><th>2001</th><th>2002</th><th>2003</th><th>2004</th><th>2005</th><th>2006</th><th>2007</th><th>2008</th><th>2009</th><th>2010</th><th>2011</th><th>2012</th><th>2013</th><th>Grand Total</th></tr></thead><tbody>
+ <tr><td>CHN</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>1</td><td>4</td><td>10</td><td>12</td><td>6</td><td>4</td><td>15</td><td>7</td><td>4</td><td>8</td><td>9</td><td>10</td><td>11</td><td>9</td><td>111</td></tr>
+ <tr><td>IND</td><td>1</td><td>&nbsp;</td><td>&nbsp;</td><td>1</td><td>2</td><td>&nbsp;</td><td>2</td><td>&nbsp;</td><td>1</td><td>2</td><td>3</td><td>1</td><td>1</td><td>&nbsp;</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>17</td></tr>
+ <tr><td>other</td><td>2</td><td>1</td><td>1</td><td>8</td><td>23</td><td>21</td><td>16</td><td>8</td><td>8</td><td>11</td><td>5</td><td>3</td><td>6</td><td>&nbsp;</td><td>2</td><td>1</td><td>2</td><td>118</td></tr>
+ <tr><td>USA</td><td>2</td><td>2</td><td>&nbsp;</td><td>2</td><td>2</td><td>2</td><td>5</td><td>2</td><td>1</td><td>2</td><td>1</td><td>3</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>2</td><td>26</td></tr>
+ <tr><td>Grand Total</td><td>5</td><td>3</td><td>2</td><td>12</td><td>31</td><td>33</td><td>35</td><td>16</td><td>14</td><td>30</td><td>16</td><td>11</td><td>15</td><td>9</td><td>15</td><td>12</td><td>13</td><td>272</td></tr>
+</tbody></table>
+
+<p>We can combine these tables to get the percentage of those unknown among those who are employed or unknown:</p>
+
+<style type="text/css">
+	table.tableizer-table {
+    margin-left: -250px;
+		font-size: 12px;
+		border: 1px solid #CCC;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+	}
+	.tableizer-table th {
+		background-color: #104E8B;
+		color: #FFF;
+		font-weight: bold;
+	}
+</style>
+<table class="tableizer-table">
+<thead><tr class="tableizer-firstrow"><th><em>% Unknown</em></th><th>1997</th><th>1998</th><th>1999</th><th>2000</th><th>2001</th><th>2002</th><th>2003</th><th>2004</th><th>2005</th><th>2006</th><th>2007</th><th>2008</th><th>2009</th><th>2010</th><th>2011</th><th>2012</th><th>2013</th><th>Grand Total</th></tr></thead><tbody>
+ <tr><td>CHN</td><td>&nbsp;</td><td>0%</td><td>50%</td><td>50%</td><td>100%</td><td>63%</td><td>57%</td><td>55%</td><td>36%</td><td>52%</td><td>54%</td><td>20%</td><td>26%</td><td>28%</td><td>36%</td><td>35%</td><td>24%</td><td>38%</td></tr>
+ <tr><td>IND</td><td>100%</td><td>0%</td><td>0%</td><td>100%</td><td>33%</td><td>0%</td><td>33%</td><td>0%</td><td>25%</td><td>15%</td><td>20%</td><td>8%</td><td>25%</td><td>0%</td><td>19%</td><td>0%</td><td>0%</td><td>16%</td></tr>
+ <tr><td>other</td><td>33%</td><td>20%</td><td>10%</td><td>57%</td><td>77%</td><td>55%</td><td>59%</td><td>38%</td><td>50%</td><td>55%</td><td>36%</td><td>23%</td><td>40%</td><td>0%</td><td>25%</td><td>13%</td><td>29%</td><td>46%</td></tr>
+ <tr><td>USA</td><td>29%</td><td>33%</td><td>0%</td><td>50%</td><td>67%</td><td>17%</td><td>56%</td><td>22%</td><td>11%</td><td>25%</td><td>20%</td><td>33%</td><td>0%</td><td>0%</td><td>0%</td><td>0%</td><td>67%</td><td>24%</td></tr>
+ <tr><td>Grand Total</td><td>36%</td><td>23%</td><td>13%</td><td>57%</td><td>72%</td><td>46%</td><td>56%</td><td>38%</td><td>35%</td><td>43%</td><td>34%</td><td>20%</td><td>27%</td><td>18%</td><td>27%</td><td>26%</td><td>24%</td><td>36%</td></tr>
+</tbody></table>
+<p>This raises interesting questions. Why do 38% of Chinese graduates have unknown job status, but only 16% of Indian students? Citizenship is clearly a predictor of job status. Certainly, since job status is based largely on data gathered on LinkedIn, we have to consider that students preference for LinkedIn could be driven by where they are (e.g. perhaps the Chinese job market does not use LinkedIn as much) or cultural differences (e.g. perhaps Indian students are simply more keen to create a profile). However, given the widespread usage of LinkedIn in the US, it seems reasonable to assume that the vast majority of graduates who work in the US will have a profile reflecting that fact. And if that's the case, then it appears that Chinese graduates are less likely to have US jobs than Indian or USA graduates. Why?</p>
+
+<p>We haven't surveyed the motivations for our graduates. Some undoubtedly have a preference for a particular location after graduating. This is an important piece of information in guiding the job search. Currently, we provide only limited support for students who intend to work outside the US. </p>
+
+<p>Demand and which markets are hot for quants also varies over time. Since the percentage of students from China has been increasing, the job status differences may somewhat reflect job market differences.</p>
+
+<h2>Employed graduates</h2>
 
       <p>Many of the students have post-graduate degrees, including PhDs, MBAs, JDs, even an MD. You can see a <a href="post-grad.html">summary here</a>. </p>
 
       <p>Students have been hired at over 300 different firms, with half of the jobs going to the top 30 employers. You can see the <a href="employers.html">complete list here</a>. These jobs are in <a href="cities.html">these cities</a>.</p>
 
-      <p>The citizenship of our admitted students has shifted dramatically over the years, featuring a trend that has been continued by the current program. The fraction of students from China has grown to saturation. The new program has admitted 94%-100% Chinese students each year. <img src="CitizenshipByYear.png" /></a></p>
+      <p>The <a href="citizenship.html">citizenship</a> of our admitted students has shifted dramatically over the years, featuring a trend that has been continued by the current program. When the MSFE program ended in 2014, Chinese students made up 67% of the class. The new quant program has admitted 94%-100% Chinese students each year. <img src="CitizenshipByYear.png" /></a></p>
 
     </section>
     <footer>
