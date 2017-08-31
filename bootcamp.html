@@ -126,9 +126,9 @@
         <li>Day 4
           <ol type="a">
             <li>warmup: individually, solve <a href="docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf" target="_blank">interview problem 1.11</a>.</li>
-              <li>In <code>python-interview-notebook.ipynb</code>, simulate the two coins problem, plot the distribution of winnings, and compute the mean.</li>
-              <li>warmup: In informal teams, work on <a href="docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf" target="_blank">interview problem 3.12 (flipping two coins problem)</a>.</li>
-          <li>Create a GitHub repo called <code>cv</code>. Add your resume to it, including a pdf version. We will look at two ways to create a link from your U of M site to your resume, using GitHub Pages, and <a href="https://rawgit.com">RawGit</a>. The
+            <li>In <code>python-interview-notebook.ipynb</code>, simulate the two coins problem, plot the distribution of winnings, and compute the mean.</li>
+            <li>warmup: In informal teams, work on <a href="docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf" target="_blank">interview problem 3.12 (flipping two coins problem)</a>.</li>
+            <li>Create a GitHub repo called <code>cv</code>. Add your resume to it, including a pdf version. We will look at two ways to create a link from your U of M site to your resume, using GitHub Pages, and <a href="https://rawgit.com">RawGit</a>. The
               important thing is that whatever method you use, your URL should take you directly to the pdf of your resume, so that we can reliably retrieve your resume via a script.</li>
             <li>Discuss the <a href="http://princetonquanttrading.org">Princeton Quant Trading Conference</a> in Chicago on Oct 23rd.</li>
             <li>Introduction to <a href="quant-projects/portfolio_modeling.html">modeling market risk</a>.</li>
@@ -144,12 +144,31 @@
             <li>Create <code>python-hackerrank-notebook.ipynb</code> in your Quant-python repo, and solve the <a href="https://www.hackerrank.com/challenges/balanced-brackets">balanced brackets problem</a>. Push your changes to your GitHub repo.</li>
             <li>Survey: are you interested in attending the <a href="http://princetonquanttrading.org">Princeton Quant Trading Conference</a> in Chicago on Oct 23rd?</li>
             <li>Continuing to <a href="quant-projects/portfolio_modeling.html">modeling market risk</a>.
-            <ol>
-              <li>Create a portfolio of 100 shares of AMZN stock, and compute 5%-quantile VaR.</li>
-              <li>For the portfolio of 100 shares of AMZN stock,  compute 5%-quantile Expected Shortfall (aka average VaR or conditional VaR).</li>
-              <li>Begin simulation of 3 stocks (AMZN, GOOG, and AAPL).</li>
-            </ol>
-          </li>
+              <ol>
+                <li>Create a portfolio of 100 shares of AMZN stock, and compute 5%-quantile VaR.</li>
+                <li>For the portfolio of 100 shares of AMZN stock, compute 5%-quantile Expected Shortfall (aka average VaR or conditional VaR).</li>
+                <li>Begin simulation of 3 stocks (AMZN, GOOG, and AAPL).</li>
+              </ol>
+            </li>
+            <!-- <li>Install <a href="https://www.jetbrains.com/pycharm/download/">PyCharm Community Edition</a>. We’ll be doing some Python in an IDE that has better debugging support than Jupyter.</li>
+            <li>Solve the BinaryTree problem from the <a href="https://pbenson.github.io/docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf">technical interview book</a>. </li>
+            <li>Do LeetCode problems 2 and 20.</li> -->
+          </ol>
+        </li>
+        <li>Day 6
+          <ol type="a">
+            <li>warmup: individually, solve <a href="docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf" target="_blank">interview problem 3.4</a>. Compare your answer with others.</li>
+            <li>warmup: In informal teams, work on <a href="docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf" target="_blank">interview problem 3.14 (the Monte Hall problem)</a>.</li>
+            <li>Class discussion: <a href="docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf" target="_blank">Russell 3000 covariance matrix</a>.</li>
+            <li>Back to <a href="quant-projects/portfolio_modeling.html">modeling market risk</a>.
+              <ol>Simulation of 3 stocks (AMZN, GOOG, and AAPL)
+                <li>Create a CSV or tab-delimited file similar to your Amazon file, but add columns for the closing prices of Google and Apple.</li>
+                <li>In Python, create a PriceSeries class.</li>
+                <li>In Python, figure out how to read the prices from your file, and create PriceSeries objects for each of the three stocks.</li>
+                <li>Modify your PriceSeries class so that it also caches the log returns.</li>
+                <li>Modify your PriceSeries class so that it also caches the log returns.</li>
+              </ol>
+            </li>
             <!-- <li>Install <a href="https://www.jetbrains.com/pycharm/download/">PyCharm Community Edition</a>. We’ll be doing some Python in an IDE that has better debugging support than Jupyter.</li>
             <li>Solve the BinaryTree problem from the <a href="https://pbenson.github.io/docs/quantTechnicalQuestions/quantTechnicalQuestions.pdf">technical interview book</a>. </li>
             <li>Do LeetCode problems 2 and 20.</li> -->
