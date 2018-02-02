@@ -1,17 +1,17 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Pure math}{2}
+\contentsline {chapter}{\numberline {1}General math}{2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Linear Algebra}{3}
+\contentsline {chapter}{\numberline {2}Linear Algebra}{4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Probability}{4}
+\contentsline {chapter}{\numberline {3}Probability}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Options}{6}
+\contentsline {chapter}{\numberline {4}Options}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Risk Management}{7}
+\contentsline {chapter}{\numberline {5}Risk Management}{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}OOP, C++, Python}{8}
+\contentsline {chapter}{\numberline {6}OOP, C++, Python}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Fixed Income}{10}
+\contentsline {chapter}{\numberline {7}Fixed Income}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Brain Teasers}{11}
+\contentsline {chapter}{\numberline {8}Brain Teasers}{12}
