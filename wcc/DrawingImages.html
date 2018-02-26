@@ -1,0 +1,413 @@
+<html>
+<head>
+<title>Drawing Images</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="../global_styles.css" type="text/css">
+</head>
+
+<body bgcolor="white" text="#000000">
+<h1>Drawing Images</h1>
+<p class="backgroundYellow"><span class="highlightedBkgYellow">Confession:</span> In this course I tend to use a &quot;loadImage&quot; routine that you see in my &quot;ImageStuff&quot; class below that is short but wasteful. I construct an ImageIcon just to conveniently access it's Image class. Then I throw away the ImageIcon. Simple and short, but wasteful. For those of you who care, I offer the following direct and clean (but slightly longer) alternative method:</p>
+<pre class="code">   private Image loadImage(String fileName) {
+       Image image=null;
+       try {
+           image = ImageIO.read(new File(fileName));
+       } catch (IOException ex) {
+
+           System.out.println("Error reading file:"+fileName + " err="+ex);
+       }
+       return image;
+   }
+</pre>
+<h2>Images:</h2>
+<p><img src="images/player1.png" width="300" height="250"></p>
+<p>Place the above directory at the top level of your Project directory (same 
+  level as src).</p>
+<p>Run the following program: 
+<pre class="code">
+
+
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+
+public class ImageStuff extends JFrame
+{
+   <span class="highlighted">Image player ;</span>
+   private Image loadImage(String fileName) 
+        {
+     <span class="highlighted">     return new ImageIcon(fileName).getImage();</span>
+        }
+    
+    public ImageStuff(String name)
+    {
+        super(name);
+        setSize(1000, 1000);
+        <span class="highlighted">player = loadImage("player1.png");</span>
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    
+    }
+
+    public void paint(Graphics g)
+    {      
+       super.paint(g);
+       int h = getHeight();
+       int w = getWidth();
+      <span class="highlighted"> int ih = player.getHeight(null);
+       int iw  = player.getWidth(null);</span>
+       System.out.println("Image width="+iw + " Image height="+ ih);
+     
+       
+      <span class="highlighted"> g.drawImage(player, 20, 20, null);</span>
+       g.drawString("natural: 20,20", 20, 300);
+       
+      <span class="highlighted"> g.drawImage(player, 350,20, 150,200, null); </span>
+       g.drawString("scaled: 350,20,150,200", 350, 300);  
+       //********************************************************
+       
+       <span class="highlighted">g.drawImage(player, 20, 320, 320, 570, 0, 0, 300, 250, null);</span>
+       g.drawString("natural: 20, 320, 320, 570, 0, 0, 300, 250", 20, 570); 
+           
+       g.drawImage(player, 350, 320, 650, 570, 0, 0, 300, 250, null);
+       g.drawString("natural: 350, 320, 650, 570, 0, 0, 300, 250", 350, 570); 
+       
+
+       g.drawImage(player, 20, 620, 320, 870, 0, 0, 300, 250, null);
+       g.drawString("natural: 20, 620, 320, 870, 0, 0, 300, 250", 20, 870); 
+           
+       g.drawImage(player, 350, 620, 650, 870, 0, 0, 300, 250, null);
+       g.drawString("natural: 350, 320, 650, 570, 0, 0, 300, 250", 350, 870); 
+       
+    }
+
+    public static void main(String[] args) 
+    { 
+        ImageStuff imageStuff = new ImageStuff("Image Drawing"); 
+    } // end of main
+
+
+}
+</pre>
+<p><img src="imageDrawFeatures.png" width="766" height="579" border="2"></p>
+<h3>Image Gymnastics</h3>
+<pre class="code">
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+
+public class ImageStuff extends JFrame
+{
+   Image player ;
+   private Image loadImage(String fileName) 
+        {
+          return new ImageIcon(fileName).getImage();
+        }
+    
+    public ImageStuff(String name)
+    {
+        super(name);
+        setSize(1000, 1000);
+        player = loadImage("player1.png");
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    
+    }
+
+    public void paint(Graphics g)
+    {      
+       super.paint(g);
+       int h = getHeight();
+       int w = getWidth();
+       int ih = player.getHeight(null);
+       int iw  = player.getWidth(null);
+       System.out.println("Image width="+iw + " Image height="+ ih);
+     
+       
+       g.drawImage(player, 20, 20, null);
+       g.drawString("natural: 20,20", 20, 270);
+       
+       g.drawImage(player, 350,20, 150,200, null); 
+       g.drawString("scaled: 350,20,150,200", 320, 270);  
+       //********************************************************
+       
+       g.drawImage(player, 20, 280, 320, 530, 0, 0, 300, 250, null);
+       g.drawString("natural: 20, 280, 320, 530, 0, 0, 300, 250", 20, 530); 
+           
+       <span class="highlighted">g.drawImage(player, 350, 530, 650, 280, 0, 0, 300, 250, null);</span>
+       g.drawString("v flipped: 350, 530, 650, 280, 0, 0, 300, 250", 320, 530); 
+       
+       <span class="highlighted">g.drawImage(player, 670, 280, 970, 405, 0, 0, 300, 125, null);</span>
+       g.drawString("crop y: 670, 280, 970, 405, 0, 0, 300, 125", 670, 530);
+       
+       //********************************************************
+       
+       <span class="highlighted">g.drawImage(player, 320, 560, 20, 810, 0, 0, 300, 250, null);</span>
+       g.drawString("h flipped: 320, 560, 20, 810, 0, 0, 300, 250", 20, 810); 
+           
+      <span class="highlighted"> g.drawImage(player, 650, 810, 350, 560, 0, 0, 300, 250, null);</span>
+       g.drawString("v,h flipped: 650, 810, 350, 560, 0, 0, 300, 250", 320, 810); 
+       
+       <span class="highlighted">g.drawImage(player, 670, 560, 820, 810, 0, 0, 150, 250, null);</span>
+       g.drawString("crop x: 670, 560, 820, 810, 0, 0, 150, 250", 670, 810);
+       
+    }
+
+    public static void main(String[] args) 
+    { 
+        ImageStuff imageStuff = new ImageStuff("Image Drawing"); 
+    } // end of main
+
+
+}
+</pre>
+
+<hr>
+<h1>Exercises</h1>
+<ol>
+<li>Create a Checkers Board and draw in the Checker Pieces. <br>
+  <img src="images/blackChecker.png" width="139" height="140">
+  <img src="images/redChecker.png" width="131" height="137">
+  
+  <br>
+  <pre class="code">
+package checkers;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Insets;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+
+
+public class Checkers extends JFrame
+{
+   Image redChecker, blackChecker ;
+   private Image loadImage(String fileName) 
+        {
+          return new ImageIcon(fileName).getImage();
+        }
+    
+    public Checkers(String name)
+    {
+        super(name);
+        setSize(800, 600);
+        redChecker = loadImage("redChecker.png");
+        blackChecker = loadImage("blackChecker.png");
+        setVisible(true);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+    
+   <span class="highlighted"> void drawInBox(Graphics g, Image img, int x, int y, int w, int h)
+    {
+        int ih = img.getHeight(null);
+        int iw  = img.getWidth(null);
+        
+       </span><span class="highlightedBkgYellow"> double scale_width = (double)w/iw;
+        double scale_height = (double)h/ih;
+        
+        double scale = Math.min(scale_width, scale_height);</span><span class="highlighted">
+        int newHeight = (int)(ih*scale);
+        int newWidth = (int)(iw*scale);
+        int newX = x + w/2 - newWidth/2;
+        int newY = y + h/2 - newHeight/2;
+        
+       </span><span class="highlightedBkgYellow"> g.drawImage(img, newX, newY, newWidth, newHeight, null);</span><span class="highlighted">
+    }</span>
+
+    public void paint(Graphics g)
+    {      
+       super.paint(g);
+       Insets insets = getInsets();
+       int top = insets.top;
+       int bottom = insets.bottom;
+       int left = insets.left;
+       int right = insets.right;
+       
+       int height = getHeight();
+       int width = getWidth();
+       
+       int cell_h = (height-top-bottom)/8;
+       int cell_w = (width-left-right)/8;
+      
+       int x,y;
+       
+       for (int row=0; row &lt; 8; row++)
+       {
+           y = top + row*cell_h;
+           for (int col=0; col &lt; 8; col++)
+           {
+               x = left + col*cell_w;
+               boolean greenColor = (row+col) %2 == 1;
+               if (greenColor)
+               {
+                   g.setColor(Color.green);
+               }
+               else
+               {
+                   g.setColor(Color.white);
+               }
+               g.fillRect(x, y, cell_w, cell_h);
+               if (greenColor)
+               {
+                   Image img = null;
+                   if (row &lt;= 2)
+                   {
+                       img = redChecker;
+                   }
+                   else if (row &gt;= 5)
+                   {
+                       img = blackChecker;
+                   }
+                   if (img != null)
+                       <span class="highlighted">drawInBox(g, img, x, y,
+                           cell_w, cell_h);</span>
+               }
+           }
+       }
+       
+      
+     
+    
+       
+    }
+
+    public static void main(String[] args) 
+    { 
+        Checkers imageStuff = new Checkers("Image Drawing"); 
+    } // end of main
+
+
+}
+  </pre>
+<li>Create a chess board  and add the following chess pieces to it:<br>
+    <img src="images/blackBishop.gif" width="34" height="78"> blackBishop.gif<br>
+     <img src="images/blackKing.gif" width="35" height="78"> blackKing.gif<br>
+     <img src="images/blackKnight.gif" width="31" height="77"> blackKnight.gif<br>
+     <img src="images/blackPawn.gif" width="29" height="77"> blackPawn.gif<br>
+     <img src="images/blackQueen.gif" width="33" height="76"> blackQueen.gif<br>
+     <img src="images/blackRook.gif" width="36" height="75"> blackRook.gif<br>
+     <img src="images/whiteBishop.gif" width="36" height="79"> whiteBishop.gif<br>
+     <img src="images/whiteKing.gif" width="28" height="77"> whiteKing.gif<br>
+     <img src="images/whiteKnight.gif" width="38" height="77"> whiteKnight.gif<br>
+     <img src="images/whitePawn.gif" width="42" height="76"> whitePawn.gif<br>
+     <img src="images/whiteQueen.gif" width="30" height="77"> whiteQueen.gif<br>
+     <img src="images/whiteRook.gif" width="42" height="78"> whiteRook.gif<br>
+  
+</ol>
+<p class="bold_italics_underline">Throw all of the images you see above into the top level of your project.  Save them with names like: whiteQueen.gif </p>
+<p>You can use some of the Checkers code, but it can get quite ugly pretty quickly because we have a more complicated situation than the 2 images in checkers.</p>
+<p><span class="bold_italics_underline">See if you can use the following file productively to do the dirty work:<br>
+</span><a href="chessGameOnVideo.htm">Result created on the video</a></p>
+<h3>Piece.java</h3>
+<pre class="code">
+
+
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+<span class="highlightedBkgYellow">enum ColorType {black, white};
+enum PieceType {Pawn, Rook, Knight, Bishop, Queen, King};</span>
+
+
+<span class="highlightedBkgYellow">class ChessPiece</span>
+{
+   <span class="highlighted"> private static PieceType[] pieceType= PieceType.values(); 
+    private static ColorType[] colorType = ColorType.values();
+    
+    </span><span class="highlightedBkgYellow">public static ChessPiece[][]chessPieces = new ChessPiece[colorType.length][pieceType.length];</span>
+    
+    <span class="highlightedBkgYellow">public static void readInImages()</span>
+    {
+        for (int i=0; i &lt; colorType.length; i++)
+            for (int j=0; j &lt; pieceType.length; j++)
+                chessPieces[i][j] = new ChessPiece(i,j);
+    }
+
+    <span class="highlightedBkgYellow">public void draw(Graphics g, int x, int y, int wSpace, int hSpace)</span>
+    {
+        double scale_width= (double)wSpace/width;
+        double scale_height = (double)hSpace/height;
+        
+        double scale = Math.min(scale_width, scale_height);
+        int newHeight = (int)(height*scale);
+        int newWidth = (int)(width*scale);
+        x = x + wSpace/2 - newWidth/2;
+        y = y + hSpace/2 - newHeight/2;
+        <span class="highlighted">g.drawImage(pieceImg, x, y, newWidth, newHeight, null);</span>
+    }
+    
+    private Image pieceImg ;
+    private int width, height;
+  <span class="highlighted">  private Image loadImage(String fileName)</span> {
+            return new ImageIcon(fileName).getImage();
+        }
+    
+    <span class="highlighted">private ChessPiece(int colorIndex, int pieceIndex)</span>
+    {
+       <span class="highlighted"> String imageName =colorType[colorIndex].toString() +
+                pieceType[pieceIndex].toString()+".gif";</span>
+        
+        pieceImg = loadImage(imageName); 
+        width = pieceImg.getWidth(null);
+        height = pieceImg.getHeight(null);
+    }
+        
+    
+}
+
+<span class="highlighted">
+class BoardDimensions</span>
+{
+    int left,  top,  square_width, square_height;
+    BoardDimensions(int left, int top, int square_width, int square_height)
+    {
+        this.left=left;
+        this.top = top;
+        this.square_width = square_width;
+        this.square_height = square_height;
+    }
+}
+<span class="highlightedBkgYellow">
+class Piece</span>
+{    
+    int xSquare, ySquare;
+    PieceType pieceType;  
+    ColorType color;      
+    
+    <span class="highlightedBkgYellow">public Piece (PieceType p, ColorType color, int xSquare, int ySquare)</span>
+    {
+        this.pieceType=p;
+        this.color = color;
+        this.xSquare = xSquare;
+        this.ySquare = ySquare;
+    }
+    
+     <span class="highlightedBkgYellow">public void drawInPosition(Graphics g, BoardDimensions b)</span>
+     {
+         <span class="highlightedBkgYellow">ChessPiece chessPiece = ChessPiece.chessPieces[color.ordinal()][pieceType.ordinal()];</span>
+         int x = b.left+xSquare*b.square_width ;
+         int y = b.top+ySquare*b.square_height;
+         <span class="highlightedBkgYellow">chessPiece.draw(g,x,y,b.square_width,b.square_height);</span>
+     }
+    
+}
+
+
+</pre>
+<hr>
+Last Updated: 
+<!-- #BeginDate format:Am1a -->September 18, 2015 1:41 PM<!-- #EndDate -->
+</body>
+</html>

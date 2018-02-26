@@ -1,0 +1,200 @@
+<html>  
+<head><title>Networking: A Better Server Model</title>   
+<link rel="stylesheet" href="../global_styles.css">
+</head><body>
+<H1>Networking: A Better Server Model</h1>
+
+<p>We need a more functional Server that has a better structure. Here are the things we will accomplish:</p>
+<ol>
+  <li>We want the server to run in a thread that is not the main thread.</li>
+  <li>We want the main thread to have a way to terminate the server.</li>
+  <li>We want the Server to pass off the actual connection  to another thread to allow the Server to immediately go back to the accept call.</li>
+  <li>We would like to make use of most of this code by extending EchoServer so that we can <span class="bold_italics_underline">reuse this code for many protocol handlers</span>. </li>
+</ol>
+<p>&nbsp;</p>
+<h3><img src="MotherEchoThreads.PNG" width="791" height="283" border="4"></h3>
+<h3>MotherServer.java</h3>
+<pre class="code">
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
+public class MotherServer<span class="highlighted"> implements Runnable</span> {
+
+    ServerSocket serverSocket = null;
+    int portNum=-1;
+   <span class="highlighted"> EchoServer echoServer= null;</span>
+    boolean continueListening = true;
+    Thread myThread = null;
+
+<span class="highlighted">    boolean startServer(int portNum, EchoServer echoServer)</span>
+    {
+        this.portNum = portNum;
+        try {
+            <span class="highlightedBkgYellow">serverSocket = new ServerSocket(portNum);</span>
+        } catch (IOException e) {
+            System.out.println("ServerSocket connect error: " + e);
+            return false;
+        }
+       <span class="highlighted"> this.echoServer = echoServer; </span>
+        myThread = new Thread(this);
+        myThread.start();
+        return true;
+    }
+
+    <span class="highlighted">public void run()</span> // This is where the Server executes
+    {
+        continueListening = true;
+        while(continueListening)
+        {
+            try {
+             <span class="highlightedBkgYellow">   Socket sock = serverSocket.accept();</span>
+                <span class="highlighted">echoServer.handleConnect(sock);</span>
+            } catch (IOException e) {
+                System.out.println("ServerSocket accept error: " + e);
+                continueListening = false;
+            }
+        }
+        System.out.println("MyServer run thread exitting");
+    }
+
+   <span class="highlighted"> public void stopServer()</span>
+    {
+        continueListening = false;
+        try {
+            serverSocket.close();
+        } catch (IOException e) {
+            System.out.println("stopServer error: " + e);            
+        }
+    }
+
+<span class="highlighted">    static String getHostInfo()</span>
+    {
+        String retStr="";
+        try {
+            InetAddress iaddr = InetAddress.getLocalHost();
+            retStr= String.format("Host:%s ipaddr=%s",
+                    iaddr.getHostName(), iaddr.getHostAddress());
+        } 
+        catch (UnknownHostException e) {
+            retStr = e.toString();
+        }
+        
+        return retStr;
+    }
+}
+
+</pre>
+<h3>EchoServer.java </h3>
+<pre class="code">
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class EchoServer <span class="highlighted">implements  Runnable,</span><span class="highlightedBkgYellow"> Cloneable</span>{
+    
+    Socket clientSocket=null;
+    Thread myThread = null;
+
+    
+    
+     
+    <span class="highlighted">public void handleConnect(Socket s)</span> {
+        
+        clientSocket = s;
+
+        // Something very unique is happening here.  
+        // We want each connection to run on its own object
+        // However we don't want to call the EchoServer constructor to get this.
+        // We want this class to be the base of many other protocol handler classes.
+        // By calling clone, we will make an instance that has the characteristics of the 
+        // derived class instead of the EchoServer.
+
+        
+        try {
+            <span class="highlightedBkgYellow">Runnable protocol_handler = (Runnable)clone();</span>
+
+            Thread myThread = new Thread(<span class="highlightedBkgYellow">protocol_handler</span>);
+            System.out.println("Launching a new Child Thread");
+            <span class="highlighted">myThread.start();</span>
+        } 
+        catch (CloneNotSupportedException e) {
+            System.out.println("EchoServer.handleConnect Clone error: "+e);
+        }
+    }
+  <span class="highlighted">  public void run()</span>
+    {
+        InputStream is=null;
+        OutputStream os=null;
+        try {
+           <span class="highlighted"> is = clientSocket.getInputStream();
+            os = clientSocket.getOutputStream();</span>
+
+           <span class="highlighted"> processStream(is, os);</span>
+            
+        } 
+        catch (IOException e) {
+            System.out.println("Echo Server Exception: "+e);
+        }<br>        finally<br>        {<br>            try<br>            {<br>                if (is != null) is.close();<br>                if (os != null) os.close();<br>            }<br>            catch (IOException e)<br>            {<br>                System.out.println(&quot;run:  Stupid exception that shouldn't happen&quot;);<br>            }<br>        }
+        System.out.println("Exitting Child Server Thread");
+    }
+    public <span class="highlighted">void processStream(InputStream is, OutputStream os)</span>
+    {
+        System.out.println("EchoServer.processStream begins");
+        Scanner input = new Scanner(is);
+        PrintStream ps = new PrintStream(os);
+        
+        while (input.hasNextLine())
+        {
+            processNextLine(input, ps);
+        }
+        input.close();
+        ps.close();
+        System.out.println("Exitting processStream");
+    }
+    <span class="highlighted">public void processNextLine(Scanner input, PrintStream ps)</span>
+    {
+        String s= input.nextLine();
+        ps.println(s);
+        System.out.println("EchoServer echoed: "+s);
+    }
+
+    public <span class="highlighted">void monitorServer()</span>
+    {
+      <span class="highlighted">  MotherServer myServer = new MotherServer();</span>
+        System.out.println(MotherServer.getHostInfo());
+        <span class="highlighted">myServer.startServer(4444, </span><span class="highlightedBkgYellow">this</span><span class="highlighted">);</span>
+                
+        Scanner keyboard = new Scanner(System.in);
+        String s="";
+        while (!s.equals("quit"))
+        {
+            System.out.println("Whenever you want to stop the server, enter \"quit\" ");
+            s = keyboard.next();
+        }
+        keyboard.close();
+      <span class="highlighted">  myServer.stopServer();</span>
+    }
+    public static void main(String[] args) {
+            
+        EchoServer es = new EchoServer();
+        es.monitorServer();
+        System.out.println("Exitting EchoServer");
+        
+    }
+
+    
+
+}
+
+</pre>
+<hr>
+ Last Modified: 
+<!-- #BeginDate format:Am1a -->September 6, 2015 10:55 PM<!-- #EndDate -->
+<p>&nbsp;</p>
+</body></html>
