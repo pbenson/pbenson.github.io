@@ -112,6 +112,9 @@
         </ol>
       </details>
       <details>
+        <summary>2017</summary>
+
+      <details>
         <summary>Dec 1, 2017</summary>
         <ol>
           <!-- <li>Warmup: Project Euler problem 50.</li> -->
@@ -299,31 +302,10 @@
             <li>Do LeetCode problems 2 and 20 (some of you have already done #20).</li>
             <li>Be able to explain why the sum of IES is equal to ES.</li>
             <li>We discovered that our C++ code for Monte Carlo does not react gracefully to an invalid name for a MarketFactor ("APL" is unknown). A better way to deal with this is through <a href="http://stackoverflow.com/questions/8480640/how-to-throw-a-c-exception">exceptions</a>.
-              <script type="syntaxhighlighter" class="brush: cpp">
-                <![CDATA[
-void PortfolioSimResult::validateQuantile(double quantile) const {
-   if(quantile < 1.0 / (m_profits.size() + 1) ) {
-     throw "in PortfolioSimResult::validateQuantile(), quantile too small....";
-   }
-   ... }
- ]]>
-              </script>
-
-              Note that we threw a string. Which of these <a href="http://stdcxx.apache.org/doc/stdlibref/2-3.html">standard exceptions</a> would have been better to throw? Can you add exception handling to these PortfolioSimResult methods? double var(double
-              quantile) const; double expectedShortfall(double quantile) const; If you do this problem, do a pull request from GitHub Desktop. If I like your code, I will add it to the codebase, and list you as a contributor!.</li>
-            <li>Recall the Jane Street min max correlation problem? An equivalent statement is problem 2.7 in the technical interview book. Try to solve it.</li>
-
-            <li>The mission of the <strong>Michigan Quant Lab</strong> is to prepare ourselves for employment through practice, and by demonstrating we are involved in something beyond the classroom. Think about the role(s) that need to be handled in the
-              Michigan Quant Lab. Do you want to be developing the website? Implementing pricing algorithms? Building the backtesting framework? Writing a paper that explains and documents parts of our codebase? Creating test cases to verify our algorithms
-              are working correctly? Organizing a Friday afternoon pizza-fueled meeting? Or something else?</li>
-
-
-      </details>
-      <details>
-        <summary>January 20, 2017</summary>
 
         <p>Carlo Acerbi of MSCI presented on <a href="../docs/GeneralPropertiesOfBacktestableStatistics.pdf">Backtesting expected shortfall</a>.
       </details>
+    </details>
 
       <h3>Projects</h3>
       <p>Students in the quant program have the opportunity to develop projects inspired by real-world applications. This involves reading research, designing solutions, and implementing them in a relevant development environment, such as <a href="../cpp/index.html">C++</a>        or <a href="../python/index.html">Python</a>. </p>
