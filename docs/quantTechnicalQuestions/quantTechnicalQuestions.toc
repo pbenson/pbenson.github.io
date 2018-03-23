@@ -6,12 +6,12 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Probability}{4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Options}{7}
+\contentsline {chapter}{\numberline {4}Options}{6}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Risk Management}{8}
+\contentsline {chapter}{\numberline {5}Risk Management}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}OOP, C++, Python}{9}
+\contentsline {chapter}{\numberline {6}OOP, C++, Python}{8}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Fixed Income}{11}
+\contentsline {chapter}{\numberline {7}Fixed Income}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Brain Teasers}{12}
+\contentsline {chapter}{\numberline {8}Brain Teasers}{11}
