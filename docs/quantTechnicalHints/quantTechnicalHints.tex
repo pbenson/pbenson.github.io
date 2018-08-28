@@ -1,0 +1,569 @@
+\documentclass{report}
+
+\usepackage{amsmath} % provides numberwithin (and lots more)
+\usepackage{graphicx}
+\usepackage{listings}
+%\usepackage[backend=bibtex]{biblatex}
+%\bibliography{qfrmTechnicalQuestionsDev}
+
+
+\newtheorem{problem}{}
+\numberwithin{problem}{chapter} % important bit
+\let\oldroblem\problem
+\renewcommand{\problem}{\oldroblem\normalfont}
+\newcommand{\ds}{\displaystyle}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ {\huge\bfseries Quant\\Technical Interview Hints\\}
+ % ----------------------------------------------------------------
+ \vspace{1.5cm}
+ {\bfseries Pete Benson}\\[5pt]
+ pbenson@umich.edu\\[14pt]
+  % ----------------------------------------------------------------
+ \vspace{10cm}
+ % ----------------------------------------------------------------
+\includegraphics{QFRM_rgb}\\[5pt]
+{Department of Mathematics}\\[5pt]
+{530 Church Street, 2082C East Hall}\\[5pt]
+{Ann Arbor, MI 48109-1043,
+ USA}\\
+ \vfill
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%----------------------
+% review
+%----------------------
+\chapter{General math}
+
+\begin{problem}
+%\cite{CRACK}
+%What is the value of $\sqrt{2}^{\sqrt{2}^{{\sqrt{2}^{...}}}}$?
+\end{problem}
+
+\begin{problem}
+%For what positive values of $a$ is $\sqrt{a +\sqrt{a +\sqrt{a +...}}}$  an integer?
+\end{problem}
+
+\begin{problem}
+%What is $\ds \int \frac{dx}{1+x^2}$?
+\end{problem}
+
+\begin{problem}
+%Find $\ds \int_0^\infty e^{-x^2}dx$.
+\end{problem}
+
+\begin{problem}
+%Does $\ds \sum_{n=1}^\infty \pi^{-\sqrt{n}}$ exist?
+\end{problem}
+
+\begin{problem}
+%\cite{CRACK}
+%If $p$ is a prime greater than 3, explain why $p^2-1$ is divisible by 24. 
+\end{problem}
+
+\begin{problem}
+%Solve $z^8=256$.
+\end{problem}
+
+\begin{problem}
+%\cite{STRAWA}
+%Which is larger, $\pi^e$ or $e^\pi$?
+\end{problem}
+
+\begin{problem}
+%Solve $f'(x)=f(x)^2+4$.
+\end{problem}
+
+\begin{problem}
+%Without assistance or writing anything down, estimate $\sqrt{10,302}$.
+\end{problem}
+
+\begin{problem}
+%Given that $p$ is prime, and that $16p+1 = x^3$ has an integer solution, what is $x$?
+\end{problem}
+
+\begin{problem}
+%Are there more ways to distribute 19 cookies among 18 students, or 18 cookies among 19 students? 
+\end{problem}
+
+\begin{problem}
+%It is snowing at a constant rate. At 6AM a snowplow begins clearing the road, removing snow volume at a constant rate. By 7AM, the plow has gone 2 miles. By 8am, the plow has gone another mile. What time did it start snowing?
+\end{problem}
+
+
+%----------------------
+%Linear Algebra
+%----------------------
+\chapter{Linear Algebra}
+
+\begin{problem}
+%What is meant by the {\it rank} of a matrix? 
+\end{problem}
+
+\begin{problem}
+%What is a  {\it singular} matrix? 
+\end{problem}
+
+\begin{problem}
+%What does the rank of a square matrix tell you about its eigenvalues?
+\end{problem}
+
+\begin{problem}
+%What does it mean for a matrix to be PSD? PD?
+\end{problem}
+
+\begin{problem}
+%If a matrix is PD, what do you know about its eigenvalues?
+\end{problem}
+
+\begin{problem}
+%For $M =\begin{bmatrix}
+%    2  & 3 \\
+%    3  & 5
+%\end{bmatrix}$, find $A$ such that $M=AA^{T}$.
+\end{problem}
+
+\begin{problem}
+%Suppose $M$ is an $n\times n$ correlation matrix, with correlation $\rho$ between any pair of random variables. What is the smallest possible value of $\rho$?
+\end{problem}
+
+\begin{problem}
+%What is the computational complexity of multiplying two square matrices? Complexity of the QR decomposition? Cholesky decomposition?
+\end{problem}
+
+\begin{problem}
+%What numerical issues arise when doing Cholesky decomposition on a matrix that is not PD? How can you address this issue?
+\end{problem}
+
+%----------------------
+%Probability
+%----------------------
+\chapter{Probability}
+
+\begin{problem}
+%You have a bag with two coins. One will come up heads 40\% of the time, and the other will come up heads 60\%. You pick a coin randomly, flip it and get a head. What is the probability it will be heads on the next flip?
+\end{problem}
+
+\begin{problem}
+%What is the Law of Large Numbers? The Central Limit Theorem? Give an example(s) of a distribution that satisfies one, but not both.
+\end{problem}
+
+\begin{problem}
+%In front of you is a jar of 1000 coins. One of the coins has two heads, and the rest are fair coins. You choose a coin at random, and flip it ten times, getting all heads. What is the probability it is one of the fair coins?
+\end{problem}
+
+\begin{problem}
+%Suppose you have a fair coin, and you flip it a million times. Estimate the probability that you get fewer than 499,000 heads.
+\end{problem}
+Hint: what is the standard deviation of the number of heads?
+
+\begin{problem}
+%\cite{STRAWA}
+%Starting at one vertex of a cube, and moving randomly from vertex to adjacent vertices, what is the expected number of moves until you reach the  vertex opposite from your starting point?
+\end{problem}
+Hint: How many states are there? Can you reduce it? How much can you reduce it?
+
+\begin{problem}
+%What are some important features of the exponential distribution?
+\end{problem}
+
+\begin{problem}
+%Give an example of random variables that are normal, uncorrelated, and dependent.
+\end{problem}
+
+\begin{problem}
+%You have a spinner that generates random numbers that are uniform between 0 and 1. You sum the spins until the sum is greater than one. What is the expected number of spins?
+\end{problem}
+
+\begin{problem}
+%$X \sim \mbox{N}(\mu_X, \sigma^2_X)$ and $Y \sim \mbox{N}(\mu_Y, \sigma^2_Y)$ are independent, and you know $X+Y=s$. What is the expected value of $X$? 
+\end{problem}
+
+\begin{problem}
+%A stick is broken randomly into 3 pieces. What is the probability of the pieces being able to form a triangle?
+\end{problem}
+
+\begin{problem}
+%A stick is broken randomly into two pieces. The larger piece is then broken randomly into two pieces. What is the probability of the pieces being able to form a triangle?
+\end{problem}
+
+\begin{problem}
+%This is based on a Goldman Sachs interview question. You play a game where you toss two fair coins in the air. You always win \$1. However, if you have tossed 2 heads at least once, and 2 tails at least once, you surrender all winnings, and cannot play again. You may stop playing at anytime. What's your strategy? 
+\end{problem}
+
+\begin{problem}
+%(St. Petersburg Paradox) Consider the following game played by flipping a fair coin. The pot begins at a \$1, and the pot doubles until a tail is flipped, at which point you receive the pot. Assume you can play as many times as you want. What would you pay to play this game? 
+\end{problem}
+
+\begin{problem}
+%(Monte Hall Problem) You are on a game show, and there are 3 doors. Two of the doors conceal something worthless, and one door conceals a valuable prize. The game show host, Monte Hall, knows where the prize is. He lets you pick a door, then he opens one of the remaining two doors to reveal something worthless. He then offers you the chance to switch doors. Should you? How would you convince someone else of your answer?
+\end{problem}
+
+\begin{problem}
+%What is the expected number of rolls of a fair die needed to get all six numbers?
+\end{problem}
+
+\begin{problem}
+%You have a bucket of unfair coins. Each coin has a probability of getting heads, $p$, which is uniformly distributed between zero and one. You pick a coin, and flip it 64 times, getting 48 heads. What is the expected value of $p$ for your coin? 
+\end{problem}
+Hint: If you answered 0.75, consider your answer if you flipped just once, and got one head. Try Bayes' Theorem to get expected value by conditioning on the observed outcome.
+
+\begin{problem}
+%A room of 100 people put their business cards in a hat, then each person randomly draws a business card. What's the expected number of people who draw their own business card?
+\end{problem}
+
+\begin{problem}
+%A red ant and a black ant are at opposite vertices of a cube. Each randomly picks an edge to traverse and moves to the next vertex. They continue this until they meet. What is the expected number of edges each ant traverses?
+\end{problem}
+
+\begin{problem}
+%If you roll a die repeatedly, what is the expected number of rolls until you see consecutive sixes?
+\end{problem}
+
+\begin{problem}
+%Alex and Beth take turns flipping a pair of coins. Once either person flips a pair of heads, the game is over. Alex flips first. Beth wins. What is the probability she flipped a pair of heads on her second turn?
+\end{problem}
+
+\begin{problem}
+%Hanxi flips a fair coin 11 times, and Chen flips the coin 10 times. How likely is it that Hanxi flipped more heads?
+\end{problem}
+
+%----------------------
+%Options
+%----------------------
+\chapter{Options}
+
+\begin{problem}
+%The stock of a company is trading at 100 USD. It is widely known that a merger decision will be made today, and depending on the news, the stock will trade at either \$96 or \$106 after the decision. Your research department believes there is a 50\% chance
+%        the company decides to merge. What is the price of a call option struck at the money, expiring immediately after the merger decision? What assumptions did you make?
+\end{problem}
+
+\begin{problem}
+%Without using a calculator, what is the approximate price of an at-the-money call on a \$30 stock with an implied vol of 33 maturing in 3 months? If you don't know a shortcut for this, derive a shortcut.
+\end{problem}
+
+\begin{problem}
+%Explain put-call parity.
+\end{problem}
+
+\begin{problem}
+%\cite{CRACK} For a standard European put option, draw the graph of the delta as a function of the current stock price.
+\end{problem}
+
+\begin{problem}
+%What is the approximate delta of an option struck at-the-money forward? In other words, struck at the forward price at option maturity?
+\end{problem}
+
+\begin{problem}
+%What is the volatility smile, and why might it exist?
+\end{problem}
+
+\begin{problem}
+%What is the volatility smirk, and why might it exist?
+\end{problem}
+
+\begin{problem}
+%Why are vanilla options quoted in terms of implied volatility?
+\end{problem}
+
+\begin{problem}
+%\cite{CRACK} What can you say about $\int_0^{T} W(t)dt$, where $W(t)$ is standard Brownian motion?
+\end{problem}
+
+\begin{problem}
+%\cite{CRACK} What can you say about $\int_0^{T} W(t)dW(t)$, where $W(t)$ is standard Brownian motion?
+\end{problem}
+
+%----------------------
+%Risk Management
+%----------------------
+\chapter{Risk Management}
+
+\begin{problem}
+%You collect 2 years of daily returns for the stocks in the Russell 3000. From the data you collect, you compute a covariance matrix $\Sigma$. How would you determine whether $\Sigma$ is singular?
+\end{problem}
+
+\begin{problem}
+%You have a basket of $n$ assets. The asset returns are multivariate normal with zero mean. If the assets are independent, what is the probability that $k$ of the assets will have positive return? What if assets are perfectly correlated? What if the correlation between any pair of assets is 1/2?
+\end{problem}
+
+\begin{problem}
+%\cite{CRACK} You are a portfolio manager, and intend to invest 100 USD in two stocks that are expected to have the same return. They have annual volatilies of 40\% and 60\%, and correlation of 80\%.  How much do you invest in each stock?
+\end{problem}
+
+\begin{problem}
+%Give an example of a portfolio with VaR that is not subadditive.
+\end{problem}
+
+\begin{problem}
+%Why is Expected Shortfall subadditive?
+\end{problem}
+
+\begin{problem}
+%Can you describe the steps involved in historical simulation of a portfolio?
+\end{problem}
+
+\begin{problem}
+%Describe the steps involved in Monte Carlo simulation of a portfolio?
+\end{problem}
+
+%----------------------
+%OOP, C++, Python, Java
+%----------------------
+\chapter{OOP, C++, Python}
+
+\begin{problem}
+%What is a class?
+\end{problem}
+
+\begin{problem}
+%What is polymorphism?
+\end{problem}
+
+\begin{problem}
+%What is inheritance? 
+\end{problem}
+
+\begin{problem}
+%What is composition?
+\end{problem}
+
+\begin{problem}
+%What data structure would you use for an indexed collection of real numbers? How would you declare it?
+\end{problem}
+
+\begin{problem}
+%How do you get the address of a variable in C++98? In C++11/14?
+\end{problem}
+
+\begin{problem}
+%How do you pass by reference?
+\end{problem}
+
+\begin{problem}
+%What operators do you use to access member data for an object? For a pointer or iterator to an object?
+\end{problem}
+
+\begin{problem}
+%When should you use the \verb|const| keyword?
+\end{problem}
+
+\begin{problem}
+%What is a constructor? A default constructor? 
+\end{problem}
+
+\begin{problem}
+%Explain how a hash table works.
+\end{problem}
+
+\begin{problem}
+%What algorithm would you use to find the $k$th order statistic of a list of numbers? What is the computational complexity of your solution?
+\end{problem}
+Hint: one solution is to use something akin to the Running Median problem, which uses a pair of max and min heaps.
+
+\begin{problem}
+%Show how you would implement a \verb|BinaryTree| class for storing integers. Here is a start in Python:
+%\begin{lstlisting}[language=python]
+%class BinaryTree:
+%	def addValue(self, n):
+%   		...
+%		
+%	def hasValue(self, n):
+%   		...
+%}
+%\end{lstlisting}
+\end{problem}
+
+\begin{problem}
+%Given an array of a million integers, and a target value $n$, determine how many pairs of numbers sum to $n$. What is the computational complexity of your solution?
+\end{problem}
+Hint: This is similar to the LeetCode Two Sum problem, so use a dictionary.
+
+\begin{problem}
+%You are given an unsorted list of 999,000 unique integers, each from 1 and 1,000,000. Find the missing 1000 numbers. What is the computational complexity of your solution?
+\end{problem}
+Hint: Use a boolean array of length one million.
+
+\begin{problem}
+%You are given time series of one million prices at which you could buy and sell one unit of a product. How would you find the maximum profit you could make if you can only buy and sell once? What is the computational complexity of your solution?
+\end{problem}
+
+%\begin{problem}
+%(Brainteaser) Come up with three ways to make the code below print exactly ten copies of the slash ('/') by altering or inserting one character. 
+%
+%\begin{lstlisting}[language=Java]
+%public class TestClass {
+%	public static void main(String[] args) {
+%		int i, n = 10;
+%		for (i = 0; i < n; i--)
+%		{
+%		    System.out.printf("/");
+%		}
+%	}
+%}
+%\end{lstlisting}
+
+%\end{problem}
+
+
+
+%----------------------
+%Fixed Income
+%----------------------
+\chapter{Fixed Income}
+
+\begin{problem}
+%How would you build a zero coupon curve from a US Treasury yield curve?
+\end{problem}
+
+\begin{problem}
+%How would you compute the price of a 10 year US Treasury with a 4\% coupon?
+\end{problem}
+
+\begin{problem}
+%The yield on a 5 year zero coupon drops 20bp. What happens to the price?
+\end{problem}
+
+\begin{problem}
+%A two-year Treasury strip yields 2\%, and a three-year strip yields 2.5\%. What is the one year yield, two years forward? 
+\end{problem}
+
+\begin{problem}
+%What is duration, and how is it used? What is convexity? 
+\end{problem}
+
+\begin{problem}
+%What do you know about MBS (mortgage-backed securities)? What is prepayment risk? What is burnout? What happens to the value of an MBS when interest rates drop? How does this differ from conventional bonds?
+\end{problem}
+
+\begin{problem}
+%What is the main idea behind a short rate interest model? What are some examples of short rate interest models? What are their distinguishing features?
+\end{problem}
+
+
+%----------------------
+%Brain Teasers
+%----------------------
+\chapter{Brain Teasers}
+
+\begin{problem}
+%You have 100 quarters, 10 heads, 90 tails up in a dark room where you can't see the quarters. How do you divide them into 2 piles where you have an the same number of heads in each pile?
+\end{problem}
+Hint: it doesn't say the number of heads must remain at 10, so you can flip coins over.
+
+\begin{problem}
+%A band of six perfectly logical, bloodthirsty pirates must divide a chest of 300 gold coins. The pirates are ranked by authority. The top pirate is the captain, and he proposes how the gold should be distributed. All of the pirates then vote yea or nay. If there are more nays than yeas, the captain is thrown overboard, and the next takes his place. This is repeated until there are at least as many yeas as nays, at which point the gold is distributed. Every pirate wants to survive, and if he survives, he wants as much gold as he can get. If it doesn't matter financially whether to accept or reject the proposal, he'd rather reject it and watch the captain get tossed overboard. Pirates cannot make deals with other pirates. What deal will the captain propose?
+\end{problem}
+Hint: suppose there were only two pirates. 
+
+\begin{problem}
+%Anna, Buzz, Charlene, and Dilbert must cross a bridge at night, and a torch is needed to cross. There is only one torch. The bridge can't handle more than two people at a time. Anna can cross in a minute, Buzz in 2 minutes, Charlene in 5, and Dilbert in 10. What is the quickest way to get all 4 across?
+\end{problem}
+Hint: the slow people need to cross together.
+
+\begin{problem}
+%You are in a canoe in a swimming pool, and you have a penny in your pocket. You toss the penny into the water. What happens to the water level in the swimming pool?
+\end{problem}
+Hint: imagine the penny is impossibly dense, weighing so much that the canoe is on the verge of sinking.
+
+\begin{problem}
+%There are 7 boxes in a row, one of which contains treasure. To get the treasure, you need only open the correct box. You must close the box before checking another box. Whenever you close a box, the treasure is moved to an adjacent box. What is the fewest number of boxes you need to open to be guaranteed you will find the treasure?
+\end{problem}
+Hint: where is the treasure after an even number of moves?
+
+\begin{problem}
+%It is 6pm, and the hour and minute hands are pointing in opposite directions. When will this happen next?
+\end{problem}
+You don't need a hint.
+
+\begin{problem}
+%There are one hundred coins on the table. You and an opponent take turns removing 1, 2, 3, or 4 coins at a time. You win if there are no coins left at the end of your turn. You may choose whether to go first or second. What do you do and why?
+\end{problem}
+Hint: play a smaller version of the game to gain insight. Bigger hint: look up the game of Nim.
+
+\begin{problem}
+%You have 20 coins which look identical, but one is slightly lighter than the others. You have a balance scale that tells you which side has more weight. What would you do to minimize the number of weighings?
+\end{problem}
+Hint: Can you benefit from weighing only some of the coins?
+
+\begin{problem}
+%You have 20 coins which look identical, but one has slightly different mass than the others (maybe more, maybe less). You have a balance scale that tells you which side has more weight. How many weighings do you need?
+\end{problem}
+Hint: Once weighed, you know where there are coins that weigh the same. Can you swap those in to determine where the  odd coin is?
+
+\begin{problem}
+%You have two glasses in front of you. The first is partly filled with wine, and the second is partly filled with of water. You pour some of the wine into the glass of water, and then you pour an equal amount of the mixture back into the glass of wine. Is there more water in the glass that was originally wine, or more wine in the glass that was originally water? Explain your answer.
+\end{problem}
+Hint: what do you get if you combine the amount of wine in one glass with the amount of wine in the other glass?
+
+\begin{problem}
+%Suppose there are 42 quant students, each assigned a unique integer from 1 to 42. Forty-two quarters are laid out on a table in a row, heads up. Each student goes to the table, and if they are assigned the number $n$, they turn over the $n$th coin, and every $n$th coin thereafter, as long as there are more coins. So, for example, the student who is assigned 20 will turn over the 20th and 40th coins, but then stop because there is no 60th coin. When everyone is done, how many tails are showing?
+\end{problem}
+Hint: whether a coin gets flipped is related to the number of factors of the coin's number. What kind of numbers have an odd number of factors?
+
+\begin{problem}
+%There are 37 racehorses. You can race them together 6 at a time, and observe their relative performance. You do not have a timer. How many races do you need to determine the three fastest horses?
+\end{problem}
+Hint: If you raced winners against each other, what can you conclude about the horses that initially ran against the winners?
+	
+\begin{problem}
+%You  have two identical boxes, and each box will break if dropped from the $n$th floor (or higher) of a 100-story building. What is your strategy for guaranteeing finding $n$ in the minimum number of drops? Given your strategy, what is the worst case number of drops?
+\end{problem}
+Hint: Try with a smaller number of floors to gain insight.
+
+\begin{problem}
+%You have two strings, and a lighter. If you light a string at one end, it burns for one hour. You have no way of measuring or cutting the strings. How would you measure 45 minutes? 
+\end{problem}
+Hint: what happens if you light both ends of a string?
+
+\begin{problem}
+%You are standing in a vast, flat desert on a moonless night. It is foggy, overcast, and raining hard. You are one mile from the nearest road, which is perfectly straight.  You can't see the road until you are right on top of it. What is your strategy for finding the road with minimum hiking in the worst case?
+\end{problem}
+Hint: You are at the center of a circle of radius 1 mile. Consider a single tangent to that circle. Your objective must include reaching that tangent, travel around and touch the tangent again. 
+
+\begin{problem}
+%Four villages lie at the vertices of a square, 10 km on each side, unconnected by any roads. They choose to pool their funds, and connect with roads so that you can reach any village from any other village. What is the minimum length of road needed?
+\end{problem}
+Hint: we don't say that roads meet in a village. There could be a junction outside of the town where roads meet. 
+
+\begin{problem}
+%Anna is looking at Betty.  Betty is looking at Chip.  Chip is not a programmer, but Anna is a programmer.  Is there enough information to know if a programmer is looking at a non-programmer?
+\end{problem}
+Hint: Does it matter whether Betty is a programmer or non-programmer?
+
+\begin{problem}
+%There are 64 people waiting to board an airplane, each with an assigned seat. The first to board has lost his boarding pass, and sits in a random seat. Every subsequent passenger has their boarding pass. If they find their assigned seat empty, they sit in it. Otherwise, they randomly pick an open seat. What is the probability the last passenger to board sits in his/her assigned seat?
+\end{problem}
+Hint: Change the problem abstraction, treating the first passenger's seat as the equivalent of drawing a particular marble (say black) out of a jar. Treat the last passenger's seat as a white marble. Everyone else's seat corresponds to a gray marble. Now treat this as a problem where we draw marbles from the jar. 
+
+\begin{problem}
+%The logical pirates have decided to grow their business, and bring in venture capital. Because pirates are greedy, new hires always insist on being made captain. Now there are 120 logical pirates. They find there are too many pirates to remember everyone's name and rank, so they just tattoo a number on their chest (1-120), with lower numbers meaning lower rank.  They discover a chest with 50 coins. After the gold is distributed, who is the captain?
+\end{problem}
+Hint: The implication is that the first captain may not survive. What is the largest number of pirates where the captain will survive?
+
+\begin{problem}
+%You have 100 red and 100 black marbles, to be distributed into two jars. Once distributed, a jar will be selected at random, and a marble randomly selected. What distribution of marbles will minimize the chance of getting a red marble?
+\end{problem}
+Hint: We don't say the marbles will be distributed evenly between the jars. 
+
+\begin{problem}
+%Jane offers to play the following game with you. Starting with a standard deck of 52 cards, you take turns drawing two cards. Jane goes first. If the two cards are black, Jane keeps them. If the cards are red, you keep them. If there is one red and one black card, the cards are discarded. When you have gone through the deck, you and Jane combine your cards, shuffle them, and resume, playing until one of the colors is eliminated. If there are red cards remaining, you win \$100. What is a fair price to pay to play this game?
+\end{problem}
+Hint: parity.
+
+%----------------------
+%Bibliography
+%----------------------
+%\printbibliography
+
+
+
+\end{document}
