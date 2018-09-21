@@ -3,6 +3,7 @@
 \usepackage{amsmath} % provides numberwithin (and lots more)
 \usepackage{graphicx}
 \usepackage{listings}
+
 %\usepackage[backend=bibtex]{biblatex}
 %\bibliography{qfrmTechnicalQuestionsDev}
 %\usepackage{glossaries}
@@ -66,17 +67,20 @@ Another trader works for a London firm, and also believes AAPL is undervalued. T
 
 A risk manager is responsible for tracking the {\it market risk} of a firm's portfolio, using statistics such as VaR and expected shortfall. Given their capitalization, the firm has chosen a 5\% quantile one-day VaR limit of USD 20m, with expected shortfall 30m. This means that the probability of losing more than 20m in one day should be no more than 5\%, and that in the event that the loss is greater than 20m, it will on average be 30m. When the risk manager arrives in the morning, she checks the risk reports, and notes that the firm's expected shortfall is USD 32m. Looking further, she notes that the swap desk is responsible for USD 8m of the expected shortfall, but the desk is not supposed to have more than 6m. Drilling in, she notes volatility has increased for some parts of the yield curve, and there are several large trades that are not suitably hedged. She pays a visit to the head of the swap desk to discuss. 
 
-\chapter{Portfolio Risk Management}
+\chapter{Measuring Market Risk}
 
 \section{A very brief history}
-A risk manager is responsible for tracking the {\it market risk} of a firm's portfolio. Market risk is the risk of financial loss due to changes in security prices. To manage the risk, you must first measure it. This is typically done by specifying a period of time (the horizon). The \pnl (profits and losses) between now and the horizon is represented by a random variable. Risk management selects one or more models for the distribution of that random variable, and characterizes the distribution with descriptive statistics. Markowitz's landmark 1952 paper {\it Portfolio Selection} used standard deviation as the measure. As the variety of securities increased, including options with very asymmetric payoffs, other risk measures became more popular. In 1994, J.P. Morgan put forth RiskMetrics with VaR suggested as a better measure of risk than standard deviation. VaR has its own drawbacks which we will discuss, and expected shortfall is today generally preferred.  
+Market risk is the risk of financial loss due to changes in security prices. To manage this risk, you must first measure it. The measure is a statistical forecast of a nonstationary process out to some given horizon. 
+%Whatever your forecast is, it can change (sometimes dramatically) between d
+
+The \pnl (profits and losses) between now and the horizon is represented by a random variable. Risk management selects one or more models for the distribution of that random variable, and characterizes the distribution with descriptive statistics. Markowitz's landmark 1952 paper {\it Portfolio Selection} used standard deviation as the measure. As the variety of securities increased, including options with very asymmetric payoffs, other risk measures became more popular. In 1994, J.P. Morgan put forth RiskMetrics with VaR suggested as a better measure of risk than standard deviation. VaR has its own drawbacks which we will discuss, and expected shortfall is today generally preferred.  
 
 \section{A portfolio with a single security}
 Imagine you hold 100 shares of a stock trading at USD 200/share. Your simple portfolio is worth USD 20,000. Tomorrow at this time it will have a different value, assuming the market is open in the next 24 hours. The price of the stock may go up or down, and you will realize a profit or loss, accordingly. The \pnl is a random variable, which we will call $P$. Here are some ways we can model $P$:
 \begin{enumerate}
 \item{{\bf Parametric:} Assume a distribution for $P$, (e.g. normal), and estimate the parameters for the distribution. }
 \item{{\bf Historical simulation:} Assume that the relative change in AAPL price tomorrow will be exactly like a randomly selected day from an historical period (say, the past year). }
-\item{{\bf Monte Carlo simulation:}Assume a distribution for each of the factors affecting the value of your stock (for now, just the stock price itself). Using Monte Carlo, generate numerous market scenarios, and revalue your portfolio in each scenario. The distribution of  scenario \pnl is an approximation of  $P$.}
+\item{{\bf Monte Carlo simulation:} Assume a distribution for each of the factors affecting the value of your stock (for now, just the stock price itself). Generate many market scenarios, and revalue your portfolio in each scenario. The distribution of scenario \pnl is an approximation of  the distribution of $P$.}
 \end{enumerate}
 
 Each of these models requires historical pricing of AAPL stock. Ordinarily, you want at least several months of data. For simplicity, however, we will use 4 days. Suppose the stock had these prices:
@@ -126,6 +130,8 @@ What about the mean return? Forecasting return is especially difficult. Moreover
 \end{equation}
 where $n$ is the number of observed returns. 
 
+\problem When computing variance, why would we divide by $n$ rather than $n-1$?
+
 \problem For our simple dataset with three returns, what is the standard deviation of the returns?
 
 \vs{.5cm}
@@ -144,8 +150,10 @@ VaR numbers are always quoted with a quantile (e.g. 5\%)  or confidence level (e
 
 \problem If instead of long, we were short 100 shares, will that affect the VaR?
 
+\problem What do you think could be drawbacks of the parametric model?
+
 \subsubsection{Historical simulation}
-Historical simulation assumes that between now and the horizon, returns will be exactly like a period of the same length randomly selected from the historical record. For our simple dataset, this means the return tomorrow will be either 0.01, 0.02, or -0.06, each with probability 1/3.
+Historical simulation assumes that between now and the horizon, returns will be exactly like a period of the same length randomly selected from the historical record. For our simple dataset, this means the return tomorrow on today's portfolio value will be either 0.01, 0.02, or -0.06, each with probability 1/3.
 
 \problem What is the 50\% quantile \pnl for our portfolio under historical simulation? 
 
@@ -155,9 +163,13 @@ Historical simulation assumes that between now and the horizon, returns will be 
 
 \problem How do you think we should handle other quantiles?
 
-For the purposes of exposition, three observations is convenient. But not representative of reality. You can download historical data from a variety of sources. Yahoo Finance (https://finance.yahoo.com/) is a quick way to get started. 
+\problem What do you think could be drawbacks of the historical simulation model?
 
-For the following problems, download a year's worth of historical price data form Yahoo Finance for Apple for 2017-09-01 to 2018-09-01, and build a Google doc or Excel spreadsheet to answer the questions.
+
+\vs{1cm}
+For the purposes of exposition, having just three observations is convenient. But not representative of reality. You can download historical data from a variety of sources. Yahoo Finance (https://finance.yahoo.com/) is a quick way to get started. 
+
+For the following problems, download a year's worth of historical price data form Yahoo Finance for Apple for 2017-09-01 to 2018-09-01. Use closing prices for computing log returns.  Build a Google doc or Excel spreadsheet to answer the questions. Assume the current price for Apple is yesterday's closing price. 
 
 \problem What is the standard deviation of the percent returns?
 
@@ -166,6 +178,24 @@ For the following problems, download a year's worth of historical price data for
 \problem If you had 100 shares of AAPL at USD 220/share, what is your one day, 95\% confidence level VaR, using the parametric approach?
 
 \problem If you had 100 shares of AAPL at USD 220/share, what is your one day, 95\% confidence level VaR, using  historical simulation?
+
+\subsubsection{Monte Carlo simulation model}
+Monte Carlo shares some characteristics with both the parametric and historical simulation methods. 
+
+Like parametric, Monte Carlo is based on an underlying normal distribution. Parametric, however, often assumes \pnl is normally distributed, whereas Monte Carlo must assume log returns are normal. For our single stock, we assume log return $R \sim N(0, \sigma^2)$.
+
+Like historical simulation, we arrive at statistics about the distribution by looking at a set of observations. Historical, however, is nonparametric, and has a fixed number of simulations equal to the number of observed returns. Monte Carlo can offer an unlimited number of simulations,
+
+\problem Can you anticipate why we might prefer Monte Carlo simulation over the parametric approach for computing risk statistics?
+
+\problem Can you anticipate why we might prefer Monte Carlo simulation over historical simulation for computing risk statistics?
+
+\problem Can you anticipate why we model log returns as normal, rather than percentage returns?
+
+With Monte Carlo, we will be interested in computing VaR, and later, expected shortfall. 
+
+\problem Suppose you have simulated your portfolio \pnl 10 times. How would you estimate quantiles from your simulations? Which quantiles can you compute?
+
 
 
 
