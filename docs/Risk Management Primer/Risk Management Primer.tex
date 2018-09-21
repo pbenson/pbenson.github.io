@@ -159,6 +159,12 @@ Historical simulation assumes that between now and the horizon, returns will be 
 
 \problem What is the 50\% quantile \pnl for our portfolio under the parametric approach?
 
+The next problem is a bit deeper than it appears. Consider a continuous random variable $X$ with quantile $U$. If $X$ is  observed $n$ times, we can sort the observations, and denote the sorted observations the order statistics as $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
+
+\problem Write a Monte Carlo simulation in Python to estimate the expected value of the $U_{(k)}$ given $n$ draws. 
+
+\problem Find the distribution of $U_{(k)}$, and calculate its mean. 
+
 \problem Given $n$ historical returns, what quantiles can we report? 
 
 \problem How do you think we should handle other quantiles?
@@ -203,8 +209,6 @@ With Monte Carlo, we will be interested in computing VaR, and later, expected sh
 \problem What is 5\% quantile VaR if you are short 100 shares? In the limit, as you increase the number of simulations, should it matter whether you are long or short? 
 
 \problem What happens to VaR on the short portfolio as you increase volatility to high levels (e.g. 80\%)?
-
-
 
 
 %\printglossaries
