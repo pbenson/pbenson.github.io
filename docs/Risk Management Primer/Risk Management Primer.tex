@@ -1,0 +1,140 @@
+\documentclass{report}
+
+\usepackage{amsmath} % provides numberwithin (and lots more)
+\usepackage{graphicx}
+\usepackage{listings}
+%\usepackage[backend=bibtex]{biblatex}
+%\bibliography{qfrmTechnicalQuestionsDev}
+%\usepackage{glossaries}
+%\makeglossaries
+%\newglossaryentry{VaR}
+%{
+%    name=VaR,
+%    description={Value-at-Risk. Given a quantile and a horizon, the VaR is the loss associated with that quantile in a portfolio's \pnl distribution out to the horizon. }
+%}
+% 
+%\newglossaryentry{pnl}
+%{
+%    name=\pnl,
+%    description={Profit and loss.}
+%}
+%
+
+%\newtheorem{problem}{}
+%\numberwithin{problem}{chapter} % important bit
+%\let\oldroblem\problem
+%\renewcommand{\problem}{\oldroblem\normalfont}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\pnl}{P\&L}
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ {\huge\bfseries Risk Management Primer\\}
+ % ----------------------------------------------------------------
+ \vspace{1.5cm}
+ {\bfseries Pete Benson}\\[5pt]
+ pbenson@umich.edu\\[14pt]
+  % ----------------------------------------------------------------
+ \vspace{10cm}
+ % ----------------------------------------------------------------
+\includegraphics{QFRM_rgb}\\[5pt]
+{Department of Mathematics}\\[5pt]
+{530 Church Street, 2082C East Hall}\\[5pt]
+{Ann Arbor, MI 48109-1043,
+ USA}\\
+ \vfill
+
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+%----------------------
+% review
+%----------------------
+\chapter{What is risk management?}
+I started writing this to expand on what students learn about risk management during their Master's studies in   Quantitative Finance and Risk Management at the University of Michigan. The term {\it risk management} has many interpretations, so we will narrow this to two relevant subjects.
+
+When people speak of risk management in finance, they are typically talking about one of two different sets of questions:
+\begin{enumerate}
+\item{Given a trade that contains some form of undesirable risk,  can we efficiently mitigate that risk?}
+\item{What is the risk of our portfolio, where is the risk coming from, and what if anything might we do about it?}
+\end{enumerate}
+The first we might call {\t trade risk management}, and the second {\it portfolio risk management}. You might think of these as a reductionist versus a holistic view of risk management. Both are important. We will focus on portfolio risk management, but we must understand the distinction. 
+
+\section{Trade risk management}
+
+Suppose a USD-based trader believes AAPL is undervalued, and buys Apple stock.  He does not want to be exposed to changes that can be attributed to movements in the market. While believes the price of Apple is low, he recognizes that if the entire market falls, AAPL is likely to fall as well, though perhaps not as much. He could short the SP500 index just enough to remove his exposure to the market. 
+
+Or perhaps our AAPL investor doesn't want to be exposed to the risk that AAPL price falls, regardless of what happens in the market. He can buy put options on AAPL so that if the price falls, the put options cover all losses on the stock. 
+
+Another trader works for a London firm, and also believes AAPL is undervalued. This trader buys AAPL by selling GBP for USD, then buying the AAPL stock. She now has currency risk: AAPL may rise, but if the GBP/USD rate falls, she may not see any profits when she sells the stock. If she expects to sell the AAPL stock in one year (receiving USD), she can sell USD one year forward via FX futures contracts. 
+
+\section{Portfolio risk management}
+
+A risk manager is responsible for tracking the {\it market risk} of a firm's portfolio, using statistics such as VaR and expected shortfall. Given their capitalization, the firm has chosen a 5\% quantile one-day VaR limit of USD 20m, with expected shortfall 30m. This means that the probability of losing more than 20m in one day should be no more than 5\%, and that in the event that the loss is greater than 20m, it will on average be 30m. When the risk manager arrives in the morning, she checks the risk reports, and notes that the firm's expected shortfall is USD 32m. Looking further, she notes that the swap desk is responsible for USD 8m of the expected shortfall, but the desk is not supposed to have more than 6m. Drilling in, she notes volatility has increased for some parts of the yield curve, and there are several large trades that are not suitably hedged. She pays a visit to the head of the swap desk to discuss. 
+
+\chapter{Portfolio Risk Management}
+
+\section{A very brief history}
+A risk manager is responsible for tracking the {\it market risk} of a firm's portfolio. Market risk is the risk of financial loss due to changes in security prices. To manage the risk, you must first measure it. This is typically done by specifying a period of time (the horizon). The \pnl (profits and losses) between now and the horizon is represented by a random variable. Risk management selects one or more models for the distribution of that random variable, and characterizes the distribution with descriptive statistics. Markowitz's landmark 1952 paper {\it Portfolio Selection} used standard deviation as the measure. As the variety of securities increased, including options with very asymmetric payoffs, other risk measures became more popular. In 1994, J.P. Morgan put forth RiskMetrics with VaR suggested as a better measure of risk than standard deviation. VaR has its own drawbacks which we will discuss, and expected shortfall is today generally preferred.  
+
+\section{A portfolio with a single security}
+Imagine you hold 100 shares of a stock trading at USD 200/share. Your simple portfolio is worth USD 20,000. Tomorrow at this time it will have a different value, assuming the market is open in the next 24 hours. The price of the stock may go up or down, and you will realize a profit or loss, accordingly. The \pnl is a random variable, which we will call $P$. Here are some ways we can model $P$:
+\begin{enumerate}
+\item{{\bf Parametric:} Assume a distribution for $P$, (e.g. normal), and estimate the parameters for the distribution. }
+\item{{\bf Historical simulation:} Assume that the relative change in AAPL price tomorrow will be exactly like a randomly selected day from an historical period (say, the past year). }
+\item{{\bf Monte Carlo simulation:}Assume a distribution for each of the factors affecting the value of your stock (for now, just the stock price itself). Using Monte Carlo, generate numerous market scenarios, and revalue your portfolio in each scenario. The distribution of  scenario \pnl is an approximation of  $P$.}
+\end{enumerate}
+
+Each of these models requires historical pricing of AAPL stock. Ordinarily, you want at least several months of data. For simplicity, however, we will use 4 days. Suppose the stock had these prices:
+
+\begin{center}
+\begin{tabular}{lr}
+\textbf{date}                  & \textbf{price}                    \\ \hline
+\multicolumn{1}{|l|}{20180906} & \multicolumn{1}{l|}{200}   \\ \hline
+\multicolumn{1}{|l|}{20180905} & \multicolumn{1}{l|}{198}   \\ \hline
+\multicolumn{1}{|l|}{20180904} & \multicolumn{1}{l|}{194}  \\ \hline
+\multicolumn{1}{|l|}{20180903} & \multicolumn{1}{l|}{206}      \\ \hline
+\end{tabular}
+\end{center}
+
+Rather than modeling the price directly, we will model the return $R$ on the stock price, based on the observed returns from our dataset. For a price that goes from $p$ to $p'$, we might compute the observed return $r$ via
+
+\begin{equation}
+p'=p(1+r)
+\end{equation}
+which gives $r=\frac{p'}{p}-1$. Often, we will prefer to treat the return like a continuously compounded rate:
+\begin{equation}
+p'=pe^r
+\end{equation}
+giving us $r=\ln {\frac{p'}{p}}$. In practice, if returns are small ($< 10\%$), the two methods give similar results. As an example, the return from 20180905 to 20180906 is  $\ln{\frac{200}{198}} \approx  \frac{200}{198} - 1 \approx 0.01$. We add a column for the return to our table:
+
+\begin{center}
+\begin{tabular}{lrr}
+\textbf{date}                  & \textbf{price}           & \textbf{return}            \\ \hline
+\multicolumn{1}{|l|}{20180906} & \multicolumn{1}{l|}{200} & \multicolumn{1}{l|}{0.01}  \\ \hline
+\multicolumn{1}{|l|}{20180905} & \multicolumn{1}{l|}{198} & \multicolumn{1}{l|}{0.02}  \\ \hline
+\multicolumn{1}{|l|}{20180904} & \multicolumn{1}{l|}{194} & \multicolumn{1}{l|}{-0.06} \\ \hline
+\multicolumn{1}{|l|}{20180903} & \multicolumn{1}{l|}{206} & \multicolumn{1}{l|}{}      \\ \hline
+\end{tabular}
+\end{center}
+Note that there is no return for 20180903, since we don't know the previous price. In general, if you have $n+1$ historical prices, you will have $n$ returns.
+
+We will use this data for each of our three modeling methods.
+
+\subsubsection{Parametric model}
+We assume the return $R$ is normally distributed, and we estimate the variance $\sigma$ from the observed returns. For reasons that become clear when we have a more complex portfolio, we want $P$ (\pnl) to also be normally distributed, and so returns should be computed using 
+
+%\printglossaries
+
+%----------------------
+%Bibliography
+%----------------------
+%\printbibliography
+
+
+\end{document}
