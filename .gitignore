@@ -10,3 +10,9 @@
 *.glo
 *.ist
 docs/Risk Management Primer/Risk Management Primer.pdf
+*.acn
+*.acr
+*.alg
+*.glg
+*.gls
+*.out

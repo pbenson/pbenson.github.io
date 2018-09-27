@@ -4,10 +4,6 @@
 \usepackage{graphicx}
 \usepackage{listings}
 
-%\usepackage[backend=bibtex]{biblatex}
-%\bibliography{qfrmTechnicalQuestionsDev}
-%\usepackage{glossaries}
-
 \newtheorem{problem}{}
 \numberwithin{problem}{chapter} % important bit
 \let\oldroblem\problem
@@ -16,6 +12,18 @@
 \newcommand{\vs}{\vspace}
 \newcommand{\pnl}{P\&L }
 \newcommand{\pnlend}{P\&L}
+
+\usepackage[colorlinks]{hyperref}
+\usepackage[acronym]{glossaries}
+\newglossaryentry{expectedshortfall}{name=expected shortfall,description={A conditional risk measure related to VaR. Like VaR, it is always quoted with a reference horizon, and a quantile or confidence level. It represents the expected loss conditional on loss exceeding VaR. For example, a one-day 5\% quantile ES of USD 5m means that the portfolio will lose on average USD 5m on days where loss exceeds 5\% quantile VaR}}
+\newglossaryentry{instrument}{name=instrument,description={A financial security}}
+\newglossaryentry{long}{name=long,description={Originally, this meant you hold a positive quantity of some market instrument. For example: Acme was long 100 shares of Apple, so when the price went up, Acme made money. More generally, you are long if you make (lose) money when the  referenced item increases (decreases). For example: They were long volatility on Apple options. So when the volatility fell, they lost money"}}
+\newglossaryentry{market risk}{name=market risk,description={The risk that a portfolio will lose value due to changes in market levels such as stock prices, interest rates, exchange rates, volatilities, etc}}
+\newglossaryentry{nonstationary}{name=nonstationary,description={A random variable is nonstationary if its distribution changes over time}}
+\newglossaryentry{position}{name=position,description={A quantity of a security held in a portfolio. For example: He had a position of 100 shares of Facebook}}
+\newglossaryentry{short}{name=short,description={The opposite of long. You are short if you lose (make) money when the  referenced item increases (decreases). For example: She was short volatility on Apple options. So when the volatility fell, she made money} }
+\newglossaryentry{VaR}{name=VaR,description={Value-at-Risk, a measure of the riskiness of a portfolio. VaR is always quoted with a reference horizon, and a quantile or confidence level. It represents the losses at the given quantile of a portfolio's forecast P\&L distribution. For example, a one-day 5\% quantile VaR of USD 2m means that the portfolio will lose 2m or more with probability 5\% over the next business day}}
+\makeglossaries
 
 \begin{document}
 
@@ -57,7 +65,7 @@ The first we might call {\t trade risk management}, and the second {\it portfoli
 
 \section{Trade risk management}
 
-Suppose a USD-based trader believes AAPL is undervalued, and buys Apple stock.  He does not want to be exposed to changes that can be attributed to movements in the market. While believes the price of Apple is low, he recognizes that if the entire market falls, AAPL is likely to fall as well, though perhaps not as much. He could short the SP500 index just enough to remove his exposure to the market. 
+Suppose a USD-based trader believes AAPL is undervalued, and buys Apple stock.  He does not want to be exposed to changes that can be attributed to movements in the market. While believes the price of Apple is low, he recognizes that if the entire market falls, AAPL is likely to fall as well, though perhaps not as much. He could \gls{short} the SP500 index just enough to remove his exposure to the market. 
 
 Or perhaps our AAPL investor doesn't want to be exposed to the risk that AAPL price falls, regardless of what happens in the market. He can buy put options on AAPL so that if the price falls, the put options cover all losses on the stock. 
 
@@ -65,17 +73,19 @@ Another trader works for a London firm, and also believes AAPL is undervalued. T
 
 \section{Portfolio risk management}
 
-A risk manager is responsible for tracking the {\it market risk} of a firm's portfolio, using statistics such as VaR and expected shortfall. Given their capitalization, the firm has chosen a 5\% quantile one-day VaR limit of USD 20m, with expected shortfall 30m. This means that the probability of losing more than 20m in one day should be no more than 5\%, and that in the event that the loss is greater than 20m, it will on average be 30m. When the risk manager arrives in the morning, she checks the risk reports, and notes that the firm's expected shortfall is USD 32m. Looking further, she notes that the swap desk is responsible for USD 8m of the expected shortfall, but the desk is not supposed to have more than 6m. Drilling in, she notes volatility has increased for some parts of the yield curve, and there are several large trades that are not suitably hedged. She pays a visit to the head of the swap desk to discuss. 
+A risk manager is responsible for tracking the \gls{market risk} of a firm's portfolio, using statistics such as \gls{VaR} and \gls{expectedshortfall}. Given their capitalization, the firm has chosen a 5\% quantile one-day VaR limit of USD 20m, with expected shortfall 30m. This means that the probability of losing more than 20m in one day should be no more than 5\%, and that in the event that the loss is greater than 20m, it will on average be 30m. When the risk manager arrives in the morning, she checks the risk reports, and notes that the firm's expected shortfall is USD 32m. Looking further, she notes that the swap desk is responsible for USD 8m of the expected shortfall, but the desk is not supposed to have more than 6m. Drilling in, she notes volatility has increased for some parts of the yield curve, and there are several large trades that are not suitably hedged. She pays a visit to the head of the swap desk to discuss. 
 
 \chapter{Measuring Market Risk}
 
 \section{A very brief history}
-Market risk is the risk of financial loss due to changes in security prices. To manage this risk, you must first measure it. The measure is a statistical forecast of a nonstationary process out to some given horizon. 
+Market risk is the risk of financial loss due to changes in security prices. To manage this risk, you must first measure it. The measure is a statistic summarizing the forecast of a \gls{nonstationary} process out to some given horizon. 
 %Whatever your forecast is, it can change (sometimes dramatically) between d
 
 The \pnl (profits and losses) between now and the horizon is represented by a random variable. Risk management selects one or more models for the distribution of that random variable, and characterizes the distribution with descriptive statistics. Markowitz's landmark 1952 paper {\it Portfolio Selection} used standard deviation as the measure. As the variety of securities increased, including options with very asymmetric payoffs, other risk measures became more popular. In 1994, J.P. Morgan put forth RiskMetrics with VaR suggested as a better measure of risk than standard deviation. VaR has its own drawbacks which we will discuss, and expected shortfall is today generally preferred.  
 
-\section{A portfolio with a single security}
+\section{A portfolio with a single factor}
+What does that mean? A factor is a random variable. It might represent the return on a stock, commodity, currency, or other security. It might be an interest rate, an implied volatility, or some kind of index. As we increase the number of factors, the complexity of our model increases. So we start with a portfolio whose value is driven by a single factor: the return on a stock.
+
 Imagine you hold 100 shares of a stock trading at USD 200/share. Your simple portfolio is worth USD 20,000. Tomorrow at this time it will have a different value, assuming the market is open in the next 24 hours. The price of the stock may go up or down, and you will realize a profit or loss, accordingly. The \pnl is a random variable, which we will call $P$. Here are some ways we can model $P$:
 \begin{enumerate}
 \item{{\bf Parametric:} Assume a distribution for $P$, (e.g. normal), and estimate the parameters for the distribution. }
@@ -122,7 +132,7 @@ Note that there is no return for 20180903, since we don't know the previous pric
 We will use this data for each of our three modeling methods.
 
 \subsubsection{Parametric model}
-We assume the return $R$ is normally distributed, and we estimate the variance $\sigma$ from the observed returns. For reasons that become clear when we have a more complex portfolio, we want \pnl, $P$, to also be normally distributed. Hence, we use equation \ref{eq:1} to compute returns. 
+We assume the return $R$ is normally distributed, and we estimate the standard deviation (aka {\it volatility}) $\sigma$ from the observed returns. For reasons that become clear when we have a more complex portfolio, we want \pnl, $P$, to also be normally distributed. Hence, we use equation \ref{eq:1} to compute returns. 
 
 What about the mean return? Forecasting return is especially difficult. Moreover, since our risk horizon is typically quite short (from 1 day to perhaps 10 days), whatever expected return there might be is dominated by the variance. Hence, we take the mean return to be zero, so the variance estimate is 
 \begin{equation}
@@ -136,7 +146,7 @@ where $n$ is the number of observed returns.
 
 \vs{.5cm}
 
-The \pnl of a position is the return times the value $v$ of the position. In other words, $P = v R$. The standard deviation of the \pnl is the standard deviation of the return times the value $v$ of the position.
+The \pnl of a \gls{position} is the return times the value $v$ of the position. In other words, $P = v R$. The standard deviation of the \pnl is the standard deviation of the return times the value $v$ of the position.
 
 \problem What is the standard deviation of \pnl for our portfolio?
 
@@ -144,7 +154,7 @@ The \pnl of a position is the return times the value $v$ of the position. In oth
 
 \problem What is the 5\% quantile \pnl for our single stock portfolio?
 
-VaR numbers are always quoted with a quantile (e.g. 5\%)  or confidence level (e.g. 95\%), and a horizon (e.g. one day). Also, because VaR is about forecasting potential losses, a loss is reported as a positive number. 
+\gls{VaR} numbers are always quoted with a quantile (e.g. 5\%)  or confidence level (e.g. 95\%), and a horizon (e.g. one day). Also, because VaR is about forecasting potential losses, a loss is reported as a positive number. 
 
 \problem What is the one day 5\% quantile VaR for our portfolio of one stock?
 
@@ -159,11 +169,15 @@ Historical simulation assumes that between now and the horizon, returns will be 
 
 \problem What is the 50\% quantile \pnl for our portfolio under the parametric approach?
 
-The next problem is a bit deeper than it appears. Consider a continuous random variable $X$ with quantile $U$. If $X$ is  observed $n$ times, we can sort the observations, and denote the sorted observations the order statistics as $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
+The next problem is a bit deeper than it appears. Consider a continuous random variable $X$ with quantile $U$. 
+
+\problem What is the distribution of $U$? 
+
+If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
 
 \problem Write a Monte Carlo simulation in Python to estimate the expected value of the $U_{(k)}$ given $n$ draws. 
 
-\problem Find the distribution of $U_{(k)}$, and calculate its mean. 
+\problem Determine the distribution of $U_{(k)}$, and calculate its mean. 
 
 \problem Given $n$ historical returns, what quantiles can we report? 
 
@@ -173,7 +187,7 @@ The next problem is a bit deeper than it appears. Consider a continuous random v
 
 
 \vs{1cm}
-For the purposes of exposition, having just three observations is convenient. But not representative of reality. You can download historical data from a variety of sources. Yahoo Finance (https://finance.yahoo.com/) is a quick way to get started. 
+For the purposes of exposition, having just three observations is convenient, but not representative of reality. You can download historical data from a variety of sources. Yahoo Finance (https://finance.yahoo.com/) is a quick way to get started. 
 
 For the following problems, download a year's worth of historical price data form Yahoo Finance for Apple for 2017-09-01 to 2018-09-01. Use closing prices for computing log returns.  Build a Google doc or Excel spreadsheet to answer the questions. Assume the current price for Apple is yesterday's closing price. 
 
@@ -183,40 +197,56 @@ For the following problems, download a year's worth of historical price data for
 
 \problem If you had 100 shares of AAPL at USD 220/share, what is your one day, 95\% confidence level VaR, using the parametric approach?
 
+\problem Take a look at your spreadsheet's PERCENTILE() function. Test it on a set of data (e.g. {1, 2, 4}). Does it give the answers you would expect for the 25\% quantile? If not, can you figure out how to make it give the "correct" answer?
+
 \problem If you had 100 shares of AAPL at USD 220/share, what is your one day, 95\% confidence level VaR, using  historical simulation?
 
-\subsubsection{Monte Carlo simulation model}
-Monte Carlo shares some characteristics with both the parametric and historical simulation methods. 
+\problem In Python, implement historical simulation. Inputs should be a filename of historical data, a number of shares, current price, and a list of quantiles. Output is VaR for each of the quantiles. 
 
-Like parametric, Monte Carlo is based on an underlying normal distribution. Parametric, however, often assumes \pnl is normally distributed, whereas Monte Carlo must assume log returns are normal. For our single stock, we assume log return $R \sim N(0, \sigma^2)$.
+\subsubsection{Monte Carlo simulation model}
+Monte Carlo shares some characteristics with the parametric and historical simulation methods. 
+
+Like parametric, Monte Carlo is based on an underlying normal distribution. Parametric, however, often assumes \pnl is normally distributed, whereas Monte Carlo must assume log returns are normal. For our single stock, we assume log return $R \sim N(0, \sigma^2)$, where $\sigma$ is computed from the log returns. 
 
 Like historical simulation, we arrive at statistics about the distribution by looking at a set of observations. Historical, however, is nonparametric, and has a fixed number of simulations equal to the number of observed returns. Monte Carlo can offer an unlimited number of simulations,
 
-\problem Can you anticipate why we might prefer Monte Carlo simulation over the parametric approach for computing risk statistics?
+\problem Why might we prefer Monte Carlo simulation over the parametric approach for computing risk statistics?
 
-\problem Can you anticipate why we might prefer Monte Carlo simulation over historical simulation for computing risk statistics?
+\problem Why might we prefer Monte Carlo simulation over historical simulation for computing risk statistics?
 
-\problem Can you anticipate why we model log returns as normal, rather than percentage returns?
+\problem Why model log returns rather than percentage returns as normal?
 
-With Monte Carlo, we will be interested in computing VaR, and later, expected shortfall. 
+\problem Build a simulation in a spreadsheet with 999 simulations of your portfolio (hint: google RAND() and NORMSINV() for spreadsheets). Make the standard deviation (i.e. the volatility) an input you can adjust.  Compute 5\% quantile VaR. 
 
-\problem Suppose you have simulated your portfolio \pnl ten times. How would you estimate quantiles from your simulations? Which quantiles can you compute?
-
-\problem Build a simulation spreadsheet with 999 simulations of your portfolio (hint: google RAND() and NORMSINV() for spreadsheets). Make the standard deviation an input you can adjust. 
-
-\problem Compute 5\% quantile VaR. Hint: google PERCENTRANK().
-
-\problem What is 5\% quantile VaR if you are short 100 shares? In the limit, as you increase the number of simulations, should it matter whether you are long or short? 
+\problem What is 5\% quantile VaR in your spreadsheet model if you are \gls{short} 100 shares? In the limit, as you increase the number of simulations, should it matter whether you are long or short? 
 
 \problem What happens to VaR on the short portfolio as you increase volatility to high levels (e.g. 80\%)?
 
+\problem In Python, implement Monte Carlo simulation of AAPL. Inputs should be a filename of historical data, a number of shares, current price, a list of quantiles, and number of simulations. Output is VaR for each of the quantiles. Note that your results will vary each time unless you set the random seed at the beginning of your program.
 
-%\printglossaries
+\problem Using numpy and pyplot, graph the histogram of your simulated \pnlend. 
 
-%----------------------
-%Bibliography
-%----------------------
-%\printbibliography
+\section{A portfolio with two or more factors}
+Adding a second random variable to our problem means that we must think of their joint distribution. We will eventually generalize to $n$ factors, but the ideas can be easier to illustrate in the case where $n=2$. 
 
+We are going to keep the security model simple by just adding a second stock. Note, however, that even a single security might involve multiple factors. Modeling a portfolio of a single stock option can require factors for stock, interest rate, and implied volatility. 
+
+\subsubsection{Parametric model}
+Markowitz specified the relationship between factors via a covariance matrix. Let $\vec{R}=\{R_1, ...,R_n\}$ be vector of random variables representing percent returns on factors, with covariance matrix $\Sigma$. We assume we can assign a weight $w$ to each factor, representing how much of that factor is in our portfolio. For a stock, the position size is the market value of the position, which is the number of shares times the share price. Let these position weights be denoted $\vec{w} = \{ w_1, w_2, ..., w_n\}$. Then we can compute the portfolio variance 
+\begin{equation}
+\sigma^2 = \vec{w}' \Sigma \vec{w}
+\end{equation}
+
+For the following exercises, retrieve price data for Google stock from Yahoo Finance. Use the same range of dates you used for Apple. You will use both stocks. 
+
+\problem In your spreadsheet, compute the variance of each stock, and the covariances.
+
+\problem With 500 shares of AAPL at USD 220/share, and 100 shares of GOOG at USD 1200/share, what is your portfolio's standard deviation?
+
+\problem What happens to the portfolio standard deviation if you are short 100 shares of GOOG? Why?
+
+\problem Assigning weights for positions in stock is straightforward. What weight do we use if the risk factor is not a price (e.g. an interest rate)?
+
+\printglossaries
 
 \end{document}
