@@ -169,9 +169,10 @@ Historical simulation assumes that between now and the horizon, returns will be 
 
 \problem What is the 50\% quantile \pnl for our portfolio under the parametric approach?
 
-The next problem is a bit deeper than it appears. Consider a continuous random variable $X$ with quantile $U$. 
+\pagebreak Consider a continuous random variable $X$ with quantile $U$. 
 
 \problem What is the distribution of $U$? 
+\vs{5mm}
 
 If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
 
@@ -184,9 +185,7 @@ If $X$ is  observed $n$ times, we can sort the observations yielding {\it order 
 \problem How do you think we should handle other quantiles?
 
 \problem What do you think could be drawbacks of the historical simulation model?
-
-
-\vs{1cm}
+\vs{5mm}
 For the purposes of exposition, having just three observations is convenient, but not representative of reality. You can download historical data from a variety of sources. Yahoo Finance (https://finance.yahoo.com/) is a quick way to get started. 
 
 For the following problems, download a year's worth of historical price data form Yahoo Finance for Apple for 2017-09-01 to 2018-09-01. Use closing prices for computing log returns.  Build a Google doc or Excel spreadsheet to answer the questions. Assume the current price for Apple is yesterday's closing price. 
@@ -245,7 +244,10 @@ For the following exercises, retrieve price data for Google stock from Yahoo Fin
 
 \problem What happens to the portfolio standard deviation if you are short 100 shares of GOOG? Why?
 
-\problem Assigning weights for positions in stock is straightforward. What weight do we use if the risk factor is not a price (e.g. an interest rate)?
+%\problem Assigning weights for positions in stock is straightforward. What weight do we use if the risk factor is not a price (e.g. an interest rate)?
+\subsubsection{Historical simulation}
+
+\problem Add a \pnl column for GOOG. 
 
 \printglossaries
 
