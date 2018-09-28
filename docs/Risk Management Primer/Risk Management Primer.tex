@@ -17,7 +17,7 @@
 
 \usepackage[colorlinks]{hyperref}
 \usepackage[acronym]{glossaries}
-\newglossaryentry{expectedshortfall}{name=expected shortfall,description={A conditional risk measure related to VaR. Like VaR, it is always quoted with a reference horizon, and a quantile or confidence level. It represents the expected loss conditional on loss exceeding VaR. For example, a one-day 5\% quantile ES of USD 5m means that the portfolio will lose on average USD 5m on days where loss exceeds 5\% quantile VaR}}
+\newglossaryentry{expected shortfall}{name=expected shortfall,description={A conditional risk measure related to VaR. Like VaR, it is always quoted with a reference horizon, and a quantile or confidence level. It represents the expected loss conditional on loss exceeding VaR. For example, a one-day 5\% quantile ES of USD 5m means that the portfolio will lose on average USD 5m on days where loss exceeds 5\% quantile VaR}}
 \newglossaryentry{instrument}{name=instrument,description={A financial security}}
 \newglossaryentry{long}{name=long,description={Originally, this meant you hold a positive quantity of some market instrument. For example: Acme was long 100 shares of Apple, so when the price went up, Acme made money. More generally, you are long if you make (lose) money when the  referenced item increases (decreases). For example: They were long volatility on Apple options. So when the volatility fell, they lost money"}}
 \newglossaryentry{market risk}{name=market risk,description={The risk that a portfolio will lose value due to changes in market levels such as stock prices, interest rates, exchange rates, volatilities, etc}}
@@ -75,7 +75,7 @@ Another trader works for a London firm, and also believes AAPL is undervalued. T
 
 \section{Portfolio risk management}
 
-A risk manager is responsible for tracking the \gls{market risk} of a firm's portfolio, using statistics such as \gls{VaR} and \gls{expectedshortfall}. Given their capitalization, the firm has chosen a 5\% quantile one-day VaR limit of USD 20m, with expected shortfall 30m. This means that the probability of losing more than 20m in one day should be no more than 5\%, and that in the event that the loss is greater than 20m, it will on average be 30m. When the risk manager arrives in the morning, she checks the risk reports, and notes that the firm's expected shortfall is USD 32m. Looking further, she notes that the swap desk is responsible for USD 8m of the expected shortfall, but the desk is not supposed to have more than 6m. Drilling in, she notes volatility has increased for some parts of the yield curve, and there are several large trades that are not suitably hedged. She pays a visit to the head of the swap desk to discuss. 
+A risk manager is responsible for tracking the \gls{market risk} of a firm's portfolio, using statistics such as \gls{VaR} and \gls{expected shortfall}. Given their capitalization, the firm has chosen a 5\% quantile one-day VaR limit of USD 20m, with expected shortfall 30m. This means that the probability of losing more than 20m in one day should be no more than 5\%, and that in the event that the loss is greater than 20m, it will on average be 30m. When the risk manager arrives in the morning, she checks the risk reports, and notes that the firm's expected shortfall is USD 32m. Looking further, she notes that the swap desk is responsible for USD 8m of the expected shortfall, but the desk is not supposed to have more than 6m. Drilling in, she notes volatility has increased for some parts of the yield curve, and there are several large trades that are not suitably hedged. She pays a visit to the head of the swap desk to discuss. 
 
 \chapter{Measuring Market Risk}
 
@@ -148,9 +148,9 @@ where $n$ is the number of observed returns.
 
 \vs{.5cm}
 
-The \pnl of a \gls{position} is the return times the value $v$ of the position. In other words, $P = v R$. The standard deviation of the \pnl is the standard deviation of the return times the value $v$ of the position.
+For the parametric model, the \pnl of a \gls{position} is the return times the value $v$ of the position, i.e. $P = v R$. Likewise, $\Sigma_P = v \sigma_R$.
 
-\problem What is the standard deviation of \pnl for our portfolio?
+\problem What is the standard deviation of \pnl, $\Sigma_P$, for our portfolio?
 
 \problem How many standard deviations from the mean is the 5\% quantile for a normal distribution?
 
@@ -164,6 +164,7 @@ The \pnl of a \gls{position} is the return times the value $v$ of the position. 
 
 \problem What do you think could be drawbacks of the parametric model?
 
+\pagebreak 
 \subsubsection{Historical simulation}
 Historical simulation assumes that between now and the horizon, returns will be exactly like a period of the same length randomly selected from the historical record. For our simple dataset, this means the return tomorrow on today's portfolio value will be either 0.01, 0.02, or -0.06, each with probability 1/3.
 
@@ -171,12 +172,14 @@ Historical simulation assumes that between now and the horizon, returns will be 
 
 \problem What is the 50\% quantile \pnl for our portfolio under the parametric approach?
 
-\pagebreak Consider a continuous random variable $X$ with quantile $U$. 
+\vs{5mm}
+Consider a continuous random variable $X$, and let $U(X)$ be the quantile associated with $X$. 
 
 \problem What is the distribution of $U$? 
 \vs{5mm}
 
-If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
+If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? 
+%In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
 
 \problem Write a Monte Carlo simulation in Python to estimate the expected value of the $U_{(k)}$ given $n$ draws. 
 
@@ -204,6 +207,10 @@ For the following problems, download a year's worth of historical price data for
 
 \problem In Python, implement historical simulation. Inputs should be a filename of historical data, a number of shares, current price, and a list of quantiles. Output is VaR for each of the quantiles. 
 
+\problem What happens to VaR when your position is short instead of long?
+
+\problem Implement \gls{expected shortfall} in your Python program. What is the expected shortfall for long 100 shares AAPL? What is the expected shortfall for short 100 shares AAPL? 
+
 \subsubsection{Monte Carlo simulation model}
 Monte Carlo shares some characteristics with the parametric and historical simulation methods. 
 
@@ -223,7 +230,7 @@ Like historical simulation, we arrive at statistics about the distribution by lo
 
 \problem What happens to VaR on the short portfolio as you increase volatility to high levels (e.g. 80\%)?
 
-\problem In Python, implement Monte Carlo simulation of AAPL. Inputs should be a filename of historical data, a number of shares, current price, a list of quantiles, and number of simulations. Output is VaR for each of the quantiles. Note that your results will vary each time unless you set the random seed at the beginning of your program.
+\problem In Python, implement Monte Carlo simulation of AAPL. Inputs should be a filename of historical data, a number of shares, current price, a list of quantiles, and number of simulations. Output is VaR and expected shortfall for each of the quantiles. Note that your results will vary each time unless you set the random seed at the beginning of your program.
 
 \problem Using numpy and pyplot, graph the histogram of your simulated \pnlend. 
 
@@ -249,14 +256,18 @@ For the following exercises, retrieve price data for Google stock from Yahoo Fin
 %\problem Assigning weights for positions in stock is straightforward. What weight do we use if the risk factor is not a price (e.g. an interest rate)?
 \subsubsection{Historical simulation}
 
-\problem Add a \pnl column for GOOG. 
+Extending historical simulation to handle more factors is more straightforward than the parametric model.   
+
+\problem Make a copy of your AAPL simulation spreadsheet, and add a \pnl column for GOOG. Provide cells for changing the size of your positions.
+
+
 
 \begin{appendices}
 \chapter{Additional reading}
 \begin{enumerate}
-\item{\href{http://pbenson.github.io/docs/td4e.pdf}{A general approach to calculating VaR without volatilities and correlations}.
-\item{\href{http://pbenson.github.io/docs/td4e.pdf}{RiskMetrics\textsuperscript{TM}---Technical Document}. This is the 1996 update to the original technical document. Still provides a good background on portfolio risk measurement.}
-\item{\href{http://pbenson.github.io/docs/ReturnToRiskMetrics.pdf}{Return to RiskMetrics}. This is the 2004 update to the  RiskMetrics Technical Document. }
+\item{\href{http://pbenson.github.io/docs/rmm2q97bz.pdf}{A general approach to calculating VaR without volatilities and correlations}. This describes a method for multivariate normal Monte Carlo on large numbers of factors without requiring decomposing a covariance matrix. This method is used today by \href{https://www.msci.com/risk-performance}{MSCI RiskMetrics RiskManager}.}
+\item{\href{http://pbenson.github.io/docs/td4e.pdf}{RiskMetrics\textsuperscript{TM}---Technical Document}. This is the 1996 revision of the original 1994 technical document. Provides a good background on portfolio risk measurement.}
+\item{\href{http://pbenson.github.io/docs/ReturnToRiskMetrics.pdf}{Return to RiskMetrics}. This is the 2004 update to the  RiskMetrics Technical Document. Stronger emphasis on Monte Carlo, }
 \end{enumerate}
 
 
