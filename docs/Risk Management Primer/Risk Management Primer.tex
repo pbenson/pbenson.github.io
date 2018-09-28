@@ -3,6 +3,8 @@
 \usepackage{amsmath} % provides numberwithin (and lots more)
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage[toc,page]{appendix}
+\usepackage{textcomp}
 
 \newtheorem{problem}{}
 \numberwithin{problem}{chapter} % important bit
@@ -248,6 +250,17 @@ For the following exercises, retrieve price data for Google stock from Yahoo Fin
 \subsubsection{Historical simulation}
 
 \problem Add a \pnl column for GOOG. 
+
+\begin{appendices}
+\chapter{Additional reading}
+\begin{enumerate}
+\item{\href{http://pbenson.github.io/docs/td4e.pdf}{A general approach to calculating VaR without volatilities and correlations}.
+\item{\href{http://pbenson.github.io/docs/td4e.pdf}{RiskMetrics\textsuperscript{TM}---Technical Document}. This is the 1996 update to the original technical document. Still provides a good background on portfolio risk measurement.}
+\item{\href{http://pbenson.github.io/docs/ReturnToRiskMetrics.pdf}{Return to RiskMetrics}. This is the 2004 update to the  RiskMetrics Technical Document. }
+\end{enumerate}
+
+
+\end{appendices}
 
 \printglossaries
 
