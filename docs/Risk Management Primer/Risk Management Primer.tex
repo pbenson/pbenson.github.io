@@ -85,8 +85,8 @@ Market risk is the risk of financial loss due to changes in security prices. To 
 
 The \pnl (profits and losses) between now and the horizon is represented by a random variable. Risk management selects one or more models for the distribution of that random variable, and characterizes the distribution with descriptive statistics. Markowitz's landmark 1952 paper {\it Portfolio Selection} used standard deviation as the measure. As the variety of securities increased, including options with very asymmetric payoffs, other risk measures became more popular. In 1994, J.P. Morgan put forth RiskMetrics with VaR suggested as a better measure of risk than standard deviation. VaR has its own drawbacks which we will discuss, and expected shortfall is today generally preferred.  
 
-\section{A portfolio with a single factor}
-What does that mean? A factor is a random variable. It might represent the return on a stock, commodity, currency, or other security. It might be an interest rate, an implied volatility, or some kind of index. As we increase the number of factors, the complexity of our model increases. So we start with a portfolio whose value is driven by a single factor: the return on a stock.
+\section{A portfolio with a single risk factor}
+A risk factor is a random variable that affects portfolio value. It might represent the return on a stock, commodity, currency, or other security. It might be an interest rate, an implied volatility, or some kind of index. As we increase the number of factors, the complexity of our model increases. So we start with a portfolio whose value is driven by a single factor: the return on a stock.
 
 Imagine you hold 100 shares of a stock trading at USD 200/share. Your simple portfolio is worth USD 20,000. Tomorrow at this time it will have a different value, assuming the market is open in the next 24 hours. The price of the stock may go up or down, and you will realize a profit or loss, accordingly. The \pnl is a random variable, which we will call $P$. Here are some ways we can model $P$:
 \begin{enumerate}
