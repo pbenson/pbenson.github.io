@@ -172,13 +172,13 @@ Historical simulation assumes that between now and the horizon, returns will be 
 
 \problem What is the 50\% quantile \pnl for our portfolio under the parametric approach?
 
-\vs{5mm}
-Consider a continuous random variable $X$, and let $U(X)$ be the quantile associated with $X$. 
+\vs{3mm}
+Consider a continuous random variable $X$ with distribution function $F$. 
 
-\problem What is the distribution of $U$? 
+\problem What is the distribution of $F(X)$? 
 \vs{5mm}
 
-If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. We may not know the distribution of $X$. But can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? 
+If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. Let $U=F(X)$. Can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? 
 %In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
 
 \problem Write a Monte Carlo simulation in Python to estimate the expected value of  $U_{(k)}$ given $n$ draws. 
@@ -190,7 +190,8 @@ If $X$ is  observed $n$ times, we can sort the observations yielding {\it order 
 \problem How do you think we should handle other quantiles?
 
 \problem What do you think could be drawbacks of the historical simulation model?
-\vs{5mm}
+\vs{3mm}
+
 For the purposes of exposition, having just three observations is convenient, but not representative of reality. You can download historical data from a variety of sources. Yahoo Finance (https://finance.yahoo.com/) is a quick way to get started. 
 
 For the following problems, download a year's worth of historical price data form Yahoo Finance for Apple for 2017-09-01 to 2018-09-01. Use closing prices for computing log returns.  Build a Google doc or Excel spreadsheet to answer the questions. Assume the current price for Apple is yesterday's closing price. 
@@ -205,7 +206,7 @@ For the following problems, download a year's worth of historical price data for
 
 \problem If you had 100 shares of AAPL at USD 220/share, what is your one day, 95\% confidence level VaR, using  historical simulation?
 
-\problem In Python, implement historical simulation. Inputs should be a filename of historical data, a number of shares, current price, and a list of quantiles. Output is VaR for each of the quantiles. 
+\problem In Python, implement historical simulation on 100 shares of AAPL. Inputs should be a filename of historical data, a number of shares, current price, and a list of quantiles. Use  \href{https://www.shanelynn.ie/python-pandas-read_csv-load-data-from-csv-files}{pandas} to read your input. Output is VaR for each of the quantiles. 
 
 \problem What happens to VaR when your position is short instead of long?
 
