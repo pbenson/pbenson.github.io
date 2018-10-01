@@ -1,11 +1,34 @@
 \documentclass{report}
 
 \usepackage{amsmath} % provides numberwithin (and lots more)
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{listings}
 \usepackage[toc,page]{appendix}
 \usepackage{textcomp}
+\usepackage{listings}
+\usepackage{color}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
 \newtheorem{problem}{}
 \numberwithin{problem}{chapter} % important bit
 \let\oldroblem\problem
@@ -156,6 +179,7 @@ For the parametric model, the \pnl of a \gls{position} is the return times the v
 
 \problem What is the 5\% quantile \pnl for our single stock portfolio?
 
+\vs{.5cm}
 \gls{VaR} numbers are always quoted with a quantile (e.g. 5\%)  or confidence level (e.g. 95\%), and a horizon (e.g. one day). Also, because VaR is about forecasting potential losses, a loss is reported as a positive number. 
 
 \problem What is the one day 5\% quantile VaR for our portfolio of one stock?
@@ -166,7 +190,7 @@ For the parametric model, the \pnl of a \gls{position} is the return times the v
 
 \pagebreak 
 \subsubsection{Historical simulation}
-Historical simulation assumes that between now and the horizon, returns will be exactly like a period of the same length randomly selected from the historical record. For our simple dataset, this means the return tomorrow on today's portfolio value will be either 0.01, 0.02, or -0.06, each with probability 1/3.
+Historical simulation assumes that between now and the horizon, returns will be exactly like a randomly selected historical period of the same duration. For our simple dataset with three days of historical returns, this means the return tomorrow on today's portfolio value will be either 0.01, 0.02, or -0.06, each with probability 1/3.
 
 \problem What is the 50\% quantile \pnl for our portfolio under historical simulation? 
 
@@ -175,10 +199,10 @@ Historical simulation assumes that between now and the horizon, returns will be 
 \vs{3mm}
 Consider a continuous random variable $X$ with distribution function $F$. 
 
-\problem What is the distribution of $F(X)$? 
+\problem What is the distribution of $F(X)$?  Given $x \in \mathbb{R}$, what is the $F(x)$th quantile of $X$? 
 \vs{5mm}
 
-If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. Let $U=F(X)$. Can we say something about the order statistics on the quantiles $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$? 
+If $X$ is  observed $n$ times, we can sort the observations yielding {\it order statistics} $X_{(1)} \leq X_{(2)} \leq X_{(3)} ...  \leq X_{(n)}$. Let $U=F(X)$. Then $U_{(1)} \leq U_{(2)} \leq U_{(3)} ...  \leq U_{(n)}$ represent the percentiles corresponding to the order statistics on $X$. Since we don't know $F$, we can't actually compute the $U_{(k)}$. However, since we know $U$ is uniform, we can use the expected value of $U_{(k)}$ as a best estimate of $U_{(k)}$.
 %In fact, regardless of the distribution of $X$, we can determine the distribution of $U(k)$, because we know that $U$ is uniformly distributed.
 
 \problem Write a Monte Carlo simulation in Python to estimate the expected value of  $U_{(k)}$ given $n$ draws. 
@@ -259,7 +283,7 @@ For the following exercises, retrieve price data for Google stock from Yahoo Fin
 
 Extending historical simulation to handle more factors is more straightforward than the parametric model.   
 
-\problem Make a copy of your AAPL simulation spreadsheet, and add a \pnl column for GOOG. Provide cells for changing the size of your positions.
+\problem Make a copy of your AAPL simulation spreadsheet, and add percent returns, log returns, and a \pnl column for GOOG. Provide cells for changing the size of your positions. Create a column that nets the daily \pnl, and compute the portfolio VaR. 
 
 
 
@@ -269,6 +293,20 @@ Extending historical simulation to handle more factors is more straightforward t
 \item{\href{http://pbenson.github.io/docs/rmm2q97bz.pdf}{A general approach to calculating VaR without volatilities and correlations}. This describes a method for multivariate normal Monte Carlo on large numbers of factors without requiring decomposing a covariance matrix. This method is used today by \href{https://www.msci.com/risk-performance}{MSCI RiskMetrics RiskManager}.}
 \item{\href{http://pbenson.github.io/docs/td4e.pdf}{RiskMetrics\textsuperscript{TM}---Technical Document}. This is the 1996 revision of the original 1994 technical document. Provides a good background on portfolio risk measurement.}
 \item{\href{http://pbenson.github.io/docs/ReturnToRiskMetrics.pdf}{Return to RiskMetrics}. This is the 2004 update to the  RiskMetrics Technical Document. Stronger emphasis on Monte Carlo, }
+
+\chapter{Multivariate normal Monte Carlo simulation}
+\section{simulating a single variable}
+Simulating a single normal random variable is simple. In a spreadsheet, NORMSINV(RAND()) computes the inverse normal distribution function of a uniform random number, yielding a standard normal random value. Python provides some built-in functions for generating normal deviates, but numpy is preferred for its speed. This code generates 1000 deviates, each with mean zero and standard deviation \texttt{vol}:
+
+\begin{lstlisting}
+import numpy as np
+vol = 0.02
+z = np.random.normal(0,vol, 1000)
+\end{lstlisting}
+
+\section{simulating two variables}
+Suppose there are two random variables, $R_1$ and $R_2$ with standard deviations $\sigma_1$, $\sigma_2$ and correlation $\rho$? How would we simulate these variables?
+
 \end{enumerate}
 
 
