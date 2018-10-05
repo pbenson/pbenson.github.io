@@ -283,8 +283,13 @@ For the following exercises, retrieve price data for Google stock from Yahoo Fin
 
 Extending historical simulation to handle more factors is more straightforward than the parametric model.   
 
-\problem Make a copy of your AAPL simulation spreadsheet, and add percent returns, log returns, and a \pnl column for GOOG. Provide cells for changing the size of your positions. Create a column that nets the daily \pnl, and compute the portfolio VaR. 
+\problem Make a copy of your AAPL simulation spreadsheet, and add percent returns, log returns, and a \pnl column for GOOG. Provide cells for changing the size of your positions. Create a column that nets the daily \pnl, and compute VaR for each position, and portfolio VaR. 
 
+\problem What is the relationship between the VaR of the positions and the VaR of the portfolio?
+
+\problem ES (Expected shortfall) is the average loss, given that loss exceeds VaR. Add ES of the positions and your portfolio as a statistic to your spreadsheet.
+
+\problem What is the relationship between the ES of the positions and the ES of the portfolio?
 
 
 \begin{appendices}
@@ -305,8 +310,20 @@ vol = 0.02
 z = np.random.normal(0,vol, 1000)
 \end{lstlisting}
 
+\problem Using the code above as a starting point, add some tests to verify your expectations for sample mean, standard deviation, and quantiles.
+
 \section{simulating two variables}
-Suppose there are two random variables, $R_1$ and $R_2$ with standard deviations $\sigma_1$, $\sigma_2$ and correlation $\rho$? How would we simulate these variables?
+Suppose there are two random variables, $R_1$ and $R_2$ with standard deviations $\sigma_1$, $\sigma_2$ and correlation $\rho$? We know how to simulate independent normals. 
+
+\problem How can you simulate two normal variables that are not independent, but are in fact multivariate normal?
+
+\problem Find  coefficients that specifically simulate $R_1$ and $R_2$.
+
+\problem Create a spreadsheet simulation of $R_1$ and $R_2$.
+
+\problem Let $M$ be an $n \times n$ matrix, and $Z \in \mathbb{R}$ is a vector of standard normals. What is the covariance matrix of $R = MZ$?
+
+
 
 %COMMENTS: Introduce idea of linear combination of independent standard normals to create correlated normals. This in turn suggests representing the linear combination as a matrix multiply. Student must demonstrate that the matrix premultiplied by its transpose yields the correlation matrix. Then, giving hint that a decomposition to an upper triangular matrix is possible, student derives Cholesky decomposition for 2x2 matrix. Then uses the decomposition to simulate. 
 
