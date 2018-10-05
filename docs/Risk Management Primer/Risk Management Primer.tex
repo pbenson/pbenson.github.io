@@ -293,6 +293,7 @@ Extending historical simulation to handle more factors is more straightforward t
 \item{\href{http://pbenson.github.io/docs/rmm2q97bz.pdf}{A general approach to calculating VaR without volatilities and correlations}. This describes a method for multivariate normal Monte Carlo on large numbers of factors without requiring decomposing a covariance matrix. This method is used today by \href{https://www.msci.com/risk-performance}{MSCI RiskMetrics RiskManager}.}
 \item{\href{http://pbenson.github.io/docs/td4e.pdf}{RiskMetrics\textsuperscript{TM}---Technical Document}. This is the 1996 revision of the original 1994 technical document. Provides a good background on portfolio risk measurement.}
 \item{\href{http://pbenson.github.io/docs/ReturnToRiskMetrics.pdf}{Return to RiskMetrics}. This is the 2004 update to the  RiskMetrics Technical Document. Stronger emphasis on Monte Carlo, }
+\end{enumerate}
 
 \chapter{Multivariate normal Monte Carlo simulation}
 \section{simulating a single variable}
@@ -307,8 +308,9 @@ z = np.random.normal(0,vol, 1000)
 \section{simulating two variables}
 Suppose there are two random variables, $R_1$ and $R_2$ with standard deviations $\sigma_1$, $\sigma_2$ and correlation $\rho$? How would we simulate these variables?
 
-\end{enumerate}
+%COMMENTS: Introduce idea of linear combination of independent standard normals to create correlated normals. This in turn suggests representing the linear combination as a matrix multiply. Student must demonstrate that the matrix premultiplied by its transpose yields the correlation matrix. Then, giving hint that a decomposition to an upper triangular matrix is possible, student derives Cholesky decomposition for 2x2 matrix. Then uses the decomposition to simulate. 
 
+\section{simulating three variables}
 
 \end{appendices}
 

@@ -1,6 +1,10 @@
 import numpy as np
-z = np.random.normal(0,1)
 
-z = np.random.normal(0,1, 1000)
+n = 100000
+z = np.random.normal(0,1, n)
+# Simple tests
+print(np.mean(z)) # mean
+print(np.std(z)) # standard deviation
 z.sort()
-print(z[50])
+q = 5 # quantile
+print(np.percentile(z, q)) # 5% quantile
