@@ -9,6 +9,7 @@
 *.toc
 *.glo
 *.ist
+*checkpoint.ipynb
 docs/Risk Management Primer/Risk Management Primer.pdf
 *.acn
 *.acr
