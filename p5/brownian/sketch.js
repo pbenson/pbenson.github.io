@@ -10,14 +10,9 @@ function setup() {
 }
 
 function draw() {
-  push();
-  // fill(255);
-  // noStroke();
-  // rect(0,0, 200, 30);
-  // fill(240);
-  // text("Simulations: "+frameCount, 20, 20);
+  // push();
   noFill();
-  stroke(1);
+  strokeWeight(1);
   translate(0, height * 0.5);
   translate(1, -1);
   var xStep = 2;
@@ -25,7 +20,7 @@ function draw() {
   var y = 0;
   var grayLevel = 128;
   var beGray = random() < 0.05 ? 0 : 1;
-  stroke(grayLevel * beGray, grayLevel * beGray, grayLevel, 100);
+  stroke(grayLevel * beGray, 50);
   beginShape();
   for (var x = 0; x < width; x += xStep) {
     vertex(x, y);
@@ -33,9 +28,9 @@ function draw() {
   }
   endShape();
   pop();
-  noStroke();
-  fill(255, 255, 255, 25);
-  rect(0,0, width, height);
+  // noStroke();
+  // fill(255, 255, 255, 25);
+  // rect(0,0, width, height);
 }
 
 function centerCanvas() {
