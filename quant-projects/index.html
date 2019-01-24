@@ -34,38 +34,57 @@
 
       <h3>Meeting agenda</h3>
 
-      <!-- <details>
-        <summary>Winter 2019</summary> -->
-      <!-- <details> -->
-      <h3>2019-01-11</h3>
-      <ol>
-        <li>Warmup problem(s):
-          <ul>
-            <li>Solve a simple pair of equations efficiently...</li>
-            <li>Can you cover a 10x10 board with 1x4 tiles? </li>
-          </ul>
-          <!-- <li>Warmup problem(s): chain of triangles </li> -->
-        <li><a href="jobs/MSCIQuantitativeModelValidationSummerInternship.pdf">MSCI Internship</a> discussion with Patrick (Di) Lu</li>
-        <li>Good luck to the <a href="https://www.bloomberg.com/careers/blog/one-idea-engaged-250-student-teams-first-ever-bloomberg-trading-challenge/">Bloomberg Trading Challenge</a> teams: <ul>
-            <li>Prerna, Xinye, Yutian, Hui</li>
-            <li>Rick, Israel, Jiayi, Jack, Yifei</li>
-          </ul>
-        </li>
-        <li>IAQF competition (team entry due Friday, Jan 11th, 2019). Problem will be announced Jan 14th, 2019.
-          <ul>
-            <li><a href="competitions/iaqf/IAQFAnnualAcademicCompetition.pdf">Competition description</a></li>
-            <li>2016 Problem: <a href="competitions/iaqf/IAQFCompetitionProblem2016.pdf">Impact of changing oil prices</a></li>
-            <li>2017 Problem: <a href="competitions/iaqf/IAQFCompetitionProblem2017.pdf">Impact of rising interest rates</a></li>
-            <li>2018 Problem: <a href="competitions/iaqf/IAQFCompetitionProblem2018.pdf">Momentum vs option strategies</a></li>
-            <li>2019 Problem: What do you think it could be? Think-pair-share.</li>
-            <li><a href="https://www.iaqf.org/news/news_detail/49">Winning papers</a></li>
-          </ul>
-        </li>
-        <li>There is a <a href="https://www.quantopian.com/contest/university-quant-finance-competition">Quantopian contest</a> starting Jan 31st.</li>
-        <li>There are 4 red and 4 black marbles in a bag. Draw one at time. If you have drawn more black than red, winnings are the number of black marbles in excess of red. Otherwise, you get nothing. Quit at any time. What is your optimal
-          strategy?</li>
-      </ol>
-      <!-- </details> -->
+
+      <details>
+        <summary>2019-01-25</summary>
+        <ol>
+          <li>Warmup problem(s):
+            <ul>
+              <li>You can roll a die up to 3 times. After each roll, you can either keep the number facing up or forgo the number and keep rolling. At the end of the 3rd roll, you will have to take the number facing up. What is it worth to play the
+                game?</li>
+            </ul>
+          </li>
+          <li>Python problem: There are 4 red and 4 black marbles in a bag. Draw one at time. If you have drawn more black than red, winnings are the number of black marbles in excess of red. Otherwise, you get nothing. Quit at any time.
+            <ol>
+              <li>Solve by hand. What is your optimal strategy?</li>
+              <li>Implement in Python.</li>
+              <li>What is the computational complexity of your solution?</li>
+              <li></li>
+            </ol>
+          </li>
+        </ol>
+      </details>
+
+      <details>
+        <summary>2019-01-11</summary>
+        <ol>
+          <li>Warmup problem(s):
+            <ul>
+              <li>Solve a simple pair of equations efficiently...</li>
+              <li>Can you cover a 10x10 board with 1x4 tiles? </li>
+            </ul>
+            <!-- <li>Warmup problem(s): chain of triangles </li> -->
+          <li><a href="jobs/MSCIQuantitativeModelValidationSummerInternship.pdf">MSCI Internship</a> discussion with Patrick (Di) Lu</li>
+          <li>Good luck to the <a href="https://www.bloomberg.com/careers/blog/one-idea-engaged-250-student-teams-first-ever-bloomberg-trading-challenge/">Bloomberg Trading Challenge</a> teams: <ul>
+              <li>Prerna, Xinye, Yutian, Hui</li>
+              <li>Rick, Israel, Jiayi, Jack, Yifei</li>
+            </ul>
+          </li>
+          <li>IAQF competition (team entry due Friday, Jan 11th, 2019). Problem will be announced Jan 14th, 2019.
+            <ul>
+              <li><a href="competitions/iaqf/IAQFAnnualAcademicCompetition.pdf">Competition description</a></li>
+              <li>2016 Problem: <a href="competitions/iaqf/IAQFCompetitionProblem2016.pdf">Impact of changing oil prices</a></li>
+              <li>2017 Problem: <a href="competitions/iaqf/IAQFCompetitionProblem2017.pdf">Impact of rising interest rates</a></li>
+              <li>2018 Problem: <a href="competitions/iaqf/IAQFCompetitionProblem2018.pdf">Momentum vs option strategies</a></li>
+              <li>2019 Problem: What do you think it could be? Think-pair-share.</li>
+              <li><a href="https://www.iaqf.org/news/news_detail/49">Winning papers</a></li>
+            </ul>
+          </li>
+          <li>There is a <a href="https://www.quantopian.com/contest/university-quant-finance-competition">Quantopian contest</a> starting Jan 31st.</li>
+          <li>There are 4 red and 4 black marbles in a bag. Draw one at time. If you have drawn more black than red, winnings are the number of black marbles in excess of red. Otherwise, you get nothing. Quit at any time. What is your optimal
+            strategy?</li>
+        </ol>
+      </details>
       <!-- </details> -->
 
       <details>
@@ -511,21 +530,6 @@
           <li><a href="backtesting_expected_shortfall.html">Backtesting Expected Shortfall</a></li>
         </ul>
       </p>
-
-      <!-- <p>The steps involved can be summarized as:
-                <ol>
-                    <li>Determine which market factors (e.g. prices, exchange rates, interest rates, implied volatilities, etc) drive portfolio value.</li>
-                    <li>Find market factor level data (typically daily close). To start, can use <a href="https://finance.yahoo.com/quote/AMZN/history?period1=1412136000&period2=1475208000&interval=1d&filter=history&frequency=1d">Yahoo Finance</a>. Define a file format, which might look something like <a href="data/IBM_T_NKE_AAPL_20141001-20160930.csv">this</a>. Note that the example file uses YYYYMMDD format, which you can generate in Excel via a custom date format. You may need to  <a href="../cpp/finding-datafile.html">configure your directory path</a> so that your code can find  your data file.</li>
-                    <li>Create a C++ data model for market factor data. For example, you might have a <code>Market</code> class, consisting of a map of named <code>MarketFactor</code> objects. </li>
-                    <li>Read your CSV market data <a href="http://www.umich.edu/~eecs381/handouts/filestreams.pdf">from a stream</a> and populate MarketFactor objects that are added to <code>Market</code>. Since log returns never change, these could be computed and stored as well while you load prices into your <code>MarketFactor</code>. You can also capture the associated dates, taking advantage of the <a href="http://www.boost.org/doc/libs/1_62_0/doc/html/date_time/examples.html#date_time.examples.dates_as_strings">boost date_time library</a>.</li>
-                    <li>You should be able to retrieve a <code>MarketFactor</code> from the <code>Market</code> object by name, using a <code>std::map</code>.</li>
-                    <li>Create a scenario generating object (e.g. <code>MarketSimulation</code>). You shoud be able to ask a <code>MarketFactor</code> object for its return given the <code>MarketSimulation</code>. Now you have a working simulation of the market!</li>
-                    <li>Now we need to see the PnL impact of the scenario on our portfolio. That means we can create a <code>Portfolio</code>, which contains <code>Position</code>s. Each <code>Position</code> is based on a some amount of a <code>Security</code>. Initially, we can assume our <code>Security</code> is a stock.</li>
-                </ol>
-            </p> -->
-
-      <!-- <h3>Contributing to the project</h3>
-            <p>See <a href="contribute.html">how to contribute</a>.</p> -->
 
     </section>
     <footer>
