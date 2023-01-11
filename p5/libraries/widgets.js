@@ -6,34 +6,44 @@ var userRemovedCells = [];
 var voronoi, bbox, sites, diagram, menuChoices;
 
 function makeCheckbox(name, initialValue, x, y) {
-  var label = createP(name);
-  label.position(10, y - 17);
-  var checkbox = createCheckbox('', initialValue);
+  createLabel(name, y);
+  var checkbox = createCheckbox("", initialValue);
   checkbox.position(x, y);
-  checkbox.style('width', '200px');
+  checkbox.style("width", "200px");
   checkbox.changed(forceRedraw);
   return checkbox;
 }
 
-function makeSlider(name, min, max, initialValue, x, y, sliderWidth, step) {
-  var label = createP(name);
+function createLabel(name, y) {
+  return createColoredLabel(name, y, "#0000DD");
+}
+
+function createColoredLabel(name, y, colorString) {
+  let label = createP(name);
   label.position(10, y - 17);
+  label.style("color", colorString);
+  return label;
+}
+
+function makeSlider(name, min, max, initialValue, x, y, sliderWidth, step) {
+  createLabel(name, y);
   var slider = createSlider(min, max, initialValue);
   slider.position(x, y);
-  slider.style('width', '' + sliderWidth + 'px');
+  slider.style("width", "" + sliderWidth + "px");
+  slider.style("color", "#ffffff");
   slider.input(forceRedraw);
-  slider.attribute('step', step);
+  slider.attribute("step", step);
   slider.value(initialValue);
   return slider;
 }
+
 function makeSliderForceRecompute(name, min, max, initialValue, x, y, step) {
-  var label = createP(name);
-  label.position(10, y - 17);
+  createLabel(name, y);
   var slider = createSlider(min, max, initialValue);
   slider.position(x, y);
-  slider.style('width', '200px');
+  slider.style("width", "200px");
   slider.input(forceRedrawAndRecompute);
-  slider.attribute('step', step);
+  slider.attribute("step", step);
   slider.value(initialValue);
   return slider;
 }
@@ -68,19 +78,30 @@ function makeButton(name, x, y, fun) {
 
 function makeRangeSelectMenu(name, start, end, initialMenuChoice, x, y) {
   menuChoices = [];
-  for(var i = start; i < end; ++i) {
+  for (var i = start; i < end; ++i) {
     menuChoices.push(i);
   }
-  return makeSelectMenuWithSelection(name, menuChoices, initialMenuChoice, x, y);
+  return makeSelectMenuWithSelection(
+    name,
+    menuChoices,
+    initialMenuChoice,
+    x,
+    y
+  );
 }
 
 function makeSelectMenu(name, menuChoices, x, y) {
   return makeSelectMenuWithSelection(name, menuChoices, menuChoices[0], x, y);
 }
 
-function makeSelectMenuWithSelection(name, menuChoices, initialMenuChoice, x, y) {
-  var label = createP(name);
-  label.position(10, y - 17);
+function makeSelectMenuWithSelection(
+  name,
+  menuChoices,
+  initialMenuChoice,
+  x,
+  y
+) {
+  createLabel(name, y);
   var sel = createSelect();
   sel.position(x + textWidth(name) + 20, y);
   for (var i = 0; i < menuChoices.length; ++i) {
