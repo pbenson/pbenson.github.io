@@ -37,12 +37,12 @@ function f4(x_n, y_n) {
 }
 
 function setup() {
-  createCanvas(600, 800);
-  let shrinkFactor = 0.8;
+  createCanvas(300, 400);
+  let shrinkFactor = 0.75;
   xScale = (width / (xMax - xMin)) * shrinkFactor;
   yScale = (height / (yMax - yMin)) * shrinkFactor;
   background(255);
-  stroke(0);
+  stroke(0, 127, 0);
   fill(0);
 }
 
