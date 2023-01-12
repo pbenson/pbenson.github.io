@@ -8,7 +8,7 @@ function setup() {
   createCanvas(520, 640);
   const goldenAngle = 2 * PI * (1 - 1 / phi);
   const sliderInset = 120;
-  const sliderWidth = 400;
+  const sliderWidth = 360;
   dThetaSlider = makeSlider("angle", 0.25, 6.28, goldenAngle, sliderInset, 20, sliderWidth, 0.001);
   scaleSlider = makeSlider("distance scaling", 10, 50, 10, sliderInset, 50, sliderWidth, 1);
 }
@@ -38,7 +38,7 @@ function draw() {
     theta += dTheta;
   }
   pop();
-  noFill();
-  text(dTheta, 275, 33);
-  text(radiusScale, 275, 63);
+  fill(0);
+  text(dTheta, 485, 33);
+  text(radiusScale, 485, 63);
 }

@@ -13,7 +13,7 @@ function setup() {
   createCanvas(520, 520);
   const goldenAngle = 2 * PI * (1 - 1 / phi);
   const sliderInset = 120;
-  const sliderWidth = 400;
+  const sliderWidth = 350;
   dThetaSlider = makeSlider("angle", 0.25, 6.28, goldenAngle, sliderInset, 20, sliderWidth, 0.001);
   scaleSlider = makeSlider("distance scaling", 10, 50, 10, sliderInset, 50, sliderWidth, 1);
 }
@@ -75,8 +75,8 @@ function draw() {
 
   noStroke();
   fill(0);
-  text(dThetaSlider.value(), 290, 33);
-  text(scaleSlider.value(), 290, 63);
+  text(dThetaSlider.value(), 480, 33);
+  text(scaleSlider.value(), 480, 63);
 }
 
 function keyTyped() {
