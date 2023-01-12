@@ -6,9 +6,11 @@ var dThetaSlider, scaleSlider;
 
 function setup() {
   createCanvas(520, 640);
-  var goldenAngle = 2 * PI * (1 - 1 / phi);
-  dThetaSlider = makeSlider("angle", 0.5, 6.28, goldenAngle, 60, 20, 0.001);
-  scaleSlider = makeSlider("scale", 3, 50, 10, 60, 50, 1);
+  const goldenAngle = 2 * PI * (1 - 1 / phi);
+  const sliderInset = 120;
+  const sliderWidth = 400;
+  dThetaSlider = makeSlider("angle", 0.25, 6.28, goldenAngle, sliderInset, 20, sliderWidth, 0.001);
+  scaleSlider = makeSlider("distance scaling", 10, 50, 10, sliderInset, 50, sliderWidth, 1);
 }
 
 function draw() {

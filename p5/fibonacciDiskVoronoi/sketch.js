@@ -11,10 +11,11 @@ var vorHeight = 1000;
 
 function setup() {
   createCanvas(520, 520);
-  var goldenAngle = 2 * PI * (1 - 1 / phi);
-  var sliderInset = 70;
-  dThetaSlider = makeSlider("angle", 0.25, 6.28, goldenAngle, sliderInset, 20, 0.001);
-  scaleSlider = makeSlider("scale", 10, 50, 10, sliderInset, 50, 1);
+  const goldenAngle = 2 * PI * (1 - 1 / phi);
+  const sliderInset = 120;
+  const sliderWidth = 400;
+  dThetaSlider = makeSlider("angle", 0.25, 6.28, goldenAngle, sliderInset, 20, sliderWidth, 0.001);
+  scaleSlider = makeSlider("distance scaling", 10, 50, 10, sliderInset, 50, sliderWidth, 1);
 //  penWidthSlider = makeSlider("pen size", 1, 40, 0.5, sliderInset, 80, 0.5);
 //  heightSlider = makeSlider("height", 0.25, 1, 1, sliderInset, 110, 0.01);
 }
