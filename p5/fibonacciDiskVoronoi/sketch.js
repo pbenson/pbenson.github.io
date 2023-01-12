@@ -16,8 +16,6 @@ function setup() {
   const sliderWidth = 400;
   dThetaSlider = makeSlider("angle", 0.25, 6.28, goldenAngle, sliderInset, 20, sliderWidth, 0.001);
   scaleSlider = makeSlider("distance scaling", 10, 50, 10, sliderInset, 50, sliderWidth, 1);
-//  penWidthSlider = makeSlider("pen size", 1, 40, 0.5, sliderInset, 80, 0.5);
-//  heightSlider = makeSlider("height", 0.25, 1, 1, sliderInset, 110, 0.01);
 }
 
 function drawDiskOnly() {
@@ -51,7 +49,6 @@ function drawDiskOnly() {
       y: vorHeight / 2 + r * sin(theta)
     };
     sites.push(pt);
-    // ellipse(pt.x, pt.y, diameter, diameter);
     theta += dTheta;
   }
 
@@ -59,7 +56,6 @@ function drawDiskOnly() {
   var diagram = voronoi.compute(sites, bbox);
   for (var cellIndex in diagram.cells) {
     var cell = diagram.cells[cellIndex];
-    // println(cell);
     if (includeInDrawing(cell)) {
        ellipse(cell.site.x* width / vorWidth, cell.site.y* height / vorHeight, diameter, diameter);
       for (var edgeIndex in cell.halfedges) {
@@ -81,8 +77,6 @@ function draw() {
   fill(0);
   text(dThetaSlider.value(), 290, 33);
   text(scaleSlider.value(), 290, 63);
-//  text(penWidthSlider.value(), 290, 93);
-//  text(heightSlider.value(), 290, 123);
 }
 
 function keyTyped() {
